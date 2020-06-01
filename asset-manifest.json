@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/ryancgibson.com/static/css/main.027e3e2c.chunk.css",
+    "main.js": "/ryancgibson.com/static/js/main.7fb1d369.chunk.js",
+    "main.js.map": "/ryancgibson.com/static/js/main.7fb1d369.chunk.js.map",
+    "runtime-main.js": "/ryancgibson.com/static/js/runtime-main.d0f34365.js",
+    "runtime-main.js.map": "/ryancgibson.com/static/js/runtime-main.d0f34365.js.map",
+    "static/js/2.2010290d.chunk.js": "/ryancgibson.com/static/js/2.2010290d.chunk.js",
+    "static/js/2.2010290d.chunk.js.map": "/ryancgibson.com/static/js/2.2010290d.chunk.js.map",
+    "index.html": "/ryancgibson.com/index.html",
+    "precache-manifest.87367c82fc92607a37bf06cd7d2be78b.js": "/ryancgibson.com/precache-manifest.87367c82fc92607a37bf06cd7d2be78b.js",
+    "service-worker.js": "/ryancgibson.com/service-worker.js",
+    "static/css/main.027e3e2c.chunk.css.map": "/ryancgibson.com/static/css/main.027e3e2c.chunk.css.map",
+    "static/js/2.2010290d.chunk.js.LICENSE.txt": "/ryancgibson.com/static/js/2.2010290d.chunk.js.LICENSE.txt",
+    "static/media/background.jpg": "/ryancgibson.com/static/media/background.3b8b00e0.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d0f34365.js",
+    "static/js/2.2010290d.chunk.js",
+    "static/css/main.027e3e2c.chunk.css",
+    "static/js/main.7fb1d369.chunk.js"
+  ]
+}
