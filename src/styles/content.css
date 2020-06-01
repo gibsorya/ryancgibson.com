@@ -1,0 +1,11 @@
+.content_wrapper {
+  width: 100%;
+  background-color: #1d2125;
+  border-top: 3px solid #ff4141;
+}
+.flex {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

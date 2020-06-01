@@ -1,0 +1,67 @@
+@font-face {
+  font-family: "Bebas Neue", sans-serif;
+  src: url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+}
+
+nav {
+  top: 0;
+  left: 0;
+  position: absolute;
+  background: #1d2125;
+  border-bottom: 3px solid #ff4141;
+  height: 50px;
+  text-align: left;
+  width: 100%;
+  z-index: 99;
+}
+
+.flex {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+nav .link-wrap {
+  background: none;
+  overflow: visible;
+  position: initial;
+  text-align: left;
+}
+
+nav .link-wrap {
+  overflow: hidden;
+  top: 53px;
+  transition: height 0.3s ease-out;
+  width: 100%;
+}
+
+.link-wrap {
+  background: none;
+  height: initial;
+  overflow: visible;
+  position: initial;
+  text-align: left;
+}
+
+nav .link-wrap div {
+  cursor: pointer;
+  display: inline;
+  font-size: initial;
+  margin: 0 20px;
+  font-size: 12pt;
+  padding: 12px 20px;
+  text-transform: uppercase;
+  transition: color 0.5s;
+  font-family: "Bebas Neue";
+  font-weight: 400;
+  font-size: 24px;
+}
+
+nav .link-wrap :hover {
+  color: #ff4141;
+}
+
+.scrolled {
+  position: fixed;
+}

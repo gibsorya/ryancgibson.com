@@ -1,0 +1,71 @@
+@font-face {
+  font-family: "Bebas Neue", sans-serif;
+  src: url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+}
+
+.panel {
+  display: block;
+  position: absolute;
+  top: 50%;
+  pointer-events: none;
+  left: 50%;
+  text-align: center;
+  background-color: transparent;
+  transform: translate(-50%, -50%);
+}
+.yesTouch {
+  pointer-events: all;
+}
+.mainIntro {
+  font-family: "Bebas Neue";
+  font-size: 5em;
+  font-weight: bold;
+  margin: 0;
+  /* pointer-events: none; */
+}
+
+.subIntro {
+  font-family: "Bebas Neue";
+  font-size: 3em;
+  font-weight: bold;
+  margin: 0;
+}
+
+.mainIntroMobile {
+  font-family: "Bebas Neue";
+  font-size: 3em;
+  margin: 0;
+  display: flex;
+}
+
+.subIntroMobile {
+  font-family: "Bebas Neue";
+  font-size: 2em;
+  font-weight: bold;
+  margin: 0;
+  display: flex;
+}
+
+@media (max-width: 500px) {
+  .mainText {
+    display: none;
+    /* pointer-events: none; */
+  }
+  .mobileText {
+    display: contents;
+  }
+}
+
+@media (min-width: 501px) {
+  .mainText {
+    display: contents;
+    pointer-events: none;
+  }
+  .mobileText {
+    display: none;
+  }
+}
+
+.textColor {
+  color: #ff4141;
+}

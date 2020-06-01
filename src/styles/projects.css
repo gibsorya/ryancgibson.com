@@ -1,0 +1,18 @@
+.wrapper {
+  width: 90%;
+  height: 90%;
+  margin: 20px auto;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+}
+
+.item {
+  background-color: aqua;
+  color: white;
+  padding: 10px;
+}
+
+.item:nth-child(even) {
+  background-color: blue;
+}

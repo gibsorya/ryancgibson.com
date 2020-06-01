@@ -1,0 +1,35 @@
+@font-face {
+  font-family: "Bebas Neue", sans-serif;
+  src: url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+}
+
+.canvas {
+  width: 100%;
+  height: 100vh;
+  z-index: 4;
+}
+
+.flex {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+section {
+  color: #fff;
+  height: calc(100vh + 53px);
+}
+
+.footer {
+  font-family: "Bebas Neue";
+  letter-spacing: 0.1em;
+  height: 3vh;
+  font-size: 1.3em;
+  top: 50%;
+  right: 0%;
+  left: 0%;
+  bottom: 50%;
+  color: #fff;
+  text-align: center;
+}
