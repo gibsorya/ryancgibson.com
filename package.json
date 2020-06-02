@@ -1,7 +1,7 @@
 {
-  "homepage": "https://gibsorya.github.io/ryancgibson.com/",
+  "homepage": "ryancgibson.com",
   "name": "ryancgibson.com",
-  "version": "0.1.1",
+  "version": "0.1.12",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
