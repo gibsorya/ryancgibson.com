@@ -9,7 +9,10 @@ class Button extends Component {
           <div id="section-header">
             <div className="Button_Wrapper">
               <div className="yesTouch">
-                <a className="ButtonAnimation ButtonAnimation_Item" href="#">
+                <a
+                  className="ButtonAnimation ButtonAnimation_Item"
+                  href="#about"
+                >
                   LEARN MORE
                 </a>
               </div>

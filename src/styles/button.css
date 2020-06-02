@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap");
 
 body {
-  background-color: #363636;
+  background-color: #1d2125;
   font-family: "Nunito", sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -21,11 +21,11 @@ body {
 .Button_Wrapper {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
 }
 .ButtonAnimation_Item {
-  margin: 12px;
+  margin-top: 1em;
 }
 .ButtonAnimation {
   position: relative;

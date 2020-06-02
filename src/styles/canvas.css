@@ -1,17 +1,16 @@
 @font-face {
   font-family: "Bebas Neue", sans-serif;
-  src: url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+  src: url("./BebasNeue-Regular.ttf");
 }
 
 .panel {
   display: block;
   position: absolute;
-  top: 50%;
   pointer-events: none;
-  left: 50%;
-  text-align: center;
+  text-align: left;
   background-color: transparent;
-  transform: translate(-50%, -50%);
+  transform: translate(1vw, -68vh);
+  line-height: normal;
 }
 .yesTouch {
   pointer-events: all;
@@ -49,7 +48,7 @@
 @media (max-width: 500px) {
   .mainText {
     display: none;
-    /* pointer-events: none; */
+    pointer-events: none;
   }
   .mobileText {
     display: contents;

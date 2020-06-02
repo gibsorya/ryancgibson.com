@@ -14,8 +14,7 @@ function App() {
   return (
     <div className="flex">
       <section id="home" className="canvas">
-        <Header headers={headerNames} className="flex" />
-        <ParticleCanvas className></ParticleCanvas>
+        <ParticleCanvas></ParticleCanvas>
         <Intro />
       </section>
       <Content></Content>

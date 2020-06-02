@@ -14,10 +14,10 @@ class ParticleCanvas extends Component {
             particles: {
               number: {
                 value: 120,
-                // density: {
-                //   enable: true,
-                //   value_area: 800,
-                // },
+                density: {
+                  enable: true,
+                  value_area: 800,
+                },
               },
               color: {
                 value: [

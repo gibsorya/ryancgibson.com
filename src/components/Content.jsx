@@ -1,12 +1,19 @@
 import React, { Component } from "react";
 import "../styles/content.css";
-import ProjectGrid from "./ProjectGrid";
+import Grid from "./Grid";
+import Tabs from "./Tabs";
 
 class Content extends Component {
   render() {
     return (
-      <div className="content_wrapper">
-        <ProjectGrid />
+      <div id="about" className="content_wrapper">
+        <Tabs>
+          <div label="About Me"></div>
+          <div label="Skills">Skills? What skills?</div>
+          <div label="Projects">
+            <Grid />
+          </div>
+        </Tabs>
       </div>
     );
   }

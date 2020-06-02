@@ -4,15 +4,11 @@
   margin: 20px auto;
   display: grid;
   gap: 20px;
-  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(25%, 1fr));
 }
 
 .item {
-  background-color: aqua;
+  background-color: #1d2125;
   color: white;
   padding: 10px;
-}
-
-.item:nth-child(even) {
-  background-color: blue;
 }

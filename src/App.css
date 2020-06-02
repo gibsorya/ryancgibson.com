@@ -1,12 +1,11 @@
 @font-face {
   font-family: "Bebas Neue", sans-serif;
-  src: url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+  src: url("./styles/BebasNeue-Regular.ttf");
 }
 
 .canvas {
   width: 100%;
   height: 100vh;
-  z-index: 4;
 }
 
 .flex {
