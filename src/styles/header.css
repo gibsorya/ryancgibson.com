@@ -1,6 +1,6 @@
 @font-face {
   font-family: "Bebas Neue", sans-serif;
-  src: url("./BebasNeue-Regular.ttf");
+  src: url("/public/BebasNeue-Regular.ttf");
 }
 
 nav {

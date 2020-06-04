@@ -1,17 +1,15 @@
 import React, { Component } from "react";
-import "../styles/projects.css";
+import PropTypes from "prop-types";
+import "../styles/grid.css";
 
-class ProjectGrid extends Component {
+class Grid extends Component {
+  static propTypes = {
+    children: PropTypes.instanceOf(Array).isRequired,
+  };
+
   render() {
-    return (
-      <div className="wrapper">
-        <div className="item">1</div>
-        <div className="item">1</div>
-        <div className="item">1</div>
-        <div className="item">1</div>
-      </div>
-    );
+    return <div className="wrapper">{this.props.children}</div>;
   }
 }
 
-export default ProjectGrid;
+export default Grid;

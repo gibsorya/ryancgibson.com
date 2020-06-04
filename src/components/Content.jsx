@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "../styles/content.css";
 import Grid from "./Grid";
 import Tabs from "./Tabs";
+import ProjectItem from "./ProjectItem";
 
 class Content extends Component {
   render() {
@@ -11,7 +12,12 @@ class Content extends Component {
           <div label="About Me"></div>
           <div label="Skills">Skills? What skills?</div>
           <div label="Projects">
-            <Grid />
+            <Grid>
+              <ProjectItem></ProjectItem>
+              <ProjectItem></ProjectItem>
+              <ProjectItem></ProjectItem>
+              <ProjectItem></ProjectItem>
+            </Grid>
           </div>
         </Tabs>
       </div>
