@@ -2,7 +2,6 @@
   font-family: "Bebas Neue", sans-serif;
   src: url("/public/BebasNeue-Regular.ttf");
 }
-
 .content_wrapper {
   width: 100%;
   background-color: #363636;
@@ -18,6 +17,12 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.headers {
+  font-family: "Bebas Neue";
+  font-size: 1.5em;
+  margin: 16px;
 }
 
 /* Tab List CSS */
@@ -36,6 +41,7 @@
 .tab-list-item {
   cursor: pointer;
   font-family: "Bebas Neue";
+  font-weight: 400;
   font-size: 1.8em;
   color: white;
   display: inline-block;

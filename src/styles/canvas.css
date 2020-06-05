@@ -2,7 +2,6 @@
   font-family: "Bebas Neue", sans-serif;
   src: url("/public/BebasNeue-Regular.ttf");
 }
-
 .panel {
   display: block;
   position: absolute;
@@ -18,7 +17,7 @@
 .mainIntro {
   font-family: "Bebas Neue";
   font-size: 5em;
-  font-weight: bold;
+  font-weight: 400;
   margin: 0;
   /* pointer-events: none; */
 }
@@ -26,7 +25,7 @@
 .subIntro {
   font-family: "Bebas Neue";
   font-size: 3em;
-  font-weight: bold;
+  font-weight: 400;
   margin: 0;
 }
 

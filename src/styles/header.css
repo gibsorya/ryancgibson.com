@@ -1,8 +1,4 @@
-@font-face {
-  font-family: "Bebas Neue", sans-serif;
-  src: url("/public/BebasNeue-Regular.ttf");
-}
-
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
 nav {
   top: 0;
   left: 0;
