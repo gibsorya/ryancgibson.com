@@ -4,11 +4,14 @@ import "../styles/grid.css";
 
 class Grid extends Component {
   static propTypes = {
-    children: PropTypes.instanceOf(Array).isRequired,
+    classStyle: PropTypes.string.isRequired,
   };
 
   render() {
-    return <div className="wrapper">{this.props.children}</div>;
+    const {
+      props: { classStyle },
+    } = this;
+    return <div className={classStyle}>{this.props.children}</div>;
   }
 }
 
