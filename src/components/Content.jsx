@@ -20,16 +20,41 @@ class Content extends Component {
             </p>
           </div>
           <div label="Skills">
-            <div className="headers" style={{ marginTop: `0px` }}>
-              Tools/Languages
-            </div>
-            <Grid classStyle="skills">
-              <SkillItem name="Java" image={"/logos/java.png"} />
-              <SkillItem name="C#" image={"/logos/c.png"} />
-              <SkillItem name="Python" image={"/logos/python.png"} />
-              <SkillItem name="JavaScript" image={"/logos/js.png"} />
-              <SkillItem name="React" image={"/logos/react.png"} />
-              <SkillItem name="Unity" image={"/logos/unity.png"} />
+            <Grid classStyle="skillsWrapper">
+              <div className="skillType">
+                <div className="headers">Languages</div>
+                <div className="skillDescription">
+                  Languages I have used in my projects, which includes: Java,
+                  JavaScript, C#, and Python
+                </div>
+              </div>
+              <div className="skillList">
+                <Grid classStyle="skills">
+                  <SkillItem name="Java" image={"/logos/java.png"} />
+                  <SkillItem name="C#" image={"/logos/c.png"} />
+                  <SkillItem name="Python" image={"/logos/python.png"} />
+                  <SkillItem name="JavaScript" image={"/logos/js.png"} />
+                </Grid>
+              </div>
+              <div className="skillType">
+                <div className="headers">Tools</div>
+                <div className="skillDescription">
+                  Familiar with tools such as Unity for game development, Git
+                  and Github for source control, and React for web design.
+                </div>
+              </div>
+              <div className="skillList">
+                <Grid classStyle="skills">
+                  <SkillItem name="React" image={"/logos/react.png"} />
+                  <SkillItem name="Unity" image={"/logos/unity.png"} />
+                  <SkillItem name="Git" image={"/logos/git.png"} />
+                  <SkillItem
+                    name="GitHub"
+                    image={"/logos/Github.png"}
+                    isInverted={true}
+                  />
+                </Grid>
+              </div>
             </Grid>
           </div>
           <div label="Projects">
