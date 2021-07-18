@@ -58,11 +58,11 @@ class Content extends Component {
             </Grid>
           </div>
           <div label="Projects">
-            <Grid classStyle="wrapper">
-              <ProjectItem></ProjectItem>
-              <ProjectItem></ProjectItem>
-              <ProjectItem></ProjectItem>
-              <ProjectItem></ProjectItem>
+            <Grid classStyle="projects">
+              <ProjectItem name="Samford Run" image="/pictures/SamfordRun.jpg"></ProjectItem>
+              <ProjectItem name="TEST" image="/pictures/ck3.jpg"></ProjectItem>
+              <ProjectItem name="TEST 2" image="pictures/TEST.png"></ProjectItem>
+              <ProjectItem name="Spatial Hearing VR" image="pictures/SpatialHearing.jpg"></ProjectItem>
             </Grid>
           </div>
         </Tabs>

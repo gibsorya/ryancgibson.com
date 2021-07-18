@@ -4,6 +4,7 @@
   top: 90vh;
   width: 100%;
   text-align: center;
+  pointer-events: none;
 }
 
 .links {
