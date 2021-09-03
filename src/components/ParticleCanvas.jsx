@@ -13,10 +13,10 @@ class ParticleCanvas extends Component {
           params={{
             particles: {
               number: {
-                value: 120,
+                value: 100,
                 density: {
-                  enable: true,
-                  value_area: 800,
+                  enable: false,
+                  value_area: 1000,
                 },
               },
               color: {
@@ -78,7 +78,7 @@ class ParticleCanvas extends Component {
               },
               move: {
                 enable: true,
-                speed: 1,
+                speed: 0.5,
                 direction: "none",
                 random: true,
                 straight: false,

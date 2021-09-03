@@ -1,7 +1,27 @@
-import React, { Component } from "react";
+import React, { Component, ReactDOM } from "react";
 import "../styles/button.css";
 
 class Button extends Component {
+  scrollTo(element, to, duration) {
+    document.addEventListener('DOMContentLoaded', function(){
+
+    
+    
+    if (duration <= 0) return;
+    var difference = to - element.scrollTop;
+    var perTick = difference / duration * 10;
+
+    setTimeout(function () {
+      element.scrollTop = element.scrollTop + perTick;
+
+      if (element.scrollTop === to) {
+        return;
+      }
+
+      this.scrollTo(element, to, duration - 10);
+    }, 10);})
+  };
+
   render() {
     return (
       <React.Fragment>
