@@ -13,6 +13,13 @@
   width: 100%;
 }
 
+.centerIcons {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  padding: 5px;
+}
+
 .icon {
   border: 2px solid white;
   border-radius: 50%;
@@ -24,8 +31,8 @@
   height: 40px;
   font-size: 40px;
   padding: 6px;
-  margin: 0 0.5em 0 0;
-  display: inline-flex;
+  margin: 0;
+  display: flex;
   transition: all 0.5s;
 }
 
