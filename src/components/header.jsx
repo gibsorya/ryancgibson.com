@@ -44,7 +44,7 @@ class Header extends Component {
             <div className="topnav" id="myNav">
               <a href="#home" className="btns">Home</a>
               <a href="#about" className="btns">About</a>
-              
+              <a href="#skills" className="btns">Skills</a>
             </div>
           </div>
         </nav>

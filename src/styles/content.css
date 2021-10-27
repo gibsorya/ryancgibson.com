@@ -4,9 +4,15 @@
 }
 
 #about {
-  padding-right: 2em;
+
+  padding: 2em;
+}
+
+#skills {
+  padding-right: 4em;
   padding-bottom: 2em;
-  padding-left: 2em;
+  padding-left: 4em;
+  background-color: #444343;
 }
 .headings {
   /* color: #ff4141; */
@@ -16,16 +22,42 @@
   letter-spacing: .2rem;
   text-align: center;
   margin: 15px;
+  width: 100%;
 }
 .content_wrapper {
   width: 100%;
   background-color: #363636;
-  border-top: 3px solid #ff4141;
+  /* border-top: 3px solid #ff4141; */
   align-items: center;
   justify-content: center;
 }
 
-.about_container {
+.flex-container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  box-sizing: border-box;
+  /* margin: 8em;
+  padding: 4em; */
+  margin-top: 0;
+  max-width: calc(6*(220px));
+}
+
+.skill {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  font-size: 10rem;
+  color: #fff;
+  justify-content: center;
+  align-items: center;
+
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.container {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
@@ -34,6 +66,30 @@
   padding-left: 1rem;
   padding-right: 1rem;
   padding-bottom: 8em;
+}
+
+.skillName {
+  text-align: center;
+  font-size: 2.5em;
+  font-family: "Bebas Neue";
+  margin: 0;
+  font-weight: 300;
+}
+
+.skillImg {
+  width: 150px;
+  height: 150px;
+}
+
+.skillFlex {
+  box-sizing: border-box;
+  /* display: flex; */
+  position: relative;
+  padding: 40px;
+  margin: 20px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .cardflex {

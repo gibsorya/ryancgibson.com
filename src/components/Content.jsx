@@ -1,13 +1,14 @@
 import React, { Component } from "react";
+import Header from "./header";
 import "../styles/content.css";
 import Grid from "./Grid";
-import ProjectItem from "./ProjectItem";
 
 class Content extends Component {
   render() {
     return (
       <div className="content_wrapper">
-        <section id="about" className="about-container">
+        <Header></Header>
+        <section id="about" className="container">
           <h2 className="headings">About</h2>
           <Grid classStyle="aboutSection">
             <div className="cardflex">
@@ -35,27 +36,69 @@ class Content extends Component {
 
                 <span className="icon-gamepad3"></span>
                 <h3>Certified Gamer</h3>
-                <p style={{marginBottom: "0"}}>
+                <p style={{ marginBottom: "0" }}>
                   My second degree would be in gaming.
                 </p>
-                <p style={{marginTop: "0"}}>
-                  I grew up playing games, and I've also dabbled in making my own games over the past few years! 
-                  One of my favorite pastimes is dreaming up game ideas. 
+                <p style={{ marginTop: "0" }}>
+                  I grew up playing games, and I've also dabbled in making my own games over the past few years!
+                  One of my favorite pastimes is dreaming up game ideas.
                 </p>
               </div>
             </div>
           </Grid>
         </section>
-        {/* <Tabs>
-          <div label="About Me">
-            <p
-              style={{ textAlign: "left", fontSize: "1.1em", display: "flex" }}
-            >
-              Hello! Thank you for checking out my site. This website is under
-              constant development and isn't finished. There will most likely be
-              a video placed in this about me section, which I will do last.
-            </p>
+        <section id="skills" className="container">
+          <h2 className="headings">Skills</h2>
+          {/* <Grid classStyle="skillSection">
+            <div className="skillFlex">
+            <i className="devicon-csharp-line skill"></i>
+            </div>
+            <div className="skillFlex">
+            <i className="devicon-csharp-line skill"></i>
+            </div>
+            <div className="skillFlex">
+            <i className="devicon-csharp-line skill"></i>
+            </div>
+            <div className="skillFlex">
+            <i className="devicon-csharp-line skill"></i>
+            </div>
+          </Grid> */}
+          <div className="flex-container">
+            <div className="skillFlex">
+              <img className="skillImg" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" />
+              <h3 className="skillName">C#</h3>
+            </div>
+            <div className="skillFlex">
+              <img className="skillImg" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" />
+              <h3 className="skillName">C++</h3>
+            </div>
+            <div className="skillFlex">
+              <img className="skillImg" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" />
+              <h3 className="skillName">Java</h3>
+            </div>
+            <div className="skillFlex">
+              <img className="skillImg" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-plain.svg" />
+              <h3 className="skillName">JavaScript</h3>
+            </div>
+            <div className="skillFlex">
+              <img className="skillImg" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" />
+              <h3 className="skillName">React</h3>
+            </div>
+            <div className="skillFlex">
+              <i className="devicon-unity-original skill"></i>
+              <h3 className="skillName">Unity</h3>
+            </div>
+            <div className="skillFlex">
+              <img className="skillImg" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" />
+              <h3 className="skillName">Git</h3>
+            </div>
+            <div className="skillFlex">
+              <i className="devicon-github-original skill"></i>
+              <h3 className="skillName">Github</h3>
+            </div>
           </div>
+        </section>
+        {/* <Tabs>
           <div label="Skills">
             <Grid classStyle="skillsWrapper">
               <div className="skillType">

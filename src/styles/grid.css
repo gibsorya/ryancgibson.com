@@ -6,7 +6,7 @@
   /* grid-auto-columns: 200px; */
 }
 
-.skillType {
+/* .skillType {
   grid-column: 1;
   background-color: #1d2125;
   padding: 10px;
@@ -17,6 +17,15 @@
   background-color: #1d2125;
   padding: 10px;
 
+} */
+
+.skillSection {
+  --n: 4;
+  --repeat: auto-fit;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(max(200px, 45vw),4fr));
+  /* grid-template-columns: repeat(var(--repeat, auto-fit), minmax(calc(250px * 1) , 1fr)); */
 }
 
 .skills {
@@ -61,6 +70,12 @@
     background-color: #1d2125;
     padding: 10px;
   }
+
+  .skillSection {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: none;
+  }
   
 }
 
@@ -69,6 +84,12 @@
     display: grid;
     grid-template-columns: none;
     grid-column: 1;
+  } */
+
+  /* .skillSection {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(2, minmax(300px, 1fr))
   } */
 
   .projects{
