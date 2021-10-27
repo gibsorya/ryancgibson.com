@@ -13,12 +13,12 @@ class SocialButtons extends Component {
     return (
       <div className="social-wrapper">
         <div className="links">
-          <a href="https://www.linkedin.com/in/rgibson5/" target="_blank" className="centerIcons">
+          <a href="https://www.linkedin.com/in/rgibson5/" target="_blank" rel="noopener noreferrer" className="centerIcons">
             <div className="icon">
               <FaLinkedin />
             </div>
           </a>
-          <a className href="https://github.com/gibsorya" target="_blank" className="centerIcons">
+          <a className href="https://github.com/gibsorya" target="_blank" rel="noopener noreferrer"  className="centerIcons">
             <div className="icon">
               <FaGithub></FaGithub>
             </div>
