@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
-nav {
+/* nav {
   top: 0;
   left: 0;
   position: absolute;
@@ -9,9 +9,82 @@ nav {
   text-align: left;
   width: 100%;
   z-index: 99;
+} */
+
+.scrollSticky {
+  z-index: 100;
+  position: sticky;
+  top: -1px;
 }
 
-.flex {
+.topnav {
+  background: #1d2125;
+  max-height: 100px;
+  border-bottom: 3px solid #ff4141;
+  font-weight: lighter;
+  overflow: hidden;
+  transition: all 0.5s;
+}
+
+.topnav a {
+  /* float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 20px;
+  text-decoration: none;
+  font-size: 17px; */
+  text-decoration: none;
+  cursor: pointer;
+  color: white;
+  /* margin: 0 20px; */
+  padding: 12px 20px;
+  transition: 0.4s;
+  font-family: "Bebas Neue";
+  font-weight: 400;
+  font-size: 2em;
+}
+
+.navButton {
+  background-color: transparent;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  color: white;
+  /* margin: 0 20px; */
+  padding: 12px 20px;
+  transition: 0.4s;
+  font-family: "Bebas Neue";
+  font-weight: 400;
+  font-size: 1.5em;
+}
+
+/* .topnav a:active {
+  background-color: #a01414;
+  transition: 1s;
+}
+
+.topnav a:hover {
+  background-color: #ff4141;
+  transition: 0.4s;
+} */
+
+.activeNav {
+  background-color: #ff4141;
+  color: white;
+  /* border: none;
+  text-decoration: none;
+  cursor: pointer;
+  padding: 12px 20px;
+  transition: 0.4s;
+  font-family: "Bebas Neue";
+  font-weight: 400;
+  font-size: 1.5em; */
+}
+
+
+
+/* .flex {
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -60,4 +133,4 @@ nav .link-wrap :hover {
 
 .scrolled {
   position: fixed;
-}
+} */
