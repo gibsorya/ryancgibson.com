@@ -23,6 +23,7 @@ body {
   flex-wrap: wrap;
   justify-content: left;
   align-items: center;
+  margin-top: 50px;
 }
 .ButtonAnimation_Item {
   margin-top: 1em;
@@ -30,7 +31,7 @@ body {
 .ButtonAnimation {
   position: relative;
   text-decoration: none;
-  display: inline-block;
+  /* display: inline-block; */
   padding: 0.75vmax 28px;
   line-height: normal;
   border: 1px solid transparent;

@@ -81,6 +81,11 @@
   height: 150px;
 }
 
+.vulkanImg {
+  width: 650px;
+  height: 250px;
+}
+
 .skillFlex {
   box-sizing: border-box;
   /* display: flex; */

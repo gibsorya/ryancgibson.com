@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Header from "./header";
+import VulkanLogo from "../vulkan_white.svg"
 import "../styles/content.css";
 import Grid from "./Grid";
 
@@ -95,6 +96,9 @@ class Content extends Component {
             <div className="skillFlex">
               <i className="devicon-github-original skill"></i>
               <h3 className="skillName">Github</h3>
+            </div>
+            <div className="skillFlex">
+              <img className="vulkanImg" src={VulkanLogo}  /> 
             </div>
           </div>
         </section>
