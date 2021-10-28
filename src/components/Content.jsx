@@ -3,8 +3,27 @@ import Header from "./header";
 import VulkanLogo from "../vulkan_white.svg"
 import "../styles/content.css";
 import Grid from "./Grid";
+import { Button } from "semantic-ui-react";
 
 class Content extends Component {
+  componentDidMount() {
+    const cards = document.querySelectorAll(".projectCard");
+
+    let flippedCard = function () {
+      cards.forEach(function (card) {
+        card.addEventListener("click", function () {
+          if (card.classList.contains("flippedCard")) {
+            card.classList.remove("flippedCard");
+          } else {
+            card.classList.add("flippedCard");
+          }
+        });
+      });
+    }
+
+    window.onload = flippedCard();
+  }
+
   render() {
     return (
       <div className="content_wrapper">
@@ -50,20 +69,6 @@ class Content extends Component {
         </section>
         <section id="skills" className="container">
           <h2 className="headings">Skills</h2>
-          {/* <Grid classStyle="skillSection">
-            <div className="skillFlex">
-            <i className="devicon-csharp-line skill"></i>
-            </div>
-            <div className="skillFlex">
-            <i className="devicon-csharp-line skill"></i>
-            </div>
-            <div className="skillFlex">
-            <i className="devicon-csharp-line skill"></i>
-            </div>
-            <div className="skillFlex">
-            <i className="devicon-csharp-line skill"></i>
-            </div>
-          </Grid> */}
           <div className="flex-container">
             <div className="skillFlex">
               <img className="skillImg" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" />
@@ -98,9 +103,115 @@ class Content extends Component {
               <h3 className="skillName">Github</h3>
             </div>
             <div className="skillFlex">
-              <img className="vulkanImg" src={VulkanLogo}  /> 
+              <img className="vulkanImg" src={VulkanLogo} />
             </div>
           </div>
+        </section>
+        <section id="projects" className="container">
+          <h2 className="headings">Projects</h2>
+          <div className="projectsWrapper">
+            <div className="items">
+              <div className="item">
+                <div className="projectContainer">
+                  <div className="front" style={{ backgroundImage: `url(${process.env.PUBLIC_URL + "/pictures/SamfordRun.jpg"})` }}>
+                    <div className="inner">
+                      {/* <p>Test</p> */}
+                      <span>SAMFORD RUN</span>
+                    </div>
+                  </div>
+                  <div className="back">
+                    <div className="inner">
+                      <p>Samford Run was a game I made along with 3 other people in a group project while at university, created in Unity.
+                        It was a free roam, Subway Surfer meets Crossy Road kind of game, where your objective was to get class on time, avoiding obstacles along the way. You must run, otherwise you'll be late!
+                      </p>
+                      <div className="gitContainer">
+                        <a href="https://github.com/gibsorya/Samford-Run" target="_blank" rel="noopener noreferrer" className="gitButton">GIT REPO</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="item">
+                <div className="projectContainer">
+                  <div className="front" style={{ backgroundImage: `url(${process.env.PUBLIC_URL + "/pictures/SpatialHearing.jpg"})` }}>
+                    <div className="inner">
+                      {/* <p>Test</p> */}
+                      <span>SPATIAL HEARING VR</span>
+                    </div>
+                  </div>
+                  <div className="back">
+                    <div className="inner">
+                      <p>
+                        This was a VR project built in Unity. 
+                        Me and a few other students worked with a professor in another to department to create a VR app for them. 
+                        They acted as our customomer, and we met with him regularly so that we could meet his expectations.
+                      </p>
+                      <div className="gitContainer">
+                        <a href="https://github.com/gibsorya/spatialhearingVR" target="_blank" rel="noopener noreferrer" className="gitButton">GIT REPO</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="item">
+                <div className="projectContainer">
+                  <div className="front" style={{ backgroundImage: `url(${process.env.PUBLIC_URL + "/pictures/SpatialHearing.jpg"})` }}>
+                    <div className="inner">
+                      {/* <p>Test</p> */}
+                      <span>SPATIAL HEARING VR</span>
+                    </div>
+                  </div>
+                  <div className="back">
+                    <div className="inner">
+                      <p>
+                        This was a VR project built in Unity. 
+                        Me and a few other students worked with a professor in another to department to create a VR app for them. 
+                        They acted as our customomer, and we met with him regularly so that we could meet his expectations.
+                      </p>
+                      <div className="gitContainer">
+                        <a href="https://github.com/gibsorya/spatialhearingVR" target="_blank" rel="noopener noreferrer" className="gitButton">GIT REPO</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="item">
+                <div className="projectContainer">
+                  <div className="front" style={{ backgroundImage: `url(${process.env.PUBLIC_URL + "/pictures/SpatialHearing.jpg"})` }}>
+                    <div className="inner">
+                      {/* <p>Test</p> */}
+                      <span>SPATIAL HEARING VR</span>
+                    </div>
+                  </div>
+                  <div className="back">
+                    <div className="inner">
+                      <p>
+                        This was a VR project built in Unity. 
+                        Me and a few other students worked with a professor in another to department to create a VR app for them. 
+                        They acted as our customomer, and we met with him regularly so that we could meet his expectations.
+                      </p>
+                      <div className="gitContainer">
+                        <a href="https://github.com/gibsorya/spatialhearingVR" target="_blank" rel="noopener noreferrer" className="gitButton">GIT REPO</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {/* <Grid classStyle="projects">
+            <div className="projectCard">
+              <div className="projectCardFaces cardFront">
+                <div className="projectItem">
+                  <img className="projectImage" src={process.env.PUBLIC_URL + "/pictures/SamfordRun.jpg"} />
+                  
+                </div>
+              </div>
+              <div className="projectCardFaces cardBack">
+              <p className="projectDescription">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo eaque quae harum odit delectus sequi, autem nesciunt ullam reiciendis molestias et, tempore provident eius odio molestiae nemo incidunt omnis excepturi.</p>
+              </div>
+            </div>
+          </Grid> */}
         </section>
       </div>
     );

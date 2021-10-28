@@ -4,15 +4,24 @@
 }
 
 #about {
-
   padding: 2em;
+  /* background-image: linear-gradient(to right, #a62d2d, #3E5151, #1d2125); */
+  background-image: linear-gradient(to right, #434343 0%, #1d2125 100%);
 }
 
 #skills {
-  padding-right: 4em;
-  padding-bottom: 2em;
+  padding-top: 2em;
   padding-left: 4em;
-  background-color: #444343;
+  padding-right: 4em;
+  background-image: linear-gradient(to right, #434343 0%, #1d2125 100%);
+  /* background-image: linear-gradient(to right, #a62d2d, #3E5151, #1d2125); */
+}
+
+#projects {
+  padding-top: 2em;
+  padding-left: 4em;
+  padding-right: 4em;
+  background-image: linear-gradient(to right, #434343 0%, #1d2125 100%);
 }
 .headings {
   /* color: #ff4141; */
@@ -63,9 +72,8 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-bottom: 8em;
+  /* padding-left: 1rem;
+  padding-right: 1rem; */
 }
 
 .skillName {
@@ -95,6 +103,325 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.projectsWrapper {
+  width: 90%;
+  margin: 0 auto;
+  max-width: 80rem;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.items {
+  display: flex;
+  flex-wrap: wrap;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.item {
+  width: calc(50% - 2rem);
+  margin: 1rem;
+  padding: 0;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.projectContainer {
+  /* display: flex; */
+  /* flex-wrap: wrap; */
+  padding: 0;
+  margin: 0;
+  perspective: 500px;
+  transform-style: preserve-3d;
+  box-sizing: border-box;
+}
+
+.projectContainer:hover .front, .projectContainer:hover .back {
+  -webkit-transition: -webkit-transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
+  transition: -webkit-transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
+  -o-transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
+  transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
+  transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1), -webkit-transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+  
+}
+
+.front, .back {
+  background-size: cover;
+  box-shadow: 0 1px 1px rgb(0 0 0 / 15%), 0 2px 2px rgb(0 0 0 / 15%), 0 4px 4px rgb(0 0 0 / 15%), 0 8px 8px rgb(0 0 0 / 15%);
+  text-align: center;
+  background-position: center;
+  min-height: 420px;
+  height: auto;
+  color: white;
+  font-size: 1.5rem;
+  -webkit-transition: -webkit-transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+	transition: -webkit-transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
+	-o-transition: transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+	transition: transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+	transition: transform .7s cubic-bezier(0.4, 0.2, 0.2, 1), -webkit-transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+
+.front:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  content: '';
+  display: block;
+  background-color: #000;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  opacity: .3;
+}
+
+.back{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #cedce7;
+  background-color: #1d2125;
+  /* transition: 1s; */
+/* background-image: linear-gradient(62deg, #a62d2d 0%, #1d2125 100%); */
+
+}
+
+.projectContainer .back{
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+}
+
+.projectContainer .front{
+  -webkit-transform: rotateY(0deg);
+          transform: rotateY(0deg);
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+}
+
+.projectContainer:hover .back{
+  -webkit-transform: rotateY(0deg);
+          transform: rotateY(0deg);
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+          box-shadow: 0 1px 1px rgb(255 65 65 / 15%), 0 2px 2px rgb(255 65 65 / 15%), 0 4px 4px rgb(255 65 65 / 15%), 0 8px 8px rgb(255 65 65 / 15%);
+}
+
+.projectContainer:hover .front{
+  -webkit-transform: rotateY(-180deg);
+          transform: rotateY(-180deg);
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+}
+
+.inner {
+  -webkit-transform: translateY(-50%) translateZ(60px) scale(0.94);
+            transform: translateY(-50%) translateZ(60px) scale(0.94);
+    top: 85%;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    padding: 2rem;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    outline: 1px solid transparent;
+    -webkit-perspective: inherit;
+            perspective: inherit;
+    z-index: 2;
+}
+
+.back .inner {
+  -webkit-transform: translateY(-50%) translateZ(60px) scale(0.94);
+  transform: translateY(-50%) translateZ(60px) scale(0.94);
+top: 50%;
+position: absolute;
+left: 0;
+width: 100%;
+padding: 2rem;
+-webkit-box-sizing: border-box;
+  box-sizing: border-box;
+outline: 1px solid transparent;
+-webkit-perspective: inherit;
+  perspective: inherit;
+z-index: 2;
+
+}
+
+.back .inner p{
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+
+.front .inner p{
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.front .inner p:after{
+  content: '';
+  width: 4rem;
+  height: 2px;
+  position: absolute;
+  background: #C6D4DF;
+  display: block;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  bottom: -.75rem;
+}
+
+.front .inner span{
+  color: white;
+  font-family: "Bebas Neue";
+  font-size: 2.5rem;
+  font-weight: 300;
+}
+
+.gitContainer {
+  padding-right: 15px;
+  padding-left: 15px;
+  display: flex;
+}
+
+.gitButton {
+  position: relative;
+  display: block;
+  margin: 30px auto 0;
+  padding: 14px 45px;
+  color: #fff;
+  font-size: 14px;
+  border: 2px solid #D24D57;
+  border-radius: 0;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  overflow: hidden;
+  letter-spacing: .08em;
+  text-shadow: 0 0 1px rgb(0 0 0 / 20%), 0 1px 0 rgb(0 0 0 / 20%);
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  transition: all 1s ease;
+}
+
+.gitButton::after{
+  background: #d24d57;
+  opacity: .5;
+  transform: translateY(-50%) translateX(-50%) rotate(90deg);
+  content: "";
+  position: absolute;
+  height: 0%;
+  left: 50%;
+  top: 50%;
+  width: 150%;
+  z-index: -1;
+  -webkit-transition: all .75s ease 0s;
+  -moz-transition: all .75s ease 0s;
+  -o-transition: all .75s ease 0s;
+  transition: all .75s ease 0s;
+}
+
+.gitButton:hover::after {
+  opacity: 1;
+	height: 600% !important;
+}
+
+/* .projectContainer {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 80px;
+  perspective: 500px;
+  transition: transform 300ms ease-in;
+  box-sizing: border-box;
+} */
+
+.projectCard {
+  display: flex;
+  background-color: #1d2125;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+  position: relative;
+  transition: .6s ease-in-out;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  box-shadow: 0 1px 1px rgb(0 0 0 / 15%), 0 2px 2px rgb(0 0 0 / 15%), 0 4px 4px rgb(0 0 0 / 15%), 0 8px 8px rgb(0 0 0 / 15%);
+  width: 100%;
+  height: 100%;
+}
+
+.projectItem {
+  background-color: #1d2125;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  color: #fff;
+  /* box-shadow: rgba(3, 8, 20, 0.1) 0px 0.15rem 0.5rem,
+    rgba(2, 8, 20, 0.1) 0px 0.075rem 0.175rem; */
+  /* height: 100%; */
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.projectDescription {
+  text-align: center;
+}
+
+.projectCardFaces {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.flippedCard {
+  transform: rotateX(180deg);
+}
+
+.cardFront {
+  width: 100%;
+  /* height: 400px; */
+  background-color: #1d2125;
+  transform: rotateX(0deg);
+}
+
+.cardBack {
+  transform: rotateX(180deg);
+  width: 100%;
+  background-color: #1d2125;
+  /* height: 100%; */
+  justify-content: center;
+  align-items: center;
+  /* height: 400px; */
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+  /* transition: transform .2s; */
+}
+
+.projectImage {
+  transition: transform .2s;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .cardflex {

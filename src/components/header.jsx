@@ -45,6 +45,7 @@ class Header extends Component {
               <a href="#home" className="btns">Home</a>
               <a href="#about" className="btns">About</a>
               <a href="#skills" className="btns">Skills</a>
+              <a href="#projects" className="btns">Projects</a>
             </div>
           </div>
         </nav>
