@@ -199,19 +199,34 @@ class Content extends Component {
               </div>
             </div>
           </div>
-          {/* <Grid classStyle="projects">
-            <div className="projectCard">
-              <div className="projectCardFaces cardFront">
-                <div className="projectItem">
-                  <img className="projectImage" src={process.env.PUBLIC_URL + "/pictures/SamfordRun.jpg"} />
-                  
-                </div>
-              </div>
-              <div className="projectCardFaces cardBack">
-              <p className="projectDescription">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo eaque quae harum odit delectus sequi, autem nesciunt ullam reiciendis molestias et, tempore provident eius odio molestiae nemo incidunt omnis excepturi.</p>
-              </div>
-            </div>
-          </Grid> */}
+        </section>
+        <section id="contact" className="container">
+        <h2 className="headings">Contact</h2>
+        <div className="formContainer">
+          <form
+            id="messageForm"
+            action="https://formspree.io/f/xleakqov"
+            method="POST"
+          >
+            <label>
+              Your name:
+              <input type="text" name="name" placeholder="John Doe" required></input>
+            </label>
+            <label>
+              Your email:
+              <input type="email" name="_replyto" placeholder="name@example.com" required></input>
+            </label>
+            <label>
+              Your message:
+              <textarea name="message" placeholder="Enter your message here" required></textarea>
+            </label>
+            {/* <div className="gitContainer">
+              <a onClick='document.getElementByID("messageForm").submit();' className="gitButton">SUBMIT</a>
+            </div> */}
+            <button type="submit" className="btn submitButton">SUBMIT</button>
+            {/* <div className=></div> */}
+          </form>
+        </div>
         </section>
       </div>
     );
