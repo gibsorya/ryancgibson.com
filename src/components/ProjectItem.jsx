@@ -4,11 +4,11 @@ import "../styles/projects.css";
 import ReactModal from "react-modal";
 
 class ProjectItem extends Component {
-  static propTypes = {
-    name: PropTypes.string.isRequired, //Name of the Project
-    description: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
-  };
+  // static propTypes = {
+  //   name: PropTypes.string.isRequired, //Name of the Project
+  //   description: PropTypes.string.isRequired,
+  //   image: PropTypes.string.isRequired,
+  // };
   constructor() {
     super();
     this.state = {
@@ -27,15 +27,15 @@ class ProjectItem extends Component {
     this.setState({ showModal: false });
   }
   render() {
-    const {
-      props: { name, image },
-    } = this;
+    // const {
+    //   props: { name, image },
+    // } = this;
     return (
       <React.Fragment>
-        <div className="item">
+        {/* <div className="item">
           <img src={process.env.PUBLIC_URL + image}className="button"  onClick={this.handleOpenModal} />
           <ReactModal isOpen={this.state.showModal} onRequestClose={this.handleCloseModal} className="modal"></ReactModal>
-        </div>
+        </div> */}
       </React.Fragment>
     );
   }
