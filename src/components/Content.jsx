@@ -153,50 +153,6 @@ class Content extends Component {
                   </div>
                 </div>
               </div>
-              <div className="item">
-                <div className="projectContainer">
-                  <div className="front" style={{ backgroundImage: `url(${process.env.PUBLIC_URL + "/pictures/SpatialHearing.jpg"})` }}>
-                    <div className="inner">
-                      {/* <p>Test</p> */}
-                      <span>SPATIAL HEARING VR</span>
-                    </div>
-                  </div>
-                  <div className="back">
-                    <div className="inner">
-                      <p>
-                        This was a VR project built in Unity. 
-                        Me and a few other students worked with a professor in another to department to create a VR app for them. 
-                        They acted as our customomer, and we met with him regularly so that we could meet his expectations.
-                      </p>
-                      <div className="gitContainer">
-                        <a href="https://github.com/gibsorya/spatialhearingVR" target="_blank" rel="noopener noreferrer" className="gitButton">GIT REPO</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="item">
-                <div className="projectContainer">
-                  <div className="front" style={{ backgroundImage: `url(${process.env.PUBLIC_URL + "/pictures/SpatialHearing.jpg"})` }}>
-                    <div className="inner">
-                      {/* <p>Test</p> */}
-                      <span>SPATIAL HEARING VR</span>
-                    </div>
-                  </div>
-                  <div className="back">
-                    <div className="inner">
-                      <p>
-                        This was a VR project built in Unity. 
-                        Me and a few other students worked with a professor in another to department to create a VR app for them. 
-                        They acted as our customomer, and we met with him regularly so that we could meet his expectations.
-                      </p>
-                      <div className="gitContainer">
-                        <a href="https://github.com/gibsorya/spatialhearingVR" target="_blank" rel="noopener noreferrer" className="gitButton">GIT REPO</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </section>

@@ -476,66 +476,6 @@ z-index: 2;
   box-sizing: border-box;
 } */
 
-.projectCard {
-  display: flex;
-  background-color: #1d2125;
-  box-sizing: border-box;
-  flex-wrap: wrap;
-  position: relative;
-  transition: .6s ease-in-out;
-  transform-style: preserve-3d;
-  -webkit-transform-style: preserve-3d;
-  box-shadow: 0 1px 1px rgb(0 0 0 / 15%), 0 2px 2px rgb(0 0 0 / 15%), 0 4px 4px rgb(0 0 0 / 15%), 0 8px 8px rgb(0 0 0 / 15%);
-  width: 100%;
-  height: 100%;
-}
-
-.projectItem {
-  background-color: #1d2125;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-size: 3rem;
-  color: #fff;
-  /* box-shadow: rgba(3, 8, 20, 0.1) 0px 0.15rem 0.5rem,
-    rgba(2, 8, 20, 0.1) 0px 0.075rem 0.175rem; */
-  /* height: 100%; */
-  overflow: hidden;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-.projectDescription {
-  text-align: center;
-}
-
-.projectCardFaces {
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-}
-
-.flippedCard {
-  transform: rotateX(180deg);
-}
-
-.cardFront {
-  width: 100%;
-  /* height: 400px; */
-  background-color: #1d2125;
-  transform: rotateX(0deg);
-}
-
-.cardBack {
-  transform: rotateX(180deg);
-  width: 100%;
-  background-color: #1d2125;
-  /* height: 100%; */
-  justify-content: center;
-  align-items: center;
-  /* height: 400px; */
-}
 
 img {
   max-width: 100%;
@@ -660,4 +600,63 @@ p {
   flex-direction: column;
   min-height: 60vh;
   margin: 20px auto;
+}
+
+
+@media (max-width: 950px) {
+  #projects {
+    padding-top: 2em;
+    padding-left: 2em;
+    padding-right: 2em;
+    background-image: linear-gradient(to right, #434343 0%, #1d2125 100%);
+  }
+
+  .items {
+    display: flex;
+    flex-wrap: wrap;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .item {
+    width: 100%;
+    margin: 1rem;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: pointer;
+  }
+  
+}
+
+@media (max-width: 950px) {
+  #projects {
+    padding-top: 2em;
+    padding-left: 0em;
+    padding-right: 0em;
+    background-image: linear-gradient(to right, #434343 0%, #1d2125 100%);
+  }
+
+  .items {
+    display: flex;
+    flex-wrap: wrap;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .item {
+    width: 100%;
+    margin: 0.5rem;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: pointer;
+  }
+  
 }
