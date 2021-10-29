@@ -1,6 +1,6 @@
 import React from "react";
 import logo from "./background.jpg";
-import Header from "./components/header";
+
 import Content from "./components/Content";
 import SocialButtons from "./components/SocialButtons";
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -23,6 +23,7 @@ function App() {
         <Intro />
         <SocialButtons />
       </section>
+      
       <Content></Content>
       <footer className="footer">
         Website in active development by Ryan Gibson

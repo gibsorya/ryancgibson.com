@@ -2,7 +2,7 @@
   font-family: "Bebas Neue", sans-serif;
   src: url("/public/BebasNeue-Regular.ttf");
 }
-.skill {
+/* .skill {
   background-color: transparent;
   display: flex;
   flex-direction: column;
@@ -19,7 +19,7 @@
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-}
+} */
 .skillName {
   font-family: "Bebas Neue";
   font-size: 1em;
