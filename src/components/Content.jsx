@@ -121,7 +121,8 @@ class Content extends Component {
                   </div>
                   <div className="back">
                     <div className="inner">
-                      <p>Samford Run was a game I made along with 3 other people in a group project while at university, created in Unity.
+                      <p>
+                        Samford Run was a game I made along with 3 other people in a group project while at university, created in Unity.
                         It was a free roam, Subway Surfer meets Crossy Road kind of game, where your objective was to get class on time, avoiding obstacles along the way. You must run, otherwise you'll be late!
                       </p>
                       <div className="gitContainer">
@@ -142,9 +143,9 @@ class Content extends Component {
                   <div className="back">
                     <div className="inner">
                       <p>
-                        This was a VR project built in Unity. 
-                        Me and a few other students worked with a professor in another to department to create a VR app for them. 
-                        They acted as our customomer, and we met with him regularly so that we could meet his expectations.
+                        This was a VR project built in Unity.
+                        A few other students and I worked with a professor in another department to create a VR app for them.
+                        They acted as our customer, and we met with him regularly so that we could meet his expectations.
                       </p>
                       <div className="gitContainer">
                         <a href="https://github.com/gibsorya/spatialhearingVR" target="_blank" rel="noopener noreferrer" className="gitButton">GIT REPO</a>
@@ -157,32 +158,32 @@ class Content extends Component {
           </div>
         </section>
         <section id="contact" className="container">
-        <h2 className="headings">Contact</h2>
-        <div className="formContainer">
-          <form
-            id="messageForm"
-            action="https://formspree.io/f/xleakqov"
-            method="POST"
-          >
-            <label>
-              Your name:
-              <input type="text" name="name" placeholder="John Doe" required></input>
-            </label>
-            <label>
-              Your email:
-              <input type="email" name="_replyto" placeholder="name@example.com" required></input>
-            </label>
-            <label>
-              Your message:
-              <textarea name="message" placeholder="Enter your message here" required></textarea>
-            </label>
-            {/* <div className="gitContainer">
+          <h2 className="headings">Contact</h2>
+          <div className="formContainer">
+            <form
+              id="messageForm"
+              action="https://formspree.io/f/xleakqov"
+              method="POST"
+            >
+              <label>
+                Your name:
+                <input type="text" name="name" placeholder="John Doe" required></input>
+              </label>
+              <label>
+                Your email:
+                <input type="email" name="_replyto" placeholder="name@example.com" required></input>
+              </label>
+              <label>
+                Your message:
+                <textarea name="message" placeholder="Enter your message here" required></textarea>
+              </label>
+              {/* <div className="gitContainer">
               <a onClick='document.getElementByID("messageForm").submit();' className="gitButton">SUBMIT</a>
             </div> */}
-            <button type="submit" className="btn submitButton">SUBMIT</button>
-            {/* <div className=></div> */}
-          </form>
-        </div>
+              <button type="submit" className="btn submitButton">SUBMIT</button>
+              {/* <div className=></div> */}
+            </form>
+          </div>
         </section>
       </div>
     );
