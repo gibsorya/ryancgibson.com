@@ -11,7 +11,7 @@ export const pageType = defineType({
         }),
         defineField({
             name: 'slug',
-            type:'slug',
+            type: 'slug',
             validation: (Rule) => Rule.required(),
         }),
         defineField({
