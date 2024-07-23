@@ -10,9 +10,15 @@ use crate::sanity::client::{create_client, SanityResponse};
 use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize, Clone, Debug)]
+pub struct Slug {
+    pub _type: String,
+    pub current: String
+}
+
+#[derive(Serialize, Deserialize, Clone, Debug)]
 pub struct Page {
     pub title: String,
-    // slug: String,
+    pub slug: Slug
 }
 
 pub async fn find_by_slug(slug: &str) -> anyhow::Result<Page> {
