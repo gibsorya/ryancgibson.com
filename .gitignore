@@ -24,6 +24,8 @@ yarn-error.log*
 
 .env
 
+assets/htmx.min.js
+
 
 # Added by cargo
 
