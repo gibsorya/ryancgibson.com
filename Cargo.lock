@@ -2162,8 +2162,8 @@ checksum = "f3cb5ba0dc43242ce17de99c180e96db90b235b8a9fdc9543c96d2209116bd9f"
 
 [[package]]
 name = "sanity"
-version = "0.2.2"
-source = "git+https://github.com/gibsorya/sanity.rs#832f55543615377a7ee4f16cb45490ad2f446fab"
+version = "0.2.3"
+source = "git+https://github.com/gibsorya/sanity.rs#76069fe30fdf84cdcc83c203fd1bf1923e6b2b64"
 dependencies = [
  "reqwest 0.11.27",
  "serde",

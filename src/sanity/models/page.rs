@@ -3,36 +3,48 @@
 use sanity::async_client::SanityConfig;
 use anyhow::{Context, Ok};
 use url::form_urlencoded::byte_serialize;
-// use chrono::DateTime;
-
-use crate::sanity::client::{create_client, SanityResponse};
-
 use serde::{Deserialize, Serialize};
 
-#[derive(Serialize, Deserialize, Clone, Debug)]
-pub struct Slug {
-    pub _type: String,
-    pub current: String
-}
+// use chrono::DateTime;
+
+use crate::sanity::client::{create_client, SanityResponse, SanityResult};
+use crate::sanity::types::{SectionTypes, Slug};
 
 #[derive(Serialize, Deserialize, Clone, Debug)]
 pub struct Page {
     pub title: String,
-    pub slug: Slug
+    pub slug: Slug,
+    pub sections: Option<Vec<SectionTypes>>,
+}
+
+#[derive(askama::Template)]
+#[template(path = "pages/show.html")]
+pub struct PageTemplate {
+    pub title: String,
 }
 
 pub async fn find_by_slug(slug: &str) -> anyhow::Result<Page> {
     let mut client: SanityConfig = create_client();
-    println!("Finding page with slug: {}", slug);
-    let encoded: String = byte_serialize(&format!("*[_type=='page' && slug.current=='{}']", slug).as_bytes()).collect();
+    let groq_query = format!("*[_type == 'page' && slug.current == '{}'][0]{{ title, slug, sections[]->{{ _type, ... }} }}", slug);
+    let encoded: String = byte_serialize(&groq_query.as_bytes()).collect();
 
     let resp = client.get(&encoded).await?;
     if resp.status().is_success() {
         let text = resp.text().await.context("Failed to get data")?;
-        let page: SanityResponse<Page> = serde_json::from_str(&text).context("Failed to parse deserialize JSON")?;
-        let page = page.result.first().cloned().ok_or_else(|| anyhow::Error::msg("No page found"))?;
+        let sanity_response: SanityResponse<Page> = serde_json::from_str(&text)
+            .context("Failed to parse SanityResponse")?;
+
+        // Extract the Page from the result
+        let page = match sanity_response.result {
+            SanityResult::Single(page) => page,
+            SanityResult::Multiple(pages) => pages.into_iter().next()
+                .ok_or_else(|| anyhow::anyhow!("No page found"))?,
+        };
+
         Ok(page)
     } else {
-        Err(anyhow::Error::msg("Failed to find page"))
+        Err(anyhow::anyhow!("Failed to find page"))
     }
 }
+
+// async fn create_section(section)
