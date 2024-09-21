@@ -18,8 +18,15 @@ pub fn create_client() -> SanityConfig {
 }
 
 #[derive(Deserialize)]
+#[serde(untagged)]
+pub enum SanityResult<T> {
+    Single(T),
+    Multiple(Vec<T>),
+}
+
+#[derive(Deserialize)]
 pub struct SanityResponse<T> {
     pub query: String,
-    pub result: Vec<T>,
+    pub result: SanityResult<T>,
     pub ms: u64
 }
