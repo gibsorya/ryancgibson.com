@@ -18,5 +18,7 @@ shuttle-axum = "0.47.0"
 shuttle-runtime = "0.47.0"
 shuttle-shared-db = { version = "0.47.0", features = ["postgres"] }
 tokio = { version = "1.38.0", features = ["full"] }
+tower = "0.5.1"
+tower-http = { version = "0.6.0", features = ["trace", "fs", "compression-gzip"] }
 tracing-subscriber = "0.3.18"
 url = "2.5.2"
