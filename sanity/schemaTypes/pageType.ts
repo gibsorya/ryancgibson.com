@@ -15,14 +15,14 @@ export const pageType = defineType({
             validation: (Rule) => Rule.required(),
         }),
         defineField({
-            name: 'content',
+            name: 'sections',
             type: 'array',
             of: [
                 {
                     type: 'reference',
                     to: [
                         {
-                            type: 'page'
+                            type: 'sectionHero'
                         },
                     ]
                 }
