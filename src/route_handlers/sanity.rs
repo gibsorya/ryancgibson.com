@@ -1,17 +1,32 @@
 use axum::extract::Path;
 
-use crate::sanity::models::page::find_by_slug;
+use crate::sanity::models::page::{find_by_slug, PageTemplate};
+use crate::sanity::types::section::{HeroTemplate, SectionTemplate};
+use crate::sanity::types::SectionTypes;
+use super::html_template::HtmlTemplate;
 
 pub async fn handler(slug: Option<Path<String>>) -> impl axum::response::IntoResponse {
     let slug = slug.map(|Path(s)| s).unwrap_or_else(|| "/".to_string());
     let page = find_by_slug(&slug).await;
 
-    match page {
+    let template = match page {
         Ok(page) => {
-            format!("This is the page: {}", page.title)
+            PageTemplate {
+                title: page.title,
+                sections: page.sections.unwrap_or_default().into_iter().map(|section| {
+                    match section {
+                        SectionTypes::Hero(hero) => SectionTemplate::Hero(HeroTemplate::from(&hero)),
+                    }
+                }).collect(),
+            }
         },
-        Err(err) => {
-            format!("oh oh! Page not found! {}", err)
+        Err(_) => {
+            PageTemplate {
+                title: "Error".to_string(),
+                sections: Vec::new(),
+            }
         }
-    }
+    };
+
+    HtmlTemplate(template)
 }
