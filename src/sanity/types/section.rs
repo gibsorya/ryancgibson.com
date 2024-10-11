@@ -10,6 +10,7 @@ use crate::sanity::models::section::hero::{Image, SectionHero};
 pub struct HeroTemplate {
     pub title: String,
     pub description: String,
+    pub image_url: Option<String>,
     pub image: Option<Image>,
 }
 
@@ -18,10 +19,12 @@ impl From<&SectionHero> for HeroTemplate {
         HeroTemplate {
             title: hero.title.clone(),
             description: hero.description.clone(),
+            image_url: hero.image_url.clone(),
             image: hero.image.clone(),
         }
     }
 }
+
 
 pub enum SectionTemplate {
     Hero(HeroTemplate),

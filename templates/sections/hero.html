@@ -1,0 +1,5 @@
+<h2>{{ title }}</h2>
+<p>{{ description }}</p>
+{% if let Some(url) = image_url %}
+  <img src="{{ url }}" alt="{{ title }}">
+{% endif %}

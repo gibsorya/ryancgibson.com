@@ -1,13 +1,9 @@
-use axum::{
-    routing::get,
-    Router,
-};
-
 use dotenv::dotenv;
 
 mod route_handlers;
 mod router;
 mod sanity;
+mod templates;
 
 #[shuttle_runtime::main]
 pub async fn axum(#[shuttle_runtime::Secrets] secrets: shuttle_runtime::SecretStore) -> shuttle_axum::ShuttleAxum {

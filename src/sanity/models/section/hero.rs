@@ -7,6 +7,7 @@ pub struct SectionHero {
     pub title: String,
     pub description: String,
     pub image: Option<Image>,
+    pub image_url: Option<String>,
 }
 
 #[derive(Serialize, Deserialize, Clone, Debug)]
