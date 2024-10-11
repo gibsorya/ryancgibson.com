@@ -1,3 +1,5 @@
+use std::fmt;
+
 use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize, Clone, Debug)]
@@ -11,13 +13,19 @@ pub struct SectionHero {
 pub struct Image {
     #[serde(rename = "_type")]
     pub _type: String,
-    pub asset: ImageAsset,
+    pub asset: ImageAssetRef,
 }
 
 #[derive(Serialize, Deserialize, Clone, Debug)]
-pub struct ImageAsset {
+pub struct ImageAssetRef {
     #[serde(rename = "_type")]
     pub _type: String,
     #[serde(rename = "_ref")]
     pub _ref: String,
+}
+
+impl fmt::Display for ImageAssetRef {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        write!(f, "{}:{}", self._type, self._ref)
+    }
 }
