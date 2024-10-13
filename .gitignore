@@ -25,6 +25,7 @@ yarn-error.log*
 .env
 
 assets/htmx.min.js
+assets/tailwind.css
 
 
 # Added by cargo
