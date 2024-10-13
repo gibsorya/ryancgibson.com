@@ -2,8 +2,9 @@
 <html lang="en">
 
 <head>
-    <!-- <link href="/assets/main.css" rel="stylesheet" /> -->
-    <!-- <link href="https://rsms.me/inter/inter.css" rel="stylesheet" /> -->
+    <link href="/assets/tailwind.css" rel="stylesheet" />
+    <!-- Typekit -->
+    <link rel="stylesheet" href="https://use.typekit.net/tlz4jrd.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <link rel="apple-touch-icon"
        sizes="180x180"
@@ -25,9 +26,13 @@
     {% block head %}{% endblock %}
 </head>
 
-<body class="bg-zinc-100 dark:bg-gray-800">
-    <div id="content">
+<body>
+    <main>
         {% block content %}{% endblock %}
-    </div>
+    </main>
+    <footer>
+        <p>Created with Rust + HTMX</p>
+    </footer>
 </body>
+
 </html>
