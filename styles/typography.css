@@ -1,0 +1,10 @@
+.overline {
+  font-family: Lato;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px; /* 171.429% */
+  letter-spacing: 2px;
+  text-decoration-line: none;
+  text-transform: uppercase;
+}
