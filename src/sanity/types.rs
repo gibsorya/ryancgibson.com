@@ -3,6 +3,7 @@ pub mod section;
 use serde::{Deserialize, Serialize};
 
 use crate::sanity::models::section::hero::SectionHero;
+use crate::sanity::models::section::block_text::SectionBlockText;
 
 // Custom types
 #[derive(Serialize, Deserialize, Clone, Debug)]
@@ -10,6 +11,8 @@ use crate::sanity::models::section::hero::SectionHero;
 pub enum SectionTypes {
     #[serde(rename = "sectionHero")]
     Hero(SectionHero),
+    #[serde(rename = "sectionBlockText")]
+    BlockText(SectionBlockText),
 }
 
 

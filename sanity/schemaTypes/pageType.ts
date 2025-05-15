@@ -24,6 +24,9 @@ export const pageType = defineType({
                         {
                             type: 'sectionHero'
                         },
+                        {
+                            type: 'sectionBlockText'
+                        }
                     ]
                 }
             ]

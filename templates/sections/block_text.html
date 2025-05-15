@@ -1,0 +1,8 @@
+<section>
+    <h2>{{ title }}</h2>
+    <div>
+        {% for block in rich_text %}
+            {{ block|safe }}
+        {% endfor %}
+    </div>
+</section>

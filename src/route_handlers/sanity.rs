@@ -2,7 +2,8 @@ use axum::extract::Path;
 use futures::future::join_all;
 
 use crate::sanity::models::page::{fetch_image_asset, find_by_slug, PageTemplate};
-use crate::sanity::types::section::{HeroTemplate, SectionTemplate};
+use crate::sanity::models::section::block_text::parse_rich_text;
+use crate::sanity::types::section::{BlockTextTemplate, HeroTemplate, SectionTemplate};
 use crate::sanity::types::SectionTypes;
 use super::html_template::HtmlTemplate;
 
@@ -25,7 +26,14 @@ pub async fn handler(slug: Option<Path<String>>) -> impl axum::response::IntoRes
                         SectionTemplate::Hero(HeroTemplate::from(&hero))
                     },
                     // Handle other section types similarly
-                    // SectionTypes::BlockText(block_text) => SectionTemplate::BlockText(BlockTextTemplate::from(&block_text)),
+                    SectionTypes::BlockText(mut block_text) => {
+                        if let Some(rich_text) = &block_text.rich_text {
+                            if let Ok(parsed_text) = parse_rich_text(rich_text.clone()).await {
+                                block_text.rich_text = parsed_text;
+                            }
+                        }
+                        SectionTemplate::BlockText(BlockTextTemplate::from(&block_text))
+                    },
                     // SectionTypes::CardDeck(card_deck) => SectionTemplate::CardDeck(CardDeckTemplate::from(&card_deck)),
                 }
             }).collect();
