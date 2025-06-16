@@ -1,5 +1,13 @@
 :root {
-  --font-mono: 'Roboto Mono', monospace;
+  --font-headings: 'Oswald', sans-serif;
+  --font-body: 'Lato', sans-serif;
+
+  --primary-color: var(--color-tomato-red);
+  --secondary-color: var(--color-light-blue);
+  --tertiary-color: var(--color-rich-black);
+
+  --background-color: var(--color-rich-black);
+  --text-color: var(--color-light-blue);
 }
 
 * {
@@ -7,10 +15,6 @@
 }
 
 html {
-  font-size: 18px;
-  line-height: 32px;
-
-  background: rgb(0, 0, 0);
   -webkit-font-smoothing: antialiased;
 }
 
@@ -21,9 +25,10 @@ body,
 }
 
 body {
-  font-family: system-ui;
-  font-size: 18px;
-  line-height: 32px;
+  background-color: var(--background-color);
+  font-family: 'Lato', sans-serif;
+  font-size: 16px;
+  line-height: 24px;
 
   margin: 0;
   color: rgb(1000, 1000, 1000);
@@ -64,11 +69,7 @@ h1 {
 }
 
 p {
-  margin: 24px 0;
-
-  @media (max-width: 1024px) {
-    margin: calc(var(--base) * 0.75) 0;
-  }
+  margin-bottom: 8px;
 }
 
 a {

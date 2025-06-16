@@ -1,7 +1,11 @@
+import { anyone } from '@/access/anyone'
 import type { CollectionConfig } from 'payload'
 
 export const Projects: CollectionConfig = {
   slug: 'projects',
+  access: {
+    read: anyone
+  },
   admin: {
     useAsTitle: 'title',
   },
@@ -13,7 +17,7 @@ export const Projects: CollectionConfig = {
     },
     {
       name: 'description',
-      type: 'text',
+      type: 'richText',
     },
     {
         name: 'featuredImage',
@@ -28,8 +32,31 @@ export const Projects: CollectionConfig = {
     },
     {
         name: 'tags',
-        type: 'select',
-        options: ['Web Development', 'Mobile Development', 'UI/UX Design', 'Other'],
-    }, 
+        type: 'relationship',
+        relationTo: 'tags',
+        hasMany: true,
+    },
+    {
+        name: 'links',
+        type: 'array',
+        fields: [
+            {
+                name: 'label',
+                type: 'text',
+                required: true,
+            },
+            {
+                name: 'url',
+                type: 'text',
+                required: true,
+            },
+            {
+                name: 'icon',
+                type: 'upload',
+                relationTo: 'media',
+                required: false,
+            }
+        ]
+    }
   ],
 }

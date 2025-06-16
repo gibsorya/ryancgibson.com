@@ -11,6 +11,25 @@ export const Media: CollectionConfig = {
       type: 'text',
       required: true,
     },
+    {
+      name: 'type',
+      type: 'select',
+      options: [
+        {
+          label: 'Image',
+          value: 'image',
+        },
+        {
+          label: 'Video',
+          value: 'video',
+        },
+        {
+          label: 'SVG',
+          value: 'svg',
+        }
+      ],
+      defaultValue: 'image',
+    }
   ],
   upload: true,
 }
