@@ -1,5 +1,6 @@
 import type { Block } from 'payload'
 import { Project } from '../ProjectBlock/config'
+import { Card } from '../CardBlock/config'
 
 export const CardDeck: Block = {
     slug: 'card_deck',
@@ -50,14 +51,20 @@ export const CardDeck: Block = {
         {
             name: 'cards',
             type: 'blocks',
-            blocks: [Project]
+            blocks: [Project, Card]
         },
         {
             name: 'type',
             type: 'select',
-            options: ['cards', 'projects'],
+            options: ['cards', 'projects', 'full-width-cards'],
             defaultValue: 'cards',
             required: true,
-        }
+        },
+        {
+            name: 'padding',
+            type: 'select',
+            options: ['small', 'medium', 'large', 'none'],
+            defaultValue: 'small'
+        },
     ]
 }

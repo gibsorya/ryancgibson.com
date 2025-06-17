@@ -270,8 +270,9 @@ export interface CardDeckBlock {
   infoPosition: 'top' | 'left' | 'right';
   maxColumns: number;
   gap: 'small' | 'medium' | 'large';
-  cards?: ProjectBlock[] | null;
-  type: 'cards' | 'projects';
+  cards?: (ProjectBlock | CardBlock)[] | null;
+  type: 'cards' | 'projects' | 'full-width-cards';
+  padding?: ('small' | 'medium' | 'large' | 'none') | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'card_deck';
@@ -286,6 +287,32 @@ export interface ProjectBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'project';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CardBlock".
+ */
+export interface CardBlock {
+  title?: string | null;
+  description?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  background?: ('light' | 'dark' | 'light-blue' | 'gradient' | 'none') | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'card';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -586,8 +613,10 @@ export interface CardDeckBlockSelect<T extends boolean = true> {
     | T
     | {
         project?: T | ProjectBlockSelect<T>;
+        card?: T | CardBlockSelect<T>;
       };
   type?: T;
+  padding?: T;
   id?: T;
   blockName?: T;
 }
@@ -598,6 +627,17 @@ export interface CardDeckBlockSelect<T extends boolean = true> {
 export interface ProjectBlockSelect<T extends boolean = true> {
   project?: T;
   fullWidth?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CardBlock_select".
+ */
+export interface CardBlockSelect<T extends boolean = true> {
+  title?: T;
+  description?: T;
+  background?: T;
   id?: T;
   blockName?: T;
 }

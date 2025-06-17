@@ -16,6 +16,25 @@ export const RenderBlocks: React.FC<{ blocks: Page["layout"] }> = (props) => {
 
   const hasBlocks = blocks && Array.isArray(blocks) && blocks.length > 0;
 
+  const getBlockPaddingClass = (block: NonNullable<Page["layout"]>[number]) => {
+    if ('padding' in block && block.padding) {
+      console.log(block.padding)
+      switch(block.padding) {
+        case 'small':
+          return 'px-4'
+        case 'medium':
+          return 'px-8'
+        case 'large':
+          return 'px-16'
+        case 'none':
+          return 'px-0'
+        default:
+          return 'px-4'
+      }
+    }
+    return 'px-4' // Default padding if no padding is specified
+  }
+
   if (hasBlocks) {
     return (
       <Fragment>
@@ -27,7 +46,7 @@ export const RenderBlocks: React.FC<{ blocks: Page["layout"] }> = (props) => {
 
             if (Block) {
               return (
-                <section className={`my-4 px-4 section-${blockType}`} key={index}>
+                <section className={`mb-4 ${getBlockPaddingClass(block)} section-${blockType}`} key={index}>
                   {/* @ts-expect-error there may be some mismatch between the expected types here */}
                   <Block {...block} disableInnerContainer />
                 </section>

@@ -1,0 +1,12 @@
+.card-block {
+    padding: 8rem 4rem;
+}
+
+.card-block.light-blue-background {
+    background-color: var(--color-light-blue);
+    color: var(--color-rich-black);
+}
+
+/* .card-block-content .card-block-description {
+    @apply 
+} */
