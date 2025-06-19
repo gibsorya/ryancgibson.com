@@ -31,5 +31,33 @@ export const Media: CollectionConfig = {
       defaultValue: 'image',
     }
   ],
-  upload: true,
+  upload: {
+    imageSizes: [
+      {
+        name: 'thumbnail',
+        width: 100,
+        height: 100,
+        position: 'center',
+      },
+      {
+        name: 'standard',
+        width: 1024,
+        height: undefined,
+        position: 'center',
+      },
+      {
+        name: 'icon-small',
+        width: 24,
+        height: 24,
+        position: 'center',
+      },
+      {
+        name: 'icon-large',
+        width: 120,
+        height: 120,
+        position: 'center',
+      }
+    ],
+    adminThumbnail: 'thumbnail'
+  },
 }

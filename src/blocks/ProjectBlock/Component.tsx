@@ -2,14 +2,13 @@
 
 import React, { useEffect, useState } from 'react'
 import type { Media, Project, ProjectBlock as ProjectBlockProps, Tag } from '@/payload-types'
-import { getCachedProject } from '@/utilities/getProject'
 import Image from 'next/image'
 
 import './styles.css'
 import { RichText } from '@payloadcms/richtext-lexical/react'
 
 export const ProjectBlock: React.FC<ProjectBlockProps> = (props) => {
-    const { project, fullWidth } = props
+    const { project } = props
     const projectData = project as Project
     const tags = projectData.tags as Tag[]
     const links = projectData.links as Link[]

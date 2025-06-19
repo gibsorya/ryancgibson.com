@@ -3,6 +3,8 @@ import { RichText } from "@payloadcms/richtext-lexical/react";
 import type { CardDeckBlock as CardDeckBlockProps } from "@/payload-types";
 import { ProjectBlock } from "../ProjectBlock/Component";
 import { CardBlock } from "../CardBlock/Component";
+import { SkillsCardBlock } from "../SkillsCardBlock/Component";
+
 import "./styles.css";
 
 export const CardDeckBlock: React.FC<CardDeckBlockProps> = (props) => {
@@ -58,7 +60,7 @@ export const CardDeckBlock: React.FC<CardDeckBlockProps> = (props) => {
             case "projects":
                 return "grid gap-4 grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 md:max-w-10/12 mx-auto";
             case "full-width-cards":
-                return "grid grid-cols-1 md:grid-cols-2";
+                return "grid grid-cols-1 gap-4 md:gap-0 md:grid-cols-2";
             default:
                 return "grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3";
         }
@@ -89,6 +91,8 @@ export const CardDeckBlock: React.FC<CardDeckBlockProps> = (props) => {
                             return <ProjectBlock {...card} key={i} />;
                         case "card":
                             return <CardBlock {...card} key={i} />;
+                        case "skills-card":
+                            return <SkillsCardBlock {...card} key={i} />;
                     }
                 })}
             </div>

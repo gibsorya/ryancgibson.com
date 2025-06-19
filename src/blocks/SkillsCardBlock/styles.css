@@ -1,0 +1,96 @@
+.skills-card-block {
+    overflow: hidden;
+}
+
+@keyframes infiniteScroll {
+    to {
+        transform: translate(calc(-50% - 0.5rem));
+    }
+}
+
+.skills-list-container {
+    max-width: 100%;
+}
+
+.skills-list {
+    max-width: 100%;
+}
+
+.skills-list-inner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.skills-list.scroller[data-animated="false"]
+.skills-list-inner {
+    padding: 1rem;
+    justify-content: center;
+}
+
+.skills-list.scroller[data-animated="false"]
+.skills-list-inner svg {
+    width: 4rem;
+    height: 4rem;
+}
+
+@media (max-width: 768px) {
+    .skills-list.scroller[data-animated="true"]
+    .skills-list-inner svg {
+        width: 5rem;
+        height: 5rem;
+    }
+}
+
+.skills-list.scroller[data-animated="true"]
+.skills-list-inner .skill-item:hover {
+    transform: scale(1.1);
+}
+
+.skills-list.scroller[data-animated="true"]
+.skills-list-inner {
+    width: max-content;
+    flex-wrap: nowrap;
+    animation: infiniteScroll var(--_animation-duration, 40s)
+    var(--_animation-direction, forwards) linear infinite;
+}
+
+.skills-list.scroller[data-animated="true"] .skills-list-inner:hover {
+    /* animation-play-state: paused; */
+    transition-delay: 1s;
+    -webkit-transition-delay: 1s;
+}
+
+.skills-list.scroller[data-direction="right"] {
+    --_animation-direction: reverse;
+}
+
+.skills-list.scroller[data-direction="left"] {
+    --_animation-direction: forwards;
+}
+
+.scroller[data-speed="fast"] {
+    --_animation-duration: 20s;
+}
+
+.scroller[data-speed="slow"] {
+    --_animation-duration: 60s;
+}
+
+/* .skill-list-scrolling.scroll-right {
+    animation: infiniteScrollRight 20s linear infinite;
+}
+
+.skill-list-scrolling.scroll-left {
+    animation: infiniteScrollLeft 20s linear infinite;
+} */
+
+/* .skill-item {
+    white-space: nowrap;
+} */
+
+@media (prefers-reduced-motion: reduce) {
+    .skills-list.scroller {
+        animation: none;
+    }
+}

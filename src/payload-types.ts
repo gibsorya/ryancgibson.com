@@ -72,6 +72,7 @@ export interface Config {
     projects: Project;
     pages: Page;
     tags: Tag;
+    skills: Skill;
     'payload-jobs': PayloadJob;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -84,6 +85,7 @@ export interface Config {
     projects: ProjectsSelect<false> | ProjectsSelect<true>;
     pages: PagesSelect<false> | PagesSelect<true>;
     tags: TagsSelect<false> | TagsSelect<true>;
+    skills: SkillsSelect<false> | SkillsSelect<true>;
     'payload-jobs': PayloadJobsSelect<false> | PayloadJobsSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -163,6 +165,40 @@ export interface Media {
   height?: number | null;
   focalX?: number | null;
   focalY?: number | null;
+  sizes?: {
+    thumbnail?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    standard?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    'icon-small'?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    'icon-large'?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+  };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -270,7 +306,7 @@ export interface CardDeckBlock {
   infoPosition: 'top' | 'left' | 'right';
   maxColumns: number;
   gap: 'small' | 'medium' | 'large';
-  cards?: (ProjectBlock | CardBlock)[] | null;
+  cards?: (ProjectBlock | CardBlock | SkillsCardBlock)[] | null;
   type: 'cards' | 'projects' | 'full-width-cards';
   padding?: ('small' | 'medium' | 'large' | 'none') | null;
   id?: string | null;
@@ -313,6 +349,54 @@ export interface CardBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'card';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "SkillsCardBlock".
+ */
+export interface SkillsCardBlock {
+  title?: string | null;
+  description?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  'skill-lists'?:
+    | {
+        title?: string | null;
+        skills?: (number | Skill)[] | null;
+        isScrolling?: boolean | null;
+        scrollDirection?: ('left' | 'right') | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'skill-list';
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'skills-card';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "skills".
+ */
+export interface Skill {
+  id: number;
+  name: string;
+  icon: number | Media;
+  url?: string | null;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -461,6 +545,10 @@ export interface PayloadLockedDocument {
         value: number | Tag;
       } | null)
     | ({
+        relationTo: 'skills';
+        value: number | Skill;
+      } | null)
+    | ({
         relationTo: 'payload-jobs';
         value: number | PayloadJob;
       } | null);
@@ -539,6 +627,50 @@ export interface MediaSelect<T extends boolean = true> {
   height?: T;
   focalX?: T;
   focalY?: T;
+  sizes?:
+    | T
+    | {
+        thumbnail?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        standard?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        'icon-small'?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        'icon-large'?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+      };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -614,6 +746,7 @@ export interface CardDeckBlockSelect<T extends boolean = true> {
     | {
         project?: T | ProjectBlockSelect<T>;
         card?: T | CardBlockSelect<T>;
+        'skills-card'?: T | SkillsCardBlockSelect<T>;
       };
   type?: T;
   padding?: T;
@@ -643,6 +776,30 @@ export interface CardBlockSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "SkillsCardBlock_select".
+ */
+export interface SkillsCardBlockSelect<T extends boolean = true> {
+  title?: T;
+  description?: T;
+  'skill-lists'?:
+    | T
+    | {
+        'skill-list'?:
+          | T
+          | {
+              title?: T;
+              skills?: T;
+              isScrolling?: T;
+              scrollDirection?: T;
+              id?: T;
+              blockName?: T;
+            };
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "CollectionBlock_select".
  */
 export interface CollectionBlockSelect<T extends boolean = true> {
@@ -659,6 +816,17 @@ export interface CollectionBlockSelect<T extends boolean = true> {
  */
 export interface TagsSelect<T extends boolean = true> {
   name?: T;
+  url?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "skills_select".
+ */
+export interface SkillsSelect<T extends boolean = true> {
+  name?: T;
+  icon?: T;
   url?: T;
   updatedAt?: T;
   createdAt?: T;

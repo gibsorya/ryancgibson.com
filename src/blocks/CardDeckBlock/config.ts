@@ -1,6 +1,7 @@
 import type { Block } from 'payload'
 import { Project } from '../ProjectBlock/config'
 import { Card } from '../CardBlock/config'
+import { SkillsCard } from '../SkillsCardBlock/config'
 
 export const CardDeck: Block = {
     slug: 'card_deck',
@@ -51,7 +52,7 @@ export const CardDeck: Block = {
         {
             name: 'cards',
             type: 'blocks',
-            blocks: [Project, Card]
+            blocks: [Project, Card, SkillsCard]
         },
         {
             name: 'type',

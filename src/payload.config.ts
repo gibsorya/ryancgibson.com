@@ -13,10 +13,7 @@ import { Media } from './collections/Media'
 import { Projects } from './collections/Projects'
 import { Pages } from './collections/Pages'
 import { Tags } from './collections/Tags'
-
-// Blocks
-import { Project } from './blocks/ProjectBlock/config'
-
+import { Skills } from './collections/Skills'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -33,7 +30,8 @@ export default buildConfig({
     Media,
     Projects,
     Pages,
-    Tags
+    Tags,
+    Skills
   ],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',

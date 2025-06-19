@@ -23,6 +23,15 @@ import {
   pgEnum,
 } from "@payloadcms/db-postgres/drizzle/pg-core";
 import { sql, relations } from "@payloadcms/db-postgres/drizzle";
+export const enum_media_type = pgEnum("enum_media_type", [
+  "image",
+  "video",
+  "svg",
+]);
+export const enum_pages_blocks_card_background = pgEnum(
+  "enum_pages_blocks_card_background",
+  ["light", "dark", "light-blue", "gradient", "none"],
+);
 export const enum_pages_blocks_card_deck_info_position = pgEnum(
   "enum_pages_blocks_card_deck_info_position",
   ["top", "left", "right"],
@@ -33,7 +42,11 @@ export const enum_pages_blocks_card_deck_gap = pgEnum(
 );
 export const enum_pages_blocks_card_deck_type = pgEnum(
   "enum_pages_blocks_card_deck_type",
-  ["cards", "projects"],
+  ["cards", "projects", "full-width-cards"],
+);
+export const enum_pages_blocks_card_deck_padding = pgEnum(
+  "enum_pages_blocks_card_deck_padding",
+  ["small", "medium", "large", "none"],
 );
 export const enum_pages_blocks_collection_collection = pgEnum(
   "enum_pages_blocks_collection_collection",
@@ -47,6 +60,10 @@ export const enum_pages_status = pgEnum("enum_pages_status", [
   "draft",
   "published",
 ]);
+export const enum__pages_v_blocks_card_background = pgEnum(
+  "enum__pages_v_blocks_card_background",
+  ["light", "dark", "light-blue", "gradient", "none"],
+);
 export const enum__pages_v_blocks_card_deck_info_position = pgEnum(
   "enum__pages_v_blocks_card_deck_info_position",
   ["top", "left", "right"],
@@ -57,7 +74,11 @@ export const enum__pages_v_blocks_card_deck_gap = pgEnum(
 );
 export const enum__pages_v_blocks_card_deck_type = pgEnum(
   "enum__pages_v_blocks_card_deck_type",
-  ["cards", "projects"],
+  ["cards", "projects", "full-width-cards"],
+);
+export const enum__pages_v_blocks_card_deck_padding = pgEnum(
+  "enum__pages_v_blocks_card_deck_padding",
+  ["small", "medium", "large", "none"],
 );
 export const enum__pages_v_blocks_collection_collection = pgEnum(
   "enum__pages_v_blocks_collection_collection",
@@ -130,6 +151,7 @@ export const media = pgTable(
   {
     id: serial("id").primaryKey(),
     alt: varchar("alt").notNull(),
+    type: enum_media_type("type").default("image"),
     updatedAt: timestamp("updated_at", {
       mode: "string",
       withTimezone: true,
@@ -153,11 +175,47 @@ export const media = pgTable(
     height: numeric("height"),
     focalX: numeric("focal_x"),
     focalY: numeric("focal_y"),
+    sizes_thumbnail_url: varchar("sizes_thumbnail_url"),
+    sizes_thumbnail_width: numeric("sizes_thumbnail_width"),
+    sizes_thumbnail_height: numeric("sizes_thumbnail_height"),
+    sizes_thumbnail_mimeType: varchar("sizes_thumbnail_mime_type"),
+    sizes_thumbnail_filesize: numeric("sizes_thumbnail_filesize"),
+    sizes_thumbnail_filename: varchar("sizes_thumbnail_filename"),
+    sizes_standard_url: varchar("sizes_standard_url"),
+    sizes_standard_width: numeric("sizes_standard_width"),
+    sizes_standard_height: numeric("sizes_standard_height"),
+    sizes_standard_mimeType: varchar("sizes_standard_mime_type"),
+    sizes_standard_filesize: numeric("sizes_standard_filesize"),
+    sizes_standard_filename: varchar("sizes_standard_filename"),
+    "sizes_icon-small_url": varchar("sizes_icon_small_url"),
+    "sizes_icon-small_width": numeric("sizes_icon_small_width"),
+    "sizes_icon-small_height": numeric("sizes_icon_small_height"),
+    "sizes_icon-small_mimeType": varchar("sizes_icon_small_mime_type"),
+    "sizes_icon-small_filesize": numeric("sizes_icon_small_filesize"),
+    "sizes_icon-small_filename": varchar("sizes_icon_small_filename"),
+    "sizes_icon-large_url": varchar("sizes_icon_large_url"),
+    "sizes_icon-large_width": numeric("sizes_icon_large_width"),
+    "sizes_icon-large_height": numeric("sizes_icon_large_height"),
+    "sizes_icon-large_mimeType": varchar("sizes_icon_large_mime_type"),
+    "sizes_icon-large_filesize": numeric("sizes_icon_large_filesize"),
+    "sizes_icon-large_filename": varchar("sizes_icon_large_filename"),
   },
   (columns) => ({
     media_updated_at_idx: index("media_updated_at_idx").on(columns.updatedAt),
     media_created_at_idx: index("media_created_at_idx").on(columns.createdAt),
     media_filename_idx: uniqueIndex("media_filename_idx").on(columns.filename),
+    media_sizes_thumbnail_sizes_thumbnail_filename_idx: index(
+      "media_sizes_thumbnail_sizes_thumbnail_filename_idx",
+    ).on(columns.sizes_thumbnail_filename),
+    media_sizes_standard_sizes_standard_filename_idx: index(
+      "media_sizes_standard_sizes_standard_filename_idx",
+    ).on(columns.sizes_standard_filename),
+    media_sizes_icon_small_sizes_icon_small_filename_idx: index(
+      "media_sizes_icon_small_sizes_icon_small_filename_idx",
+    ).on(columns["sizes_icon-small_filename"]),
+    media_sizes_icon_large_sizes_icon_large_filename_idx: index(
+      "media_sizes_icon_large_sizes_icon_large_filename_idx",
+    ).on(columns["sizes_icon-large_filename"]),
   }),
 );
 
@@ -321,6 +379,32 @@ export const pages_blocks_project = pgTable(
   }),
 );
 
+export const pages_blocks_card = pgTable(
+  "pages_blocks_card",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: integer("_parent_id").notNull(),
+    _path: text("_path").notNull(),
+    id: varchar("id").primaryKey(),
+    title: varchar("title"),
+    description: jsonb("description"),
+    background: enum_pages_blocks_card_background("background"),
+    blockName: varchar("block_name"),
+  },
+  (columns) => ({
+    _orderIdx: index("pages_blocks_card_order_idx").on(columns._order),
+    _parentIDIdx: index("pages_blocks_card_parent_id_idx").on(
+      columns._parentID,
+    ),
+    _pathIdx: index("pages_blocks_card_path_idx").on(columns._path),
+    _parentIdFk: foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [pages.id],
+      name: "pages_blocks_card_parent_id_fk",
+    }).onDelete("cascade"),
+  }),
+);
+
 export const pages_blocks_card_deck = pgTable(
   "pages_blocks_card_deck",
   {
@@ -335,6 +419,7 @@ export const pages_blocks_card_deck = pgTable(
     maxColumns: numeric("max_columns").default("3"),
     gap: enum_pages_blocks_card_deck_gap("gap").default("medium"),
     type: enum_pages_blocks_card_deck_type("type").default("cards"),
+    padding: enum_pages_blocks_card_deck_padding("padding").default("small"),
     blockName: varchar("block_name"),
   },
   (columns) => ({
@@ -426,33 +511,6 @@ export const pages = pgTable(
   }),
 );
 
-export const pages_rels = pgTable(
-  "pages_rels",
-  {
-    id: serial("id").primaryKey(),
-    order: integer("order"),
-    parent: integer("parent_id").notNull(),
-    path: varchar("path").notNull(),
-    tagsID: integer("tags_id"),
-  },
-  (columns) => ({
-    order: index("pages_rels_order_idx").on(columns.order),
-    parentIdx: index("pages_rels_parent_idx").on(columns.parent),
-    pathIdx: index("pages_rels_path_idx").on(columns.path),
-    pages_rels_tags_id_idx: index("pages_rels_tags_id_idx").on(columns.tagsID),
-    parentFk: foreignKey({
-      columns: [columns["parent"]],
-      foreignColumns: [pages.id],
-      name: "pages_rels_parent_fk",
-    }).onDelete("cascade"),
-    tagsIdFk: foreignKey({
-      columns: [columns["tagsID"]],
-      foreignColumns: [tags.id],
-      name: "pages_rels_tags_fk",
-    }).onDelete("cascade"),
-  }),
-);
-
 export const _pages_v_blocks_hero = pgTable(
   "_pages_v_blocks_hero",
   {
@@ -516,6 +574,33 @@ export const _pages_v_blocks_project = pgTable(
   }),
 );
 
+export const _pages_v_blocks_card = pgTable(
+  "_pages_v_blocks_card",
+  {
+    _order: integer("_order").notNull(),
+    _parentID: integer("_parent_id").notNull(),
+    _path: text("_path").notNull(),
+    id: serial("id").primaryKey(),
+    title: varchar("title"),
+    description: jsonb("description"),
+    background: enum__pages_v_blocks_card_background("background"),
+    _uuid: varchar("_uuid"),
+    blockName: varchar("block_name"),
+  },
+  (columns) => ({
+    _orderIdx: index("_pages_v_blocks_card_order_idx").on(columns._order),
+    _parentIDIdx: index("_pages_v_blocks_card_parent_id_idx").on(
+      columns._parentID,
+    ),
+    _pathIdx: index("_pages_v_blocks_card_path_idx").on(columns._path),
+    _parentIdFk: foreignKey({
+      columns: [columns["_parentID"]],
+      foreignColumns: [_pages_v.id],
+      name: "_pages_v_blocks_card_parent_id_fk",
+    }).onDelete("cascade"),
+  }),
+);
+
 export const _pages_v_blocks_card_deck = pgTable(
   "_pages_v_blocks_card_deck",
   {
@@ -532,6 +617,7 @@ export const _pages_v_blocks_card_deck = pgTable(
     maxColumns: numeric("max_columns").default("3"),
     gap: enum__pages_v_blocks_card_deck_gap("gap").default("medium"),
     type: enum__pages_v_blocks_card_deck_type("type").default("cards"),
+    padding: enum__pages_v_blocks_card_deck_padding("padding").default("small"),
     _uuid: varchar("_uuid"),
     blockName: varchar("block_name"),
   },
@@ -663,35 +749,6 @@ export const _pages_v = pgTable(
   }),
 );
 
-export const _pages_v_rels = pgTable(
-  "_pages_v_rels",
-  {
-    id: serial("id").primaryKey(),
-    order: integer("order"),
-    parent: integer("parent_id").notNull(),
-    path: varchar("path").notNull(),
-    tagsID: integer("tags_id"),
-  },
-  (columns) => ({
-    order: index("_pages_v_rels_order_idx").on(columns.order),
-    parentIdx: index("_pages_v_rels_parent_idx").on(columns.parent),
-    pathIdx: index("_pages_v_rels_path_idx").on(columns.path),
-    _pages_v_rels_tags_id_idx: index("_pages_v_rels_tags_id_idx").on(
-      columns.tagsID,
-    ),
-    parentFk: foreignKey({
-      columns: [columns["parent"]],
-      foreignColumns: [_pages_v.id],
-      name: "_pages_v_rels_parent_fk",
-    }).onDelete("cascade"),
-    tagsIdFk: foreignKey({
-      columns: [columns["tagsID"]],
-      foreignColumns: [tags.id],
-      name: "_pages_v_rels_tags_fk",
-    }).onDelete("cascade"),
-  }),
-);
-
 export const tags = pgTable(
   "tags",
   {
@@ -716,6 +773,39 @@ export const tags = pgTable(
   (columns) => ({
     tags_updated_at_idx: index("tags_updated_at_idx").on(columns.updatedAt),
     tags_created_at_idx: index("tags_created_at_idx").on(columns.createdAt),
+  }),
+);
+
+export const skills = pgTable(
+  "skills",
+  {
+    id: serial("id").primaryKey(),
+    name: varchar("name").notNull(),
+    icon: integer("icon_id")
+      .notNull()
+      .references(() => media.id, {
+        onDelete: "set null",
+      }),
+    url: varchar("url"),
+    updatedAt: timestamp("updated_at", {
+      mode: "string",
+      withTimezone: true,
+      precision: 3,
+    })
+      .defaultNow()
+      .notNull(),
+    createdAt: timestamp("created_at", {
+      mode: "string",
+      withTimezone: true,
+      precision: 3,
+    })
+      .defaultNow()
+      .notNull(),
+  },
+  (columns) => ({
+    skills_icon_idx: index("skills_icon_idx").on(columns.icon),
+    skills_updated_at_idx: index("skills_updated_at_idx").on(columns.updatedAt),
+    skills_created_at_idx: index("skills_created_at_idx").on(columns.createdAt),
   }),
 );
 
@@ -863,6 +953,7 @@ export const payload_locked_documents_rels = pgTable(
     projectsID: integer("projects_id"),
     pagesID: integer("pages_id"),
     tagsID: integer("tags_id"),
+    skillsID: integer("skills_id"),
     "payload-jobsID": integer("payload_jobs_id"),
   },
   (columns) => ({
@@ -886,6 +977,9 @@ export const payload_locked_documents_rels = pgTable(
     payload_locked_documents_rels_tags_id_idx: index(
       "payload_locked_documents_rels_tags_id_idx",
     ).on(columns.tagsID),
+    payload_locked_documents_rels_skills_id_idx: index(
+      "payload_locked_documents_rels_skills_id_idx",
+    ).on(columns.skillsID),
     payload_locked_documents_rels_payload_jobs_id_idx: index(
       "payload_locked_documents_rels_payload_jobs_id_idx",
     ).on(columns["payload-jobsID"]),
@@ -918,6 +1012,11 @@ export const payload_locked_documents_rels = pgTable(
       columns: [columns["tagsID"]],
       foreignColumns: [tags.id],
       name: "payload_locked_documents_rels_tags_fk",
+    }).onDelete("cascade"),
+    skillsIdFk: foreignKey({
+      columns: [columns["skillsID"]],
+      foreignColumns: [skills.id],
+      name: "payload_locked_documents_rels_skills_fk",
     }).onDelete("cascade"),
     "payload-jobsIdFk": foreignKey({
       columns: [columns["payload-jobsID"]],
@@ -1098,6 +1197,16 @@ export const relations_pages_blocks_project = relations(
     }),
   }),
 );
+export const relations_pages_blocks_card = relations(
+  pages_blocks_card,
+  ({ one }) => ({
+    _parentID: one(pages, {
+      fields: [pages_blocks_card._parentID],
+      references: [pages.id],
+      relationName: "_blocks_card",
+    }),
+  }),
+);
 export const relations_pages_blocks_card_deck = relations(
   pages_blocks_card_deck,
   ({ one }) => ({
@@ -1118,24 +1227,15 @@ export const relations_pages_blocks_collection = relations(
     }),
   }),
 );
-export const relations_pages_rels = relations(pages_rels, ({ one }) => ({
-  parent: one(pages, {
-    fields: [pages_rels.parent],
-    references: [pages.id],
-    relationName: "_rels",
-  }),
-  tagsID: one(tags, {
-    fields: [pages_rels.tagsID],
-    references: [tags.id],
-    relationName: "tags",
-  }),
-}));
 export const relations_pages = relations(pages, ({ one, many }) => ({
   _blocks_hero: many(pages_blocks_hero, {
     relationName: "_blocks_hero",
   }),
   _blocks_project: many(pages_blocks_project, {
     relationName: "_blocks_project",
+  }),
+  _blocks_card: many(pages_blocks_card, {
+    relationName: "_blocks_card",
   }),
   _blocks_card_deck: many(pages_blocks_card_deck, {
     relationName: "_blocks_card_deck",
@@ -1147,9 +1247,6 @@ export const relations_pages = relations(pages, ({ one, many }) => ({
     fields: [pages.meta_image],
     references: [media.id],
     relationName: "meta_image",
-  }),
-  _rels: many(pages_rels, {
-    relationName: "_rels",
   }),
 }));
 export const relations__pages_v_blocks_hero = relations(
@@ -1182,6 +1279,16 @@ export const relations__pages_v_blocks_project = relations(
     }),
   }),
 );
+export const relations__pages_v_blocks_card = relations(
+  _pages_v_blocks_card,
+  ({ one }) => ({
+    _parentID: one(_pages_v, {
+      fields: [_pages_v_blocks_card._parentID],
+      references: [_pages_v.id],
+      relationName: "_blocks_card",
+    }),
+  }),
+);
 export const relations__pages_v_blocks_card_deck = relations(
   _pages_v_blocks_card_deck,
   ({ one }) => ({
@@ -1202,18 +1309,6 @@ export const relations__pages_v_blocks_collection = relations(
     }),
   }),
 );
-export const relations__pages_v_rels = relations(_pages_v_rels, ({ one }) => ({
-  parent: one(_pages_v, {
-    fields: [_pages_v_rels.parent],
-    references: [_pages_v.id],
-    relationName: "_rels",
-  }),
-  tagsID: one(tags, {
-    fields: [_pages_v_rels.tagsID],
-    references: [tags.id],
-    relationName: "tags",
-  }),
-}));
 export const relations__pages_v = relations(_pages_v, ({ one, many }) => ({
   parent: one(pages, {
     fields: [_pages_v.parent],
@@ -1226,6 +1321,9 @@ export const relations__pages_v = relations(_pages_v, ({ one, many }) => ({
   _blocks_project: many(_pages_v_blocks_project, {
     relationName: "_blocks_project",
   }),
+  _blocks_card: many(_pages_v_blocks_card, {
+    relationName: "_blocks_card",
+  }),
   _blocks_card_deck: many(_pages_v_blocks_card_deck, {
     relationName: "_blocks_card_deck",
   }),
@@ -1237,11 +1335,15 @@ export const relations__pages_v = relations(_pages_v, ({ one, many }) => ({
     references: [media.id],
     relationName: "version_meta_image",
   }),
-  _rels: many(_pages_v_rels, {
-    relationName: "_rels",
-  }),
 }));
 export const relations_tags = relations(tags, () => ({}));
+export const relations_skills = relations(skills, ({ one }) => ({
+  icon: one(media, {
+    fields: [skills.icon],
+    references: [media.id],
+    relationName: "icon",
+  }),
+}));
 export const relations_payload_jobs_log = relations(
   payload_jobs_log,
   ({ one }) => ({
@@ -1290,6 +1392,11 @@ export const relations_payload_locked_documents_rels = relations(
       references: [tags.id],
       relationName: "tags",
     }),
+    skillsID: one(skills, {
+      fields: [payload_locked_documents_rels.skillsID],
+      references: [skills.id],
+      relationName: "skills",
+    }),
     "payload-jobsID": one(payload_jobs, {
       fields: [payload_locked_documents_rels["payload-jobsID"]],
       references: [payload_jobs.id],
@@ -1334,15 +1441,20 @@ export const relations_payload_migrations = relations(
 );
 
 type DatabaseSchema = {
+  enum_media_type: typeof enum_media_type;
+  enum_pages_blocks_card_background: typeof enum_pages_blocks_card_background;
   enum_pages_blocks_card_deck_info_position: typeof enum_pages_blocks_card_deck_info_position;
   enum_pages_blocks_card_deck_gap: typeof enum_pages_blocks_card_deck_gap;
   enum_pages_blocks_card_deck_type: typeof enum_pages_blocks_card_deck_type;
+  enum_pages_blocks_card_deck_padding: typeof enum_pages_blocks_card_deck_padding;
   enum_pages_blocks_collection_collection: typeof enum_pages_blocks_collection_collection;
   enum_pages_blocks_collection_collection_info_position: typeof enum_pages_blocks_collection_collection_info_position;
   enum_pages_status: typeof enum_pages_status;
+  enum__pages_v_blocks_card_background: typeof enum__pages_v_blocks_card_background;
   enum__pages_v_blocks_card_deck_info_position: typeof enum__pages_v_blocks_card_deck_info_position;
   enum__pages_v_blocks_card_deck_gap: typeof enum__pages_v_blocks_card_deck_gap;
   enum__pages_v_blocks_card_deck_type: typeof enum__pages_v_blocks_card_deck_type;
+  enum__pages_v_blocks_card_deck_padding: typeof enum__pages_v_blocks_card_deck_padding;
   enum__pages_v_blocks_collection_collection: typeof enum__pages_v_blocks_collection_collection;
   enum__pages_v_blocks_collection_collection_info_position: typeof enum__pages_v_blocks_collection_collection_info_position;
   enum__pages_v_version_status: typeof enum__pages_v_version_status;
@@ -1356,17 +1468,18 @@ type DatabaseSchema = {
   projects_rels: typeof projects_rels;
   pages_blocks_hero: typeof pages_blocks_hero;
   pages_blocks_project: typeof pages_blocks_project;
+  pages_blocks_card: typeof pages_blocks_card;
   pages_blocks_card_deck: typeof pages_blocks_card_deck;
   pages_blocks_collection: typeof pages_blocks_collection;
   pages: typeof pages;
-  pages_rels: typeof pages_rels;
   _pages_v_blocks_hero: typeof _pages_v_blocks_hero;
   _pages_v_blocks_project: typeof _pages_v_blocks_project;
+  _pages_v_blocks_card: typeof _pages_v_blocks_card;
   _pages_v_blocks_card_deck: typeof _pages_v_blocks_card_deck;
   _pages_v_blocks_collection: typeof _pages_v_blocks_collection;
   _pages_v: typeof _pages_v;
-  _pages_v_rels: typeof _pages_v_rels;
   tags: typeof tags;
+  skills: typeof skills;
   payload_jobs_log: typeof payload_jobs_log;
   payload_jobs: typeof payload_jobs;
   payload_locked_documents: typeof payload_locked_documents;
@@ -1381,17 +1494,18 @@ type DatabaseSchema = {
   relations_projects: typeof relations_projects;
   relations_pages_blocks_hero: typeof relations_pages_blocks_hero;
   relations_pages_blocks_project: typeof relations_pages_blocks_project;
+  relations_pages_blocks_card: typeof relations_pages_blocks_card;
   relations_pages_blocks_card_deck: typeof relations_pages_blocks_card_deck;
   relations_pages_blocks_collection: typeof relations_pages_blocks_collection;
-  relations_pages_rels: typeof relations_pages_rels;
   relations_pages: typeof relations_pages;
   relations__pages_v_blocks_hero: typeof relations__pages_v_blocks_hero;
   relations__pages_v_blocks_project: typeof relations__pages_v_blocks_project;
+  relations__pages_v_blocks_card: typeof relations__pages_v_blocks_card;
   relations__pages_v_blocks_card_deck: typeof relations__pages_v_blocks_card_deck;
   relations__pages_v_blocks_collection: typeof relations__pages_v_blocks_collection;
-  relations__pages_v_rels: typeof relations__pages_v_rels;
   relations__pages_v: typeof relations__pages_v;
   relations_tags: typeof relations_tags;
+  relations_skills: typeof relations_skills;
   relations_payload_jobs_log: typeof relations_payload_jobs_log;
   relations_payload_jobs: typeof relations_payload_jobs;
   relations_payload_locked_documents_rels: typeof relations_payload_locked_documents_rels;
