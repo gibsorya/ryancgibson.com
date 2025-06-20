@@ -1,5 +1,6 @@
 import React from "react";
-import { RichText } from "@payloadcms/richtext-lexical/react";
+import RichText from '@/components/RichText';
+import { hasText } from '@payloadcms/richtext-lexical/shared'
 import type { CardDeckBlock as CardDeckBlockProps } from "@/payload-types";
 import { ProjectBlock } from "../ProjectBlock/Component";
 import { CardBlock } from "../CardBlock/Component";
@@ -70,12 +71,14 @@ export const CardDeckBlock: React.FC<CardDeckBlockProps> = (props) => {
         "--max-columns": maxColumns,
     } as React.CSSProperties;
 
+    // const descriptionIsEmpty = !description || description.root.children.at(0)?. === 'paragraph' && description.root.children.at(0)?.children.at(0)?.text === ''
+
     return (
         <div
             className={`card-deck-block flex ${getInfoPositionClass()} ${getGapClass()}`}
             style={gridStyle}
         >
-            {(title || description) && <div
+            {(title || hasText(description)) && <div
                 className={`card-deck-info flex flex-col text-center gap-4 justify-center items-center`}
             >
                 {title && <h2 className="text-2xl font-bold uppercase">{title}</h2>}

@@ -5,7 +5,8 @@ import type { Media, Project, ProjectBlock as ProjectBlockProps, Tag } from '@/p
 import Image from 'next/image'
 
 import './styles.css'
-import { RichText } from '@payloadcms/richtext-lexical/react'
+import RichText from '@/components/RichText'
+import { hasText } from '@payloadcms/richtext-lexical/shared'
 
 export const ProjectBlock: React.FC<ProjectBlockProps> = (props) => {
     const { project } = props
@@ -45,7 +46,7 @@ export const ProjectBlock: React.FC<ProjectBlockProps> = (props) => {
             <div className={`project-content flex flex-col justify-center`}>
                 <div className="flex flex-col gap-2">
                     <h3 className="text-xl font-bold uppercase">{projectData.title}</h3>
-                    {projectData.description && <RichText data={projectData.description} />}
+                    {hasText(projectData.description) && <RichText data={projectData.description!} />}
                     <div className="flex flex-row gap-2">
                         {tags && tags.map((tag) => (
                             <span className="text-sm flex tag" key={tag.id}>{tag.name}</span>

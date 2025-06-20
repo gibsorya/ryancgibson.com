@@ -7,8 +7,6 @@ import { draftMode } from "next/headers";
 import React, { cache } from "react";
 // import { homeStatic } from "@/endpoints/seed/home-static";
 
-// import { RenderBlocks } from "@/blocks/RenderBlocks";
-// import { RenderHero } from "@/heros/RenderHero";
 // import { generateMeta } from "@/utilities/generateMeta";
 import PageClient from "./page.client";
 import { LivePreviewListener } from "@/components/LivePreviewListener";
@@ -49,24 +47,12 @@ export default async function Page({ params: paramsPromise }: Args) {
   const { slug = "home" } = await paramsPromise;
   const url = "/" + slug;
 
-  console.log("SLUG", slug)
 
   let page: RequiredDataFromCollectionSlug<"pages"> | null;
 
   page = await queryPageBySlug({
     slug,
   });
-
-  console.log("PAGE", page)
-
-  // Remove this code once your website is seeded
-  // if (!page && slug === "home") {
-  //   page = homeStatic;
-  // }
-
-  // if (!page) {
-  //   return <PayloadRedirects url={url} />;
-  // }
 
   const { layout } = page;
 

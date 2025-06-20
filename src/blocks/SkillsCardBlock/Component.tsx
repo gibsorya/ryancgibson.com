@@ -2,7 +2,8 @@
 
 import React, { useEffect, useState } from 'react'
 import type { Skill, SkillsCardBlock as SkillsCardBlockProps, Media } from '@/payload-types'
-import { RichText } from '@payloadcms/richtext-lexical/react'
+import RichText from '@/components/RichText'
+import { hasText } from '@payloadcms/richtext-lexical/shared'
 
 import './styles.css'
 
@@ -49,7 +50,7 @@ export const SkillsCardBlock: React.FC<SkillsCardBlockProps> = (props) => {
         <div className="skills-card-block">
             <div className="skills-card-block-content flex flex-col gap-2 h-full justify-start items-center text-center">
                 {title && <h2 className="skills-card-block-title text-white text-2xl lg:text-5xl uppercase">{title}</h2>}
-                {description && <RichText data={description} className='skills-card-block-description text-base xl:text-xl' />}
+                {hasText(description) && <RichText data={description!} className='skills-card-block-description text-base xl:text-xl' />}
                 {skillLists.map((skillList, index) => (
                     <SkillList key={index} {...skillList} svgContents={svgContents} />
                 ))}

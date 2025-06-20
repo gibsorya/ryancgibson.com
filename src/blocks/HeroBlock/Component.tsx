@@ -1,6 +1,8 @@
 import React from 'react'
 // import Image from 'next/image'
 import RichText from '@/components/RichText'
+import { hasText } from '@payloadcms/richtext-lexical/shared'
+
 
 import type { HeroBlock as HeroBlockProps } from '@/payload-types'
 
@@ -26,7 +28,7 @@ export const HeroBlock: React.FC<HeroBlockProps> = (props) => {
     return (
         <div className={`hero-block ${setAspectRatio()} flex flex-col justify-center items-center`}>
             {title && <h1 className="text-4xl font-bold underline">{title}</h1>}
-            {description && <RichText data={description} />}
+            {hasText(description) && <RichText data={description!} />}
             {/* {image && <Image src={imageUrl} alt={title} />} */}
         </div>
     )
