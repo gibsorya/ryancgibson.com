@@ -16,7 +16,7 @@ export const SkillsCardBlock: React.FC<SkillsCardBlockProps> = (props) => {
         const fetchSvgs = async () => {
             // Get all skills from all skill lists
             const allSkills = skillLists.flatMap(list => list.skills)
-            
+
             const svgPromises = allSkills
                 .filter(skill => {
                     const icon = skill.icon as Media
@@ -47,7 +47,7 @@ export const SkillsCardBlock: React.FC<SkillsCardBlockProps> = (props) => {
 
     return (
         <div className="skills-card-block">
-            <div className="skills-card-block-content flex flex-col gap-2 h-full justify-center items-center">
+            <div className="skills-card-block-content flex flex-col gap-2 h-full justify-start items-center text-center">
                 {title && <h2 className="skills-card-block-title text-white text-2xl lg:text-5xl uppercase">{title}</h2>}
                 {description && <RichText data={description} className='skills-card-block-description text-base xl:text-xl' />}
                 {skillLists.map((skillList, index) => (

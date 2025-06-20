@@ -1,5 +1,12 @@
 .skills-card-block {
     overflow: hidden;
+    padding: 4rem;
+}
+
+@media (max-width: 768px) {
+    .skills-card-block {
+        padding: 2rem;
+    }
 }
 
 @keyframes infiniteScroll {
