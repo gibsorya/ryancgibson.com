@@ -34,3 +34,13 @@ a.tag:hover {
     color: var(--color-tomato-red);
     cursor: pointer;
 }
+
+a.primary {
+    text-decoration: none;
+    font-weight: 700;
+}
+
+a.primary:hover {
+    color: var(--color-tomato-red);
+    transition: all 0.1s ease-in-out;
+}
