@@ -14,9 +14,11 @@ import { Projects } from './collections/Projects'
 import { Pages } from './collections/Pages'
 import { Tags } from './collections/Tags'
 import { Skills } from './collections/Skills'
+import { CallToActions } from './collections/CallToActions'
 
 // Blocks
 import { TypewriterBlock } from './blocks/TypewriterBlock/config'
+import { CallToActionBlock } from './blocks/CallToActionBlock/config'
 
 // Globals
 import { Header } from './globals/Header/config'
@@ -38,7 +40,8 @@ export default buildConfig({
     Projects,
     Pages,
     Tags,
-    Skills
+    Skills,
+    CallToActions
   ],
   globals: [
     Header,
@@ -49,7 +52,8 @@ export default buildConfig({
       ...defaultFeatures,
       BlocksFeature({
         blocks: [
-          TypewriterBlock
+          TypewriterBlock,
+          CallToActionBlock
         ]
       }),
       FixedToolbarFeature()

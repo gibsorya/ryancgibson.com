@@ -73,6 +73,7 @@ export interface Config {
     pages: Page;
     tags: Tag;
     skills: Skill;
+    callToActions: CallToAction;
     'payload-jobs': PayloadJob;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -86,6 +87,7 @@ export interface Config {
     pages: PagesSelect<false> | PagesSelect<true>;
     tags: TagsSelect<false> | TagsSelect<true>;
     skills: SkillsSelect<false> | SkillsSelect<true>;
+    callToActions: CallToActionsSelect<false> | CallToActionsSelect<true>;
     'payload-jobs': PayloadJobsSelect<false> | PayloadJobsSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -448,6 +450,18 @@ export interface CollectionBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "callToActions".
+ */
+export interface CallToAction {
+  id: number;
+  text?: string | null;
+  link?: string | null;
+  type?: ('primary' | 'secondary' | 'tertiary') | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-jobs".
  */
 export interface PayloadJob {
@@ -568,6 +582,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'skills';
         value: number | Skill;
+      } | null)
+    | ({
+        relationTo: 'callToActions';
+        value: number | CallToAction;
       } | null)
     | ({
         relationTo: 'payload-jobs';
@@ -855,6 +873,17 @@ export interface SkillsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "callToActions_select".
+ */
+export interface CallToActionsSelect<T extends boolean = true> {
+  text?: T;
+  link?: T;
+  type?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-jobs_select".
  */
 export interface PayloadJobsSelect<T extends boolean = true> {
@@ -1028,6 +1057,17 @@ export interface TypewriterBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'typewriter';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CallToActionBlock".
+ */
+export interface CallToActionBlock {
+  cta?: (number | null) | CallToAction;
+  overrideType?: ('primary' | 'secondary' | 'tertiary') | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'callToAction';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
