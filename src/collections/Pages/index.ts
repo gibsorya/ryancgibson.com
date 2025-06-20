@@ -15,7 +15,6 @@ import {
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
 import { revalidatePage } from './hooks/revalidatePage'
-import { Collection } from '@/blocks/CollectionBlock/config'
 
 export const Pages: CollectionConfig = {
   slug: 'pages',
@@ -51,7 +50,7 @@ export const Pages: CollectionConfig = {
               name: 'layout',
               type: 'blocks',
               required: false,
-              blocks: [Hero, CardDeck, Collection, Contact]
+              blocks: [Hero, CardDeck, Contact]
             }
           ]
         },

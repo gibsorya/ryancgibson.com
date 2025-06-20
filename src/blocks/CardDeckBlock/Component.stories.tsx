@@ -1,7 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 
-import { fn } from 'storybook/test';
-
 import { CardDeckBlock } from './Component';
 
 import { CardBlock } from '../CardBlock/Component';
@@ -40,7 +38,7 @@ export const FullWidthCards: Story = {
                                 version: 1
                             }, {
                             type: 'paragraph',
-                            children: [{ type: 'text', text: 'I’ve worked with both frontend and backend technologies, and I’ve helped architect systems that connect both ends of the tech stack. I also enjoy the design aspect of web dev, and have dabbled with tools like Figma to make my own creations.', version: 1 }],
+                            children: [{ type: 'text', text: 'I\'ve worked with both frontend and backend technologies, and I\'ve helped architect systems that connect both ends of the tech stack. I also enjoy the design aspect of web dev, and have dabbled with tools like Figma to make my own creations.', version: 1 }],
                             version: 1
                         }, {
                             type: 'paragraph',
@@ -57,15 +55,4 @@ export const FullWidthCards: Story = {
             }
         ]
     }
-}
-
-const AboutCard = () => {
-    return (
-        <CardBlock
-            title='About'
-            blockType='card'
-            description={null}
-            background='light'
-        />
-    )
 }

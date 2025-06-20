@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+// import type { Metadata } from "next";
 
 // import { PayloadRedirects } from "@/components/PayloadRedirects";
 import configPromise from "@payload-config";
@@ -45,12 +45,8 @@ type Args = {
 export default async function Page({ params: paramsPromise }: Args) {
   const { isEnabled: draft } = await draftMode();
   const { slug = "home" } = await paramsPromise;
-  const url = "/" + slug;
 
-
-  let page: RequiredDataFromCollectionSlug<"pages"> | null;
-
-  page = await queryPageBySlug({
+  const page: RequiredDataFromCollectionSlug<"pages"> | null = await queryPageBySlug({
     slug,
   });
 

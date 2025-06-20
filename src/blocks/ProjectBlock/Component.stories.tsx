@@ -1,10 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 
-import { fn } from 'storybook/test';
-
 import { ProjectBlock } from './Component';
-
-import { Project } from '@/payload-types';
 
 const meta = {
     title: 'Blocks/ProjectBlock',

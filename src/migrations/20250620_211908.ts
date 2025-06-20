@@ -1,6 +1,6 @@
 import { MigrateUpArgs, MigrateDownArgs, sql } from '@payloadcms/db-postgres'
 
-export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
+export async function up({ db }: MigrateUpArgs): Promise<void> {
   await db.execute(sql`
    CREATE TYPE "public"."enum_call_to_actions_type" AS ENUM('primary', 'secondary', 'tertiary');
   CREATE TABLE IF NOT EXISTS "pages_blocks_contact" (
@@ -97,7 +97,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX IF NOT EXISTS "payload_locked_documents_rels_call_to_actions_id_idx" ON "payload_locked_documents_rels" USING btree ("call_to_actions_id");`)
 }
 
-export async function down({ db, payload, req }: MigrateDownArgs): Promise<void> {
+export async function down({ db }: MigrateDownArgs): Promise<void> {
   await db.execute(sql`
    ALTER TABLE "pages_blocks_contact" DISABLE ROW LEVEL SECURITY;
   ALTER TABLE "_pages_v_blocks_contact" DISABLE ROW LEVEL SECURITY;

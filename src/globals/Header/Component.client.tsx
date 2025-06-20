@@ -5,7 +5,7 @@ import Link from 'next/link'
 import type { Header, Social } from '@/payload-types'
 
 import Logo from '@/components/Icons/Logo.svg'
-import GitHub from '@/components/Icons/GitHub.svg'
+import GitHub from '@/components/Icons/Github.svg'
 import LinkedIn from '@/components/Icons/LinkedIn.svg'
 
 import './styles.css'
