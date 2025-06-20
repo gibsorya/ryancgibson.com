@@ -1,0 +1,19 @@
+.typewriter-block-content-text-typed {
+    color: var(--typed-text-color);
+}
+
+.typedTextColor-tomato {
+    color: var(--color-tomato-red);
+}
+
+.typedTextColor-light-blue {
+    color: var(--color-light-blue);
+}
+
+.typedTextColor-white {
+    color: var(--color-white);
+}
+
+.typedTextColor-black {
+    color: var(--color-rich-black);
+}

@@ -1,0 +1,46 @@
+@import "tailwindcss";
+/* @import "typography.css"; */
+
+@theme {
+    --color-rich-black: #0E101B;
+    --color-tomato-red: #FE5148;
+    --color-light-blue: #C4E4E9;
+    --color-wenge-gray: #4D424A;
+}
+
+body {
+    background-color: var(--color-background);
+}
+
+.tag {
+    background-color: var(--color-rich-black);
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-weight: 500;
+    color: white;
+    letter-spacing: 0.05em;
+    width: fit-content;
+}
+
+.tag:hover {
+    background-color: var(--color-tomato-red);
+}
+
+a.tag {
+    text-decoration: none;
+}
+
+a.tag:hover {
+    color: var(--color-tomato-red);
+    cursor: pointer;
+}
+
+a.primary {
+    text-decoration: none;
+    font-weight: 700;
+}
+
+a.primary:hover {
+    color: var(--color-tomato-red);
+    transition: all 0.1s ease-in-out;
+}

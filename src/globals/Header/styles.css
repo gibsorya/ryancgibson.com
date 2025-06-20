@@ -1,0 +1,94 @@
+.header {
+    /* position: fixed; */
+    /* background-color: var(--color-wenge-gray); */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    padding: 10px 20px;
+    border-bottom: 5px solid var(--color-white);
+}
+
+.header-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* Mobile layout - center logo, socials at end */
+@media (max-width: 768px) {
+    .header-container {
+        justify-content: space-between;
+        align-items: center;
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+    }
+    
+    .nav-links {
+        display: none;
+    }
+    
+    .logo-link {
+        display: flex;
+        justify-content: center;
+        grid-column: 2;
+    }
+    
+    .social-links {
+        grid-column: 3;
+        justify-self: end;
+    }
+}
+
+/* Desktop layout - logo on left, nav on right */
+@media (min-width: 769px) {
+    .header-container {
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row;
+    }
+    
+    .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        /* Add your nav link styles here when you add them */
+    }
+    
+    .logo-link {
+        display: flex;
+        align-items: center;
+        order: -1; /* Ensures logo appears first (left side) */
+    }
+}
+
+.logo {
+    display: block;
+    width: 120px;
+}
+
+.logo .Logo_svg__text {
+    fill: #fff;
+}
+
+.logo:hover .Logo_svg__cls-1 {
+    stroke-width: 7px;
+    transition: stroke-width 0.3s ease-in-out;
+}
+
+.logo:hover .Logo_svg__text {
+    fill: var(--color-tomato-red);
+    transition: fill 0.3s ease-in-out;
+}
+
+.social-links svg {
+    width: 32px;
+    height: 32px;
+}
+
+.social-links svg:hover {
+    transform: scale(1.2);
+    fill: var(--color-tomato-red);
+    transition: transform 0.3s ease-in-out;
+}

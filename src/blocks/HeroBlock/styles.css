@@ -1,0 +1,10 @@
+.payload-richtext h2 {
+    font-size: 4rem;
+    line-height: 1.2;
+}
+
+@media (max-width: 768px) {
+    .payload-richtext h2 {
+        font-size: 2rem;
+    }
+}

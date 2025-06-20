@@ -1,58 +1,59 @@
 {
-  "homepage": "https://ryancgibson.com",
   "name": "ryancgibson.com",
-  "version": "0.1.15",
+  "version": "2.0.0",
   "private": true,
-  "dependencies": {
-    "@formspree/react": "^2.2.4",
-    "@fortawesome/fontawesome-svg-core": "^1.2.36",
-    "@fortawesome/free-brands-svg-icons": "^5.15.4",
-    "@fortawesome/free-solid-svg-icons": "^5.15.4",
-    "@fortawesome/react-fontawesome": "^0.1.15",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.5.0",
-    "@testing-library/user-event": "^7.1.2",
-    "pts": "^0.9.6",
-    "react": "^16.14.0",
-    "react-dom": "^16.14.0",
-    "react-icons": "^3.11.0",
-    "react-modal": "^3.14.3",
-    "react-particles-js": "^3.5.3",
-    "react-pts-canvas": "^0.2.9",
-    "react-router-dom": "^5.3.0",
-    "sass": "^1.44.0",
-    "semantic-ui-css": "^2.4.1",
-    "semantic-ui-react": "^0.88.2",
-    "tsparticles": "^1.33.3",
-    "zenscroll": "^4.0.2"
-  },
+  "type": "module",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "generate:types": "cross-env NODE_OPTIONS=--no-deprecation payload generate:types",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "ci": "payload migrate && npm build"
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "dependencies": {
+    "@payloadcms/db-postgres": "^3.38.0",
+    "@payloadcms/live-preview-react": "^3.38.0",
+    "@payloadcms/next": "^3.38.0",
+    "@payloadcms/payload-cloud": "^3.38.0",
+    "@payloadcms/plugin-form-builder": "latest",
+    "@payloadcms/plugin-nested-docs": "latest",
+    "@payloadcms/plugin-redirects": "latest",
+    "@payloadcms/plugin-seo": "latest",
+    "@payloadcms/richtext-lexical": "^3.38.0",
+    "@svgr/webpack": "^8.1.0",
+    "graphql": "^16.11.0",
+    "next": "15.3.2",
+    "payload": "^3.38.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tailwind-merge": "^3.3.1",
+    "typed.js": "^2.1.0"
   },
   "devDependencies": {
-    "file-loader": "^6.2.0",
-    "gh-pages": "^3.2.3",
-    "react-scripts": "3.3.1",
-    "gulp": "^4.0.2"
+    "@chromatic-com/storybook": "^4.0.0",
+    "@eslint/eslintrc": "^3",
+    "@storybook/addon-a11y": "^9.0.9",
+    "@storybook/addon-docs": "^9.0.9",
+    "@storybook/addon-onboarding": "^9.0.9",
+    "@storybook/addon-vitest": "^9.0.9",
+    "@storybook/nextjs-vite": "^9.0.9",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@vitest/browser": "^3.2.3",
+    "@vitest/coverage-v8": "^3.2.3",
+    "eslint": "^9",
+    "eslint-config-next": "15.3.2",
+    "eslint-plugin-storybook": "^9.0.9",
+    "playwright": "^1.53.0",
+    "postcss": "^8.5.5",
+    "storybook": "^9.0.9",
+    "tailwindcss": "^4",
+    "typescript": "^5",
+    "vitest": "^3.2.3"
   }
 }
