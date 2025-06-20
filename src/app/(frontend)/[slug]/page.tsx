@@ -13,27 +13,32 @@ import { LivePreviewListener } from "@/components/LivePreviewListener";
 import { RenderBlocks } from "@/blocks/RenderBlocks";
 
 export async function generateStaticParams() {
-  const payload = await getPayload({ config: configPromise });
-  const pages = await payload.find({
-    collection: "pages",
-    draft: false,
-    limit: 1000,
-    overrideAccess: false,
-    pagination: false,
-    select: {
-      slug: true,
-    },
-  });
-
-  const params = pages.docs
-    ?.filter((doc) => {
-      return doc.slug !== "home";
-    })
-    .map(({ slug }) => {
-      return { slug };
+  try {
+    const payload = await getPayload({ config: configPromise });
+    const pages = await payload.find({
+      collection: "pages",
+      draft: false,
+      limit: 1000,
+      overrideAccess: false,
+      pagination: false,
+      select: {
+        slug: true,
+      },
     });
 
-  return params;
+    const params = pages.docs
+      ?.filter((doc) => {
+        return doc.slug !== "home";
+      })
+      .map(({ slug }) => {
+        return { slug };
+      });
+
+    return params || [];
+  } catch (error) {
+    console.warn('Error generating static params:', error);
+    return [];
+  }
 }
 
 type Args = {
@@ -50,6 +55,18 @@ export default async function Page({ params: paramsPromise }: Args) {
     slug,
   });
 
+  // If page is null, return a simple fallback or throw an error
+  if (!page) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="text-center">
+          <h1 className="text-2xl font-bold mb-4">Page Not Found</h1>
+          <p className="text-gray-600">The requested page could not be found.</p>
+        </div>
+      </div>
+    );
+  }
+
   const { layout } = page;
 
   return (
@@ -61,7 +78,7 @@ export default async function Page({ params: paramsPromise }: Args) {
       {draft && <LivePreviewListener />}
 
       {/* <RenderHero {...hero} /> */}
-      <RenderBlocks blocks={layout} />
+      {layout && <RenderBlocks blocks={layout} />}
     </>
   );
 }
@@ -78,22 +95,27 @@ export default async function Page({ params: paramsPromise }: Args) {
 // }
 
 const queryPageBySlug = cache(async ({ slug }: { slug: string }) => {
-  const { isEnabled: draft } = await draftMode();
+  try {
+    const { isEnabled: draft } = await draftMode();
 
-  const payload = await getPayload({ config: configPromise });
+    const payload = await getPayload({ config: configPromise });
 
-  const result = await payload.find({
-    collection: "pages",
-    draft,
-    limit: 1,
-    pagination: false,
-    overrideAccess: draft,
-    where: {
-      slug: {
-        equals: slug,
+    const result = await payload.find({
+      collection: "pages",
+      draft,
+      limit: 1,
+      pagination: false,
+      overrideAccess: draft,
+      where: {
+        slug: {
+          equals: slug,
+        },
       },
-    },
-  });
+    });
 
-  return result.docs?.[0] || null;
+    return result.docs?.[0] || null;
+  } catch (error) {
+    console.warn('Error querying page by slug:', error);
+    return null;
+  }
 });
