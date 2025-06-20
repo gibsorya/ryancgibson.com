@@ -262,7 +262,7 @@ export interface Tag {
 export interface Page {
   id: number;
   title?: string | null;
-  layout?: (HeroBlock | CardDeckBlock | CollectionBlock)[] | null;
+  layout?: (HeroBlock | CardDeckBlock | CollectionBlock | ContactBlock)[] | null;
   meta?: {
     title?: string | null;
     /**
@@ -447,6 +447,32 @@ export interface CollectionBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'collection';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ContactBlock".
+ */
+export interface ContactBlock {
+  title?: string | null;
+  description?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  cta?: (number | null) | CallToAction;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'contact';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -744,6 +770,7 @@ export interface PagesSelect<T extends boolean = true> {
         hero?: T | HeroBlockSelect<T>;
         card_deck?: T | CardDeckBlockSelect<T>;
         collection?: T | CollectionBlockSelect<T>;
+        contact?: T | ContactBlockSelect<T>;
       };
   meta?:
     | T
@@ -847,6 +874,17 @@ export interface CollectionBlockSelect<T extends boolean = true> {
   description?: T;
   collection?: T;
   collectionInfoPosition?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ContactBlock_select".
+ */
+export interface ContactBlockSelect<T extends boolean = true> {
+  title?: T;
+  description?: T;
+  cta?: T;
   id?: T;
   blockName?: T;
 }
