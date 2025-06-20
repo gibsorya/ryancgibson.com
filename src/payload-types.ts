@@ -276,8 +276,23 @@ export interface Page {
  */
 export interface HeroBlock {
   title?: string | null;
-  description?: string | null;
-  image: number | Media;
+  description?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  image?: (number | null) | Media;
+  type?: ('text' | 'full' | 'banner') | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'hero';
@@ -393,7 +408,7 @@ export interface SkillsCardBlock {
 export interface Skill {
   id: number;
   name: string;
-  icon: number | Media;
+  icon?: (number | null) | Media;
   url?: string | null;
   updatedAt: string;
   createdAt: string;
@@ -728,6 +743,7 @@ export interface HeroBlockSelect<T extends boolean = true> {
   title?: T;
   description?: T;
   image?: T;
+  type?: T;
   id?: T;
   blockName?: T;
 }
@@ -910,6 +926,26 @@ export interface TaskSchedulePublish {
     user?: (number | null) | User;
   };
   output?: unknown;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TypewriterBlock".
+ */
+export interface TypewriterBlock {
+  content: {
+    text: string;
+    id?: string | null;
+  }[];
+  prefix?: string | null;
+  suffix?: string | null;
+  'text-type'?: ('h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p') | null;
+  'typed-text-color'?: ('default' | 'white' | 'black' | 'tomato' | 'light-blue') | null;
+  speed: number;
+  delay: number;
+  loop: boolean;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'typewriter';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

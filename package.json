@@ -27,7 +27,9 @@
     "next": "15.3.2",
     "payload": "^3.38.0",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "tailwind-merge": "^3.3.1",
+    "typed.js": "^2.1.0"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^4.0.0",
