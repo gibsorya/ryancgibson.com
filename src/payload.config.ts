@@ -18,6 +18,9 @@ import { Skills } from './collections/Skills'
 // Blocks
 import { TypewriterBlock } from './blocks/TypewriterBlock/config'
 
+// Globals
+import { Header } from './globals/Header/config'
+
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
@@ -35,6 +38,9 @@ export default buildConfig({
     Pages,
     Tags,
     Skills
+  ],
+  globals: [
+    Header
   ],
   editor: lexicalEditor({
     features: ({ defaultFeatures }) => [

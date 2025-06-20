@@ -1,6 +1,6 @@
 import { MigrateUpArgs, MigrateDownArgs, sql } from '@payloadcms/db-postgres'
 
-export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
+export async function up({ db }: MigrateUpArgs): Promise<void> {
   await db.execute(sql`
    CREATE TYPE "public"."enum_pages_blocks_hero_type" AS ENUM('text', 'full', 'banner');
   CREATE TYPE "public"."enum_pages_blocks_skill_list_scroll_direction" AS ENUM('left', 'right');
@@ -66,8 +66,8 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"skills_id" integer
   );
   
-  ALTER TABLE "pages_blocks_hero" ALTER COLUMN "description" SET DATA TYPE jsonb;
-  ALTER TABLE "_pages_v_blocks_hero" ALTER COLUMN "description" SET DATA TYPE jsonb;
+  ALTER TABLE "pages_blocks_hero" ALTER COLUMN "description" SET DATA TYPE jsonb USING description::jsonb;
+  ALTER TABLE "_pages_v_blocks_hero" ALTER COLUMN "description" SET DATA TYPE jsonb USING description::jsonb;
   ALTER TABLE "skills" ALTER COLUMN "icon_id" DROP NOT NULL;
   ALTER TABLE "pages_blocks_hero" ADD COLUMN "type" "enum_pages_blocks_hero_type" DEFAULT 'text';
   ALTER TABLE "_pages_v_blocks_hero" ADD COLUMN "type" "enum__pages_v_blocks_hero_type" DEFAULT 'text';
@@ -141,7 +141,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX IF NOT EXISTS "_pages_v_rels_skills_id_idx" ON "_pages_v_rels" USING btree ("skills_id");`)
 }
 
-export async function down({ db, payload, req }: MigrateDownArgs): Promise<void> {
+export async function down({ db }: MigrateDownArgs): Promise<void> {
   await db.execute(sql`
    ALTER TABLE "pages_blocks_skill_list" DISABLE ROW LEVEL SECURITY;
   ALTER TABLE "pages_blocks_skills_card" DISABLE ROW LEVEL SECURITY;
@@ -155,8 +155,8 @@ export async function down({ db, payload, req }: MigrateDownArgs): Promise<void>
   DROP TABLE "_pages_v_blocks_skill_list" CASCADE;
   DROP TABLE "_pages_v_blocks_skills_card" CASCADE;
   DROP TABLE "_pages_v_rels" CASCADE;
-  ALTER TABLE "pages_blocks_hero" ALTER COLUMN "description" SET DATA TYPE varchar;
-  ALTER TABLE "_pages_v_blocks_hero" ALTER COLUMN "description" SET DATA TYPE varchar;
+  ALTER TABLE "pages_blocks_hero" ALTER COLUMN "description" SET DATA TYPE varchar USING description::varchar;
+  ALTER TABLE "_pages_v_blocks_hero" ALTER COLUMN "description" SET DATA TYPE varchar USING description::varchar;
   ALTER TABLE "skills" ALTER COLUMN "icon_id" SET NOT NULL;
   ALTER TABLE "pages_blocks_hero" DROP COLUMN IF EXISTS "type";
   ALTER TABLE "_pages_v_blocks_hero" DROP COLUMN IF EXISTS "type";
