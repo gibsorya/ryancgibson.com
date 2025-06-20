@@ -1,7 +1,7 @@
 # Welcome
 
 This hosts my code for my personal site, ryancgibson.com.
-The project is built with [Next.js](https://nextjs.org) and [Payload CMS]('https://payloadcms.com').
+The project is built with [Next.js](https://nextjs.org) and [Payload CMS](https://payloadcms.com).
 
 ## Development
 
