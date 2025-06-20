@@ -5,6 +5,7 @@ import * as migration_20250617_204007_add_skills from './20250617_204007_add_ski
 import * as migration_20250617_205211_add_skills_url from './20250617_205211_add_skills_url';
 import * as migration_20250619_173353_add_types_to_hero from './20250619_173353_add_types_to_hero';
 import * as migration_20250620_174321 from './20250620_174321';
+import * as migration_20250620_211908 from './20250620_211908';
 
 export const migrations = [
   {
@@ -40,6 +41,11 @@ export const migrations = [
   {
     up: migration_20250620_174321.up,
     down: migration_20250620_174321.down,
-    name: '20250620_174321'
+    name: '20250620_174321',
+  },
+  {
+    up: migration_20250620_211908.up,
+    down: migration_20250620_211908.down,
+    name: '20250620_211908'
   },
 ];

@@ -23,6 +23,7 @@ import { CallToActionBlock } from './blocks/CallToActionBlock/config'
 // Globals
 import { Header } from './globals/Header/config'
 import { Footer } from './globals/Footer/config'
+import { Socials } from './globals/Socials'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -46,6 +47,7 @@ export default buildConfig({
   globals: [
     Header,
     Footer,
+    Socials
   ],
   editor: lexicalEditor({
     features: ({ defaultFeatures }) => [
