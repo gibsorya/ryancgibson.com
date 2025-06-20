@@ -1,5 +1,6 @@
 // storage-adapter-import-placeholder
 import { vercelPostgresAdapter } from '@payloadcms/db-vercel-postgres'
+import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob'
 import { payloadCloudPlugin } from '@payloadcms/payload-cloud'
 import { lexicalEditor, BlocksFeature, FixedToolbarFeature } from '@payloadcms/richtext-lexical'
 import path from 'path'
@@ -70,5 +71,17 @@ export default buildConfig({
   plugins: [
     payloadCloudPlugin(),
     // storage-adapter-placeholder
+    vercelBlobStorage({
+      collections: {
+        media: true
+      },
+      // Token provided by Vercel once Blob storage is added to your Vercel project
+      token: process.env.PRODUCTION_READ_WRITE_TOKEN || process.env.BLOB_READ_WRITE_TOKEN,
+    })
   ],
+  upload: {
+    limits: {
+      fileSize: 5000000, // 5MB, adjust as needed
+    },
+  },
 })
