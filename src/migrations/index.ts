@@ -7,6 +7,7 @@ import * as migration_20250619_173353_add_types_to_hero from './20250619_173353_
 import * as migration_20250620_174321 from './20250620_174321';
 import * as migration_20250620_211908 from './20250620_211908';
 import * as migration_20250620_232325 from './20250620_232325';
+import * as migration_20250621_003024 from './20250621_003024';
 
 export const migrations = [
   {
@@ -52,6 +53,11 @@ export const migrations = [
   {
     up: migration_20250620_232325.up,
     down: migration_20250620_232325.down,
-    name: '20250620_232325'
+    name: '20250620_232325',
+  },
+  {
+    up: migration_20250621_003024.up,
+    down: migration_20250621_003024.down,
+    name: '20250621_003024'
   },
 ];

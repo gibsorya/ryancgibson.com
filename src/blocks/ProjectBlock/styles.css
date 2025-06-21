@@ -1,7 +1,6 @@
 .project-block {
     border: 2px solid white;
     border-radius: 0.75rem;
-    color: white;
     position: relative;
     width: 100%;
     height: 100%;
@@ -16,8 +15,46 @@
     }
 }
 
-.project-block {
-    background: linear-gradient(171deg,rgba(77, 66, 74, 1) 0%, rgba(165, 74, 73, 1) 67%, rgba(254, 81, 72, 1) 100%);
+.project-block.white {
+    background: white;
+    color: var(--color-rich-black);
+}
+
+.project-block.white svg path {
+    fill: var(--color-rich-black);
+}
+
+.project-block.white .icon-link:hover svg path {
+    fill: var(--color-tomato-red);
+}
+
+.project-block.tomato-red {
+    background-color: var(--color-tomato-red);
+    color: white;
+}
+
+.project-block.light_blue {
+    background-color: var(--color-light-blue);
+    color: var(--color-rich-black);
+}
+
+.project-block.light_blue svg path {
+    fill: var(--color-rich-black);
+}
+
+.project-block.rich_black {
+    background-color: var(--color-rich-black);
+    color: white;
+    border: 2px solid var(--color-white);
+}
+
+.project-block.wenge-gray {
+    background-color: var(--color-wenge-gray);
+    color: white;
+}
+
+.project-block.black {
+    background: black;
 }
 
 .project-image {

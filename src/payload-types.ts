@@ -345,6 +345,7 @@ export interface CardDeckBlock {
 export interface ProjectBlock {
   project: number | Project;
   fullWidth?: boolean | null;
+  backgroundColor?: ('white' | 'tomato-red' | 'light_blue' | 'rich_black' | 'wenge-gray') | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'project';
@@ -801,6 +802,7 @@ export interface CardDeckBlockSelect<T extends boolean = true> {
 export interface ProjectBlockSelect<T extends boolean = true> {
   project?: T;
   fullWidth?: T;
+  backgroundColor?: T;
   id?: T;
   blockName?: T;
 }
