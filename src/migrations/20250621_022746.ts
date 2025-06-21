@@ -1,6 +1,6 @@
 import { MigrateUpArgs, MigrateDownArgs, sql } from '@payloadcms/db-vercel-postgres'
 
-export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
+export async function up({ db}: MigrateUpArgs): Promise<void> {
   await db.execute(sql`
    ALTER TABLE "media" ADD COLUMN "sizes_og_url" varchar;
   ALTER TABLE "media" ADD COLUMN "sizes_og_width" numeric;
@@ -11,7 +11,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX IF NOT EXISTS "media_sizes_og_sizes_og_filename_idx" ON "media" USING btree ("sizes_og_filename");`)
 }
 
-export async function down({ db, payload, req }: MigrateDownArgs): Promise<void> {
+export async function down({ db }: MigrateDownArgs): Promise<void> {
   await db.execute(sql`
    DROP INDEX IF EXISTS "media_sizes_og_sizes_og_filename_idx";
   ALTER TABLE "media" DROP COLUMN IF EXISTS "sizes_og_url";
