@@ -1,4 +1,4 @@
-// import type { Metadata } from "next";
+import type { Metadata } from "next";
 
 // import { PayloadRedirects } from "@/components/PayloadRedirects";
 import configPromise from "@payload-config";
@@ -7,7 +7,8 @@ import { draftMode } from "next/headers";
 import React, { cache } from "react";
 // import { homeStatic } from "@/endpoints/seed/home-static";
 
-// import { generateMeta } from "@/utilities/generateMeta";
+import { generateMeta } from "@/utilities/generateMeta";
+
 import PageClient from "./page.client";
 import { LivePreviewListener } from "@/components/LivePreviewListener";
 import { RenderBlocks } from "@/blocks/RenderBlocks";
@@ -83,16 +84,16 @@ export default async function Page({ params: paramsPromise }: Args) {
   );
 }
 
-// export async function generateMetadata({
-//   params: paramsPromise,
-// }: Args): Promise<Metadata> {
-//   const { slug = "home" } = await paramsPromise;
-//   const page = await queryPageBySlug({
-//     slug,
-//   });
+export async function generateMetadata({
+  params: paramsPromise,
+}: Args): Promise<Metadata> {
+  const { slug = "home" } = await paramsPromise;
+  const page = await queryPageBySlug({
+    slug,
+  });
 
-//   return generateMeta({ doc: page });
-// }
+  return generateMeta({ doc: page });
+}
 
 const queryPageBySlug = cache(async ({ slug }: { slug: string }) => {
   try {

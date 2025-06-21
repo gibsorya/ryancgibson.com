@@ -4,11 +4,19 @@ import './styles.css'
 import './typography.css'
 import { Header } from '@/globals/Header/Component'
 import { Footer } from '@/globals/Footer/Component'
+import { Metadata } from 'next/types'
+import { getServerSideURL } from '@/utilities/getURL'
+import { mergeOpenGraph } from '@/utilities/mergeOpenGraph'
 
-export const metadata = {
-  description: 'A blank template using Payload in a Next.js app.',
-  title: 'Payload Blank Template',
+export const metadata: Metadata = {
+  metadataBase: new URL(getServerSideURL()),
+  openGraph: mergeOpenGraph(),
+  twitter: {
+    card: 'summary_large_image',
+    creator: '@gibsorya',
+  },
 }
+
 
 export default async function RootLayout(props: { children: React.ReactNode }) {
   const { children } = props
