@@ -6,7 +6,7 @@
     height: 100%;
     transition: all 0.3s ease;
     overflow: hidden;
-    padding: 4rem 1.5rem;
+    padding: 2rem 1.5rem;
 }
 
 @media (max-width: 1024px) {
@@ -33,6 +33,11 @@
     color: white;
 }
 
+.project-block.tomato-red .tag:hover {
+    color: var(--color-rich-black);
+    background-color: var(--color-white);
+}
+
 .project-block.light_blue {
     background-color: var(--color-light-blue);
     color: var(--color-rich-black);
@@ -40,6 +45,10 @@
 
 .project-block.light_blue svg path {
     fill: var(--color-rich-black);
+}
+
+.project-block.light_blue .icon-link:hover svg path {
+    fill: var(--color-tomato-red);
 }
 
 .project-block.rich_black {
