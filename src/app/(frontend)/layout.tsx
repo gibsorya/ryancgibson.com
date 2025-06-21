@@ -8,8 +8,18 @@ import { Metadata } from 'next/types'
 import { getServerSideURL } from '@/utilities/getURL'
 import { mergeOpenGraph } from '@/utilities/mergeOpenGraph'
 
+// Ensure we have a valid URL for metadataBase
+const getValidMetadataBase = () => {
+  try {
+    return new URL(getServerSideURL())
+  } catch (error) {
+    console.warn('Invalid metadata base URL, falling back to localhost:', error)
+    return new URL('http://localhost:3000')
+  }
+}
+
 export const metadata: Metadata = {
-  metadataBase: new URL(getServerSideURL()),
+  metadataBase: getValidMetadataBase(),
   openGraph: mergeOpenGraph(),
   twitter: {
     card: 'summary_large_image',
