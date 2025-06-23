@@ -9,6 +9,7 @@ import { getServerSideURL } from '@/utilities/getURL'
 import { mergeOpenGraph } from '@/utilities/mergeOpenGraph'
 
 import { Analytics } from "@vercel/analytics/next"
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 // Ensure we have a valid URL for metadataBase
 const getValidMetadataBase = () => {
@@ -43,6 +44,7 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
         <main>{children}</main>
         <Footer />
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   )
