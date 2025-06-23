@@ -8,6 +8,8 @@ import { Metadata } from 'next/types'
 import { getServerSideURL } from '@/utilities/getURL'
 import { mergeOpenGraph } from '@/utilities/mergeOpenGraph'
 
+import { Analytics } from "@vercel/analytics/next"
+
 // Ensure we have a valid URL for metadataBase
 const getValidMetadataBase = () => {
   try {
@@ -40,6 +42,7 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
         <Header />
         <main>{children}</main>
         <Footer />
+        <Analytics />
       </body>
     </html>
   )
