@@ -49,7 +49,7 @@ export const ProjectBlock: React.FC<ProjectBlockProps> = (props) => {
                         <h3 className="text-xl font-bold uppercase">{projectData.title}</h3>
                         {hasText(projectData.description) && <RichText data={projectData.description!} />}
                     </div>
-                    <div className="flex flex-row gap-2">
+                    <div className="flex flex-row flex-wrap gap-2">
                         {tags && tags.map((tag) => (
                             <span className="text-sm flex tag" key={tag.id}>{tag.name}</span>
                         ))}
