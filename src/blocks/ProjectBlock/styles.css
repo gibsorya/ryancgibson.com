@@ -57,6 +57,20 @@
     border: 2px solid var(--color-white);
 }
 
+.project-block.rich_black .icon-link:hover svg path {
+    fill: var(--color-tomato-red);
+}
+
+.project-block.rich_black .tag {
+    color: var(--color-rich-black);
+    background-color: var(--color-white);
+}
+
+.project-block.rich_black .tag:hover {
+    color: var(--color-white);
+    background-color: var(--color-tomato-red);
+}
+
 .project-block.wenge-gray {
     background-color: var(--color-wenge-gray);
     color: white;
