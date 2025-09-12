@@ -10,6 +10,8 @@ import { buildConfig } from 'payload'
 import { fileURLToPath } from 'url'
 import sharp from 'sharp'
 
+import { migrations } from './migrations'
+
 
 import { Page } from '@/payload-types'
 
@@ -86,7 +88,9 @@ export default buildConfig({
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
   },
-  db: vercelPostgresAdapter(),
+  db: vercelPostgresAdapter({
+        prodMigrations: migrations
+    }),
   sharp,
   plugins: [
     payloadCloudPlugin(),
