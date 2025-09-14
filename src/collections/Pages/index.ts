@@ -23,6 +23,7 @@ export const Pages: CollectionConfig = {
   },
   admin: {
     useAsTitle: 'title',
+    group: 'Pages',
     // livePreview: {
     //     url: ({ data, req }) => {
     //         const path = generatePreviewPath({

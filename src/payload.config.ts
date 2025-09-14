@@ -23,6 +23,7 @@ import { Pages } from './collections/Pages'
 import { Tags } from './collections/Tags'
 import { Skills } from './collections/Skills'
 import { CallToActions } from './collections/CallToActions'
+import { Articles } from './collections/Articles'
 
 // Blocks
 import { TypewriterBlock } from './blocks/TypewriterBlock/config'
@@ -65,7 +66,8 @@ export default buildConfig({
     Pages,
     Tags,
     Skills,
-    CallToActions
+    CallToActions,
+    Articles
   ],
   globals: [
     Header,
@@ -103,7 +105,7 @@ export default buildConfig({
       token: process.env.PRODUCTION_READ_WRITE_TOKEN || process.env.BLOB_READ_WRITE_TOKEN,
     }),
     seoPlugin({
-      collections: [Pages],
+      collections: [Pages, Articles],
       uploadsCollection: 'media',
       generateTitle,
       generateURL,
