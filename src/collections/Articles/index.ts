@@ -19,6 +19,7 @@ import {
 
 import { authenticatedOrPublished } from "@/access/authenticatedOrPublished";
 import { slugField } from "@/fields/slug";
+import { revalidateArticle } from "./hooks/revalidateArticle";
 
 export const Articles: CollectionConfig = {
     slug: "articles",
@@ -97,5 +98,22 @@ export const Articles: CollectionConfig = {
                 },
             ],
         },
+        {
+            name: 'publishedAt',
+            type: 'date',
+            admin: { position: 'sidebar', },
+        }
     ],
+    hooks: {
+        afterChange: [revalidateArticle],
+    },
+    versions: {
+        drafts: {
+        autosave: {
+            interval: 100,
+            },
+            schedulePublish: true,
+        },
+        maxPerDoc: 50
+    }
 };
