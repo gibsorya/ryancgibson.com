@@ -39,9 +39,9 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
       <head>
         <link rel="stylesheet" href="https://use.typekit.net/tlz4jrd.css" />
       </head>
-      <body>
+      <body className="flex flex-col min-h-screen">
         <Header />
-        <main>{children}</main>
+        <main className='grow'>{children}</main>
         <Footer />
         <Analytics />
         <SpeedInsights />
