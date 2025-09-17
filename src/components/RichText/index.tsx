@@ -15,14 +15,17 @@ import {
 
 import type {
   TypewriterBlock as TypewriterBlockProps,
+  QuoteBlock as QuoteBlockProps,
 } from "@/payload-types";
 import { TypewriterBlock } from "@/blocks/TypewriterBlock/Component";
+import { QuoteBlock } from "@/blocks/QuoteBlock/Component";
 import { cn } from "@/utilities/ui";
+
 
 type NodeTypes =
   | DefaultNodeTypes
   | SerializedBlockNode<
-      TypewriterBlockProps
+      TypewriterBlockProps | QuoteBlockProps
     >;
 
 const internalDocToHref = ({ linkNode }: { linkNode: SerializedLinkNode }) => {
@@ -41,7 +44,7 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({
   ...LinkJSXConverter({ internalDocToHref }),
   blocks: {
     typewriter: ({ node }) => <TypewriterBlock {...node.fields} />,
-  },
+    quote: ({ node }) => <QuoteBlock {...node.fields} /> },
 });
 
 type Props = {

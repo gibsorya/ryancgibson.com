@@ -28,6 +28,7 @@ import { Articles } from './collections/Articles'
 // Blocks
 import { TypewriterBlock } from './blocks/TypewriterBlock/config'
 import { CallToActionBlock } from './blocks/CallToActionBlock/config'
+import { QuoteBlock } from './blocks/QuoteBlock/config'
 
 // Globals
 import { Header } from './globals/Header/config'
@@ -80,7 +81,8 @@ export default buildConfig({
       BlocksFeature({
         blocks: [
           TypewriterBlock,
-          CallToActionBlock
+          CallToActionBlock,
+          QuoteBlock
         ]
       }),
       FixedToolbarFeature()
