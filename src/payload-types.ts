@@ -479,6 +479,7 @@ export interface CallToAction {
 export interface Article {
   id: number;
   title?: string | null;
+  author?: string | null;
   slug?: string | null;
   slugLock?: boolean | null;
   heroImage?: (number | null) | Media;
@@ -952,6 +953,7 @@ export interface CallToActionsSelect<T extends boolean = true> {
  */
 export interface ArticlesSelect<T extends boolean = true> {
   title?: T;
+  author?: T;
   slug?: T;
   slugLock?: T;
   heroImage?: T;

@@ -36,6 +36,11 @@ export const Articles: CollectionConfig = {
             name: "title",
             type: "text",
         },
+        {
+            name: "author",
+            type: "text",
+            defaultValue: "Ryan Gibson"
+        },
         ...slugField(),
         {
             type: "tabs",
