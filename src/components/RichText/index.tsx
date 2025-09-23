@@ -11,7 +11,7 @@ import {
   RichText as ConvertRichText,
 } from "@payloadcms/richtext-lexical/react";
 
-// import { CodeBlock, CodeBlockProps } from "@/blocks/Code/Component";
+import { CodeBlock, CodeBlockProps } from "@/blocks/CodeBlock/Component";
 
 import type {
   TypewriterBlock as TypewriterBlockProps,
@@ -25,7 +25,7 @@ import { cn } from "@/utilities/ui";
 type NodeTypes =
   | DefaultNodeTypes
   | SerializedBlockNode<
-      TypewriterBlockProps | QuoteBlockProps
+      TypewriterBlockProps | QuoteBlockProps | CodeBlockProps
     >;
 
 const internalDocToHref = ({ linkNode }: { linkNode: SerializedLinkNode }) => {
@@ -44,7 +44,8 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({
   ...LinkJSXConverter({ internalDocToHref }),
   blocks: {
     typewriter: ({ node }) => <TypewriterBlock {...node.fields} />,
-    quote: ({ node }) => <QuoteBlock {...node.fields} /> },
+    quote: ({ node }) => <QuoteBlock {...node.fields} />,
+    code: ({ node }) => <CodeBlock {...node.fields} /> }
 });
 
 type Props = {
