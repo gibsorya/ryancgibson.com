@@ -23,10 +23,13 @@ import { Pages } from './collections/Pages'
 import { Tags } from './collections/Tags'
 import { Skills } from './collections/Skills'
 import { CallToActions } from './collections/CallToActions'
+import { Articles } from './collections/Articles'
 
 // Blocks
 import { TypewriterBlock } from './blocks/TypewriterBlock/config'
 import { CallToActionBlock } from './blocks/CallToActionBlock/config'
+import { QuoteBlock } from './blocks/QuoteBlock/config'
+import { CodeBlock } from './blocks/CodeBlock/config'
 
 // Globals
 import { Header } from './globals/Header/config'
@@ -65,7 +68,8 @@ export default buildConfig({
     Pages,
     Tags,
     Skills,
-    CallToActions
+    CallToActions,
+    Articles
   ],
   globals: [
     Header,
@@ -78,7 +82,9 @@ export default buildConfig({
       BlocksFeature({
         blocks: [
           TypewriterBlock,
-          CallToActionBlock
+          CallToActionBlock,
+          QuoteBlock,
+          CodeBlock
         ]
       }),
       FixedToolbarFeature()
@@ -103,7 +109,7 @@ export default buildConfig({
       token: process.env.PRODUCTION_READ_WRITE_TOKEN || process.env.BLOB_READ_WRITE_TOKEN,
     }),
     seoPlugin({
-      collections: [Pages],
+      collections: [Pages, Articles],
       uploadsCollection: 'media',
       generateTitle,
       generateURL,

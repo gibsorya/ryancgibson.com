@@ -2,6 +2,7 @@ import React from 'react'
 import './globals.css'
 import './styles.css'
 import './typography.css'
+import './article-styles.css'
 import { Header } from '@/globals/Header/Component'
 import { Footer } from '@/globals/Footer/Component'
 import { Metadata } from 'next/types'
@@ -39,9 +40,9 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
       <head>
         <link rel="stylesheet" href="https://use.typekit.net/tlz4jrd.css" />
       </head>
-      <body>
+      <body className="flex flex-col min-h-screen">
         <Header />
-        <main>{children}</main>
+        <main className='grow'>{children}</main>
         <Footer />
         <Analytics />
         <SpeedInsights />

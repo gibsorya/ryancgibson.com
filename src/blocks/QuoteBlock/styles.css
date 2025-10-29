@@ -1,0 +1,28 @@
+blockquote {
+    font-style: italic;
+    padding: 1.2em 30px 1.2em 75px;
+    border-left: 8px solid var(--color-tomato-red);
+    position: relative;
+    background-color: rgb(from var(--color-light-blue) r g b / 0.1);
+}
+
+blockquote::before {
+    content: "\201C";
+    color: var(--color-tomato-red);
+    font-size: 4em;
+    position: absolute;
+    left: 10px;
+    top: -10px;
+    font-family: 'Oswald';
+    font-size: 5.5rem;
+}
+
+blockquote::after {
+    content: "";
+}
+
+blockquote span {
+    display: block;
+    font-weight: bold;
+    margin-top: 1rem;
+}
