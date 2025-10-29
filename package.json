@@ -17,7 +17,7 @@
     "@payloadcms/db-postgres": "^3.38.0",
     "@payloadcms/db-vercel-postgres": "3.38.0",
     "@payloadcms/live-preview-react": "^3.38.0",
-    "@payloadcms/next": "^3.38.0",
+    "@payloadcms/next": "^3.44.0",
     "@payloadcms/payload-cloud": "^3.38.0",
     "@payloadcms/plugin-form-builder": "latest",
     "@payloadcms/plugin-nested-docs": "latest",
