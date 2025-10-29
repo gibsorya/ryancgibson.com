@@ -3,6 +3,7 @@ import { authenticatedOrPublished } from '@/access/authenticatedOrPublished'
 import { CardDeck } from '@/blocks/CardDeckBlock/config'
 import { Hero } from '@/blocks/HeroBlock/config'
 import { Contact } from '@/blocks/ContactBlock/config'
+import { ArticleList } from '@/blocks/ArticleListBlock/config'
 
 import { slugField } from '@/fields/slug'
 import type { CollectionConfig } from 'payload'
@@ -51,7 +52,7 @@ export const Pages: CollectionConfig = {
               name: 'layout',
               type: 'blocks',
               required: false,
-              blocks: [Hero, CardDeck, Contact]
+              blocks: [Hero, CardDeck, Contact, ArticleList]
             }
           ]
         },

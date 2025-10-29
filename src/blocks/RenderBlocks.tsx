@@ -4,11 +4,13 @@ import type { Page } from "@/payload-types";
 import { HeroBlock } from "./HeroBlock/Component";
 import { CardDeckBlock } from "./CardDeckBlock/Component"
 import { ContactBlock } from "./ContactBlock/Component";
+import { ArticleListBlock } from "./ArticleListBlock/Component";
 
 const blockComponents = {
   hero: HeroBlock,
   card_deck: CardDeckBlock,
   contact: ContactBlock,
+  article_list: ArticleListBlock,
 };
 
 export const RenderBlocks: React.FC<{ blocks: Page["layout"] }> = (props) => {

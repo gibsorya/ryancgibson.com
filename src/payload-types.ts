@@ -274,7 +274,7 @@ export interface Tag {
 export interface Page {
   id: number;
   title?: string | null;
-  layout?: (HeroBlock | CardDeckBlock | ContactBlock)[] | null;
+  layout?: (HeroBlock | CardDeckBlock | ContactBlock | ArticleListBlock)[] | null;
   meta?: {
     title?: string | null;
     /**
@@ -471,6 +471,17 @@ export interface CallToAction {
   type?: ('primary' | 'secondary' | 'tertiary') | null;
   updatedAt: string;
   createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ArticleListBlock".
+ */
+export interface ArticleListBlock {
+  featuredArticle?: (number | null) | Article;
+  showImages?: boolean | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'article_list';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -809,6 +820,7 @@ export interface PagesSelect<T extends boolean = true> {
         hero?: T | HeroBlockSelect<T>;
         card_deck?: T | CardDeckBlockSelect<T>;
         contact?: T | ContactBlockSelect<T>;
+        article_list?: T | ArticleListBlockSelect<T>;
       };
   meta?:
     | T
@@ -912,6 +924,16 @@ export interface ContactBlockSelect<T extends boolean = true> {
   title?: T;
   description?: T;
   cta?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ArticleListBlock_select".
+ */
+export interface ArticleListBlockSelect<T extends boolean = true> {
+  featuredArticle?: T;
+  showImages?: T;
   id?: T;
   blockName?: T;
 }
