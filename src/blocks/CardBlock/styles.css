@@ -13,6 +13,10 @@
     color: var(--color-rich-black);
 }
 
+.card-block.dark-background {
+    background-color: var(--color-rich-black);
+}
+
 /* .card-block-content .card-block-description {
     @apply 
 } */
