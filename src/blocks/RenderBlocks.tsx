@@ -20,21 +20,20 @@ export const RenderBlocks: React.FC<{ blocks: Page["layout"] }> = (props) => {
 
   const getBlockPaddingClass = (block: NonNullable<Page["layout"]>[number]) => {
     if ('padding' in block && block.padding) {
-      console.log(block.padding)
       switch(block.padding) {
         case 'small':
-          return 'px-4'
+          return 'p-2 md:p-4'
         case 'medium':
-          return 'px-8'
+          return 'p-4 md:p-8'
         case 'large':
-          return 'px-16'
+          return 'p-8 md:p-16'
         case 'none':
-          return 'px-0'
+          return 'p-0'
         default:
-          return 'px-4'
+          return 'p-2 md:p-4'
       }
     }
-    return 'px-4' // Default padding if no padding is specified
+    return 'p-2 md:p-4' // Default padding if no padding is specified
   }
 
   if (hasBlocks) {

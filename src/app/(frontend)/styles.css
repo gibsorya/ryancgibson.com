@@ -33,6 +33,11 @@ body {
   }
 }
 
+section:last-child {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
 img {
   max-width: 100%;
   height: auto;
