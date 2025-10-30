@@ -13,8 +13,8 @@ const blockComponents = {
   article_list: ArticleListBlock,
 };
 
-export const RenderBlocks: React.FC<{ blocks: Page["layout"] }> = (props) => {
-  const { blocks } = props;
+export const RenderBlocks: React.FC<{ blocks: Page["layout"], enableBorders: Page["enableBorders"] }> = (props) => {
+  const { blocks, enableBorders } = props;
 
   const hasBlocks = blocks && Array.isArray(blocks) && blocks.length > 0;
 
@@ -47,7 +47,7 @@ export const RenderBlocks: React.FC<{ blocks: Page["layout"] }> = (props) => {
 
             if (Block) {
               return (
-                <section className={`mb-4 ${getBlockPaddingClass(block)} section-${blockType}`} key={index}>
+                <section className={`${getBlockPaddingClass(block)} section-${blockType} ${enableBorders && "borders"}`} key={index}>
                   {/* @ts-expect-error there may be some mismatch between the expected types here */}
                   <Block {...block} disableInnerContainer />
                 </section>

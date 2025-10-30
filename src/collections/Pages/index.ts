@@ -92,7 +92,15 @@ export const Pages: CollectionConfig = {
         position: 'sidebar',
       },
     },
-    ...slugField()
+    ...slugField(),
+    {
+      name: 'enableBorders',
+      type: 'checkbox',
+      label: 'Enable borders between sections and cards',
+      admin: {
+        position: 'sidebar',
+      },
+    },
   ],
   hooks: {
     afterChange: [revalidatePage],

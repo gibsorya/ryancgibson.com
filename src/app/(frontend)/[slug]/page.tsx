@@ -68,7 +68,7 @@ export default async function Page({ params: paramsPromise }: Args) {
     );
   }
 
-  const { layout } = page;
+  const { layout, enableBorders } = page;
 
   return (
     <>
@@ -79,7 +79,7 @@ export default async function Page({ params: paramsPromise }: Args) {
       {draft && <LivePreviewListener />}
 
       {/* <RenderHero {...hero} /> */}
-      {layout && <RenderBlocks blocks={layout} />}
+      {layout && <RenderBlocks blocks={layout} enableBorders={enableBorders} />}
     </>
   );
 }
