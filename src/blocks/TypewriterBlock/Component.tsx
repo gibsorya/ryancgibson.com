@@ -30,6 +30,6 @@ export const TypewriterBlock: React.FC<TypewriterBlockProps> = (props) => {
     const TAG = textType === 'h1' ? 'h1' : textType === 'h2' ? 'h2' : textType === 'h3' ? 'h3' : textType === 'h4' ? 'h4' : textType === 'h5' ? 'h5' : textType === 'h6' ? 'h6' : 'p'
 
     return (
-        <TAG className='typewriter-block-content-text @max-xl:!text-4xl'>{prefix} <span className={`typedTextColor-${typedTextColor} typewriter-block-content-text-typed`} ref={typedRef}></span> {suffix}</TAG>
+        <TAG className='typewriter-block-content-text @max-xl:text-4xl!'>{prefix} <span className={`typedTextColor-${typedTextColor} typewriter-block-content-text-typed`} ref={typedRef}></span> {suffix}</TAG>
     )
 }

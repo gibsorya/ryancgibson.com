@@ -4,7 +4,7 @@ import {
     sql,
 } from "@payloadcms/db-vercel-postgres";
 
-export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
+export async function up({ db }: MigrateUpArgs): Promise<void> {
     await db.execute(sql`
    CREATE TABLE IF NOT EXISTS "articles" (
   	"id" serial PRIMARY KEY NOT NULL,
@@ -52,9 +52,7 @@ CREATE POLICY public_articles_read_policy ON "articles" FOR SELECT USING (true);
 }
 
 export async function down({
-    db,
-    payload,
-    req,
+    db
 }: MigrateDownArgs): Promise<void> {
     await db.execute(sql`
    ALTER TABLE "articles" DISABLE ROW LEVEL SECURITY;
