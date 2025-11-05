@@ -30,7 +30,7 @@ CREATE POLICY "public_read__articles_v" on _articles_v FOR SELECT USING (true);
 
 ALTER TABLE header_nav_items ENABLE ROW LEVEL SECURITY;
 
-CREATE POLICY "public_read_header_nav_items" ON header_nav_tiems FOR SELECT USING (true);
+CREATE POLICY "public_read_header_nav_items" ON header_nav_items FOR SELECT USING (true);
   
   ALTER TABLE "articles" ADD COLUMN "published_at" timestamp(3) with time zone;
   ALTER TABLE "articles" ADD COLUMN "_status" "enum_articles_status" DEFAULT 'draft';
