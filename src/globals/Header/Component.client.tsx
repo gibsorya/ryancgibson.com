@@ -7,7 +7,6 @@ import type { Header, Social } from '@/payload-types'
 import Logo from '@/components/Icons/Logo.svg'
 import GitHub from '@/components/Icons/Github.svg'
 import LinkedIn from '@/components/Icons/LinkedIn.svg'
-import { CMSLink } from '@/components/Links'
 
 import './styles.css'
 import { HeaderNav } from './Nav'

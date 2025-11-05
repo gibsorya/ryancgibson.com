@@ -28,7 +28,7 @@ export const CMSLink: React.FC<CMSLinkType> = (props) => {
         label,
         newTab,
         reference,
-        size: sizeFromProps,
+        // size: sizeFromProps,
         url,
     } = props;
 

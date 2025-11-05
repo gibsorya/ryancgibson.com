@@ -42,9 +42,8 @@ type Args = {
 };
 
 export default async function Page({ params: paramsPromise }: Args) {
-  const { isEnabled: draft } = await draftMode();
+  // const { isEnabled: draft } = await draftMode();
   const { slug = "" } = await paramsPromise;
-  const url = "/blog/" + slug;
   const article = await queryPostBySlug({ slug });
 
   if (!article) {
@@ -97,3 +96,12 @@ const queryPostBySlug = cache(async ({ slug }: { slug: string }) => {
 
   return result.docs?.[0] || null;
 });
+
+export async function generateMetadata({ params: paramsPromise }: Args): Promise<Metadata> {
+  const { slug = '' } = await paramsPromise
+  // Decode to support slugs with special characters
+  const decodedSlug = decodeURIComponent(slug)
+  const post = await queryPostBySlug({ slug: decodedSlug })
+
+  return generateMeta({ doc: post })
+}

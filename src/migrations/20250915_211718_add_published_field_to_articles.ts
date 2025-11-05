@@ -1,6 +1,6 @@
 import { MigrateUpArgs, MigrateDownArgs, sql } from '@payloadcms/db-vercel-postgres'
 
-export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
+export async function up({ db }: MigrateUpArgs): Promise<void> {
   await db.execute(sql`
    CREATE TYPE "public"."enum_articles_status" AS ENUM('draft', 'published');
   CREATE TYPE "public"."enum__articles_v_version_status" AS ENUM('draft', 'published');
@@ -66,7 +66,7 @@ CREATE POLICY "public_read_header_nav_items" ON header_nav_items FOR SELECT USIN
   CREATE INDEX IF NOT EXISTS "articles__status_idx" ON "articles" USING btree ("_status");`)
 }
 
-export async function down({ db, payload, req }: MigrateDownArgs): Promise<void> {
+export async function down({ db }: MigrateDownArgs): Promise<void> {
   await db.execute(sql`
    ALTER TABLE "_articles_v" DISABLE ROW LEVEL SECURITY;
   DROP TABLE "_articles_v" CASCADE;
