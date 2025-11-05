@@ -28,7 +28,7 @@ export default function ArticleListClient(props: ArticleListClientProps) {
                         {article.meta && article.meta.description && (
                             <p>{article.meta.description}</p>
                         )}
-                        {article.slug && <Link className='button button-primary w-fit' href={article.slug!}>Read More</Link>}
+                        {article.slug && <Link className='button button-primary w-fit' href={`blog/${article.slug!}`}>Read More</Link>}
                     </div>
                 );
             })

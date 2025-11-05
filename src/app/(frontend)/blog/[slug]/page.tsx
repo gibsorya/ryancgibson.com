@@ -59,7 +59,7 @@ export default async function Page({ params: paramsPromise }: Args) {
       </div>
     );
   }
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    const options: Intl.DateTimeFormatOptions  = { year: 'numeric', month: 'long', day: 'numeric' };
     const date = new Date(article.publishedAt!);
     const fullDate = date.toLocaleDateString("en-US", options);
   return (

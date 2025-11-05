@@ -7,8 +7,10 @@ import type { Header, Social } from '@/payload-types'
 import Logo from '@/components/Icons/Logo.svg'
 import GitHub from '@/components/Icons/Github.svg'
 import LinkedIn from '@/components/Icons/LinkedIn.svg'
+import { CMSLink } from '@/components/Links'
 
 import './styles.css'
+import { HeaderNav } from './Nav'
 
 interface HeaderClientProps {
     data: Header
@@ -18,18 +20,16 @@ interface HeaderClientProps {
 export const HeaderClient: React.FC<HeaderClientProps> = ({ data, socials }) => {
     return (
         <header className='header'>
-            <div className='header-container'>
+            <div className='header-container relative'>
                 {/* Navigation links will go here */}
-                <nav className='nav-links'>
-                    {/* Future nav links will be added here */}
-                </nav>
+                <HeaderNav data={data} />
 
-                <Link href={data.logoLink || '/'} className='logo-link'>
+                <Link href={data.logoLink || '/'} className='logo-link z-10'>
                     {/* <Image src={data.logo.url} alt={data.logo.alt} width={data.logo.width} height={data.logo.height} /> */}
                     <Logo className='logo' />
                 </Link>
 
-                <div className='social-links flex flex-row gap-2'>
+                <div className='social-links flex flex-row gap-2 z-10'>
                     {socials?.github && <Link href={socials.github}><GitHub /></Link>}
                     {socials?.linkedin && <Link href={socials.linkedin}><LinkedIn /></Link>}
                 </div>
