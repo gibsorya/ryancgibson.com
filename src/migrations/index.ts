@@ -13,6 +13,7 @@ import * as migration_20250912_161639_add_row_level_security from './20250912_16
 import * as migration_20250914_210906_add_articles from './20250914_210906_add_articles';
 import * as migration_20250915_211718_add_published_field_to_articles from './20250915_211718_add_published_field_to_articles';
 import * as migration_20250917_210054_add_authors_to_articles from './20250917_210054_add_authors_to_articles';
+import * as migration_20251105_202720 from './20251105_202720';
 
 export const migrations = [
   {
@@ -88,6 +89,11 @@ export const migrations = [
   {
     up: migration_20250917_210054_add_authors_to_articles.up,
     down: migration_20250917_210054_add_authors_to_articles.down,
-    name: '20250917_210054_add_authors_to_articles'
+    name: '20250917_210054_add_authors_to_articles',
+  },
+  {
+    up: migration_20251105_202720.up,
+    down: migration_20251105_202720.down,
+    name: '20251105_202720'
   },
 ];
