@@ -1,7 +1,7 @@
 import type { CollectionConfig } from "payload";
 
 import {
-    BlocksFeature,
+    // BlocksFeature,
     FixedToolbarFeature,
     HeadingFeature,
     HorizontalRuleFeature,
