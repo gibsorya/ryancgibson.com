@@ -15,6 +15,7 @@ import * as migration_20250915_211718_add_published_field_to_articles from './20
 import * as migration_20250917_210054_add_authors_to_articles from './20250917_210054_add_authors_to_articles';
 import * as migration_20251105_202720 from './20251105_202720';
 import * as migration_20251105_205402 from './20251105_205402';
+import * as migration_20251106_214327_add_background_colors_for_skills from './20251106_214327_add_background_colors_for_skills';
 
 export const migrations = [
   {
@@ -100,6 +101,11 @@ export const migrations = [
   {
     up: migration_20251105_205402.up,
     down: migration_20251105_205402.down,
-    name: '20251105_205402'
+    name: '20251105_205402',
+  },
+  {
+    up: migration_20251106_214327_add_background_colors_for_skills.up,
+    down: migration_20251106_214327_add_background_colors_for_skills.down,
+    name: '20251106_214327_add_background_colors_for_skills'
   },
 ];
