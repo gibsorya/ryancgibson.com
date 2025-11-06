@@ -17,6 +17,20 @@
     background-color: var(--color-rich-black);
 }
 
+.card-block.light-background {
+    background-color: var(--color-white);
+    color: var(--color-rich-black);
+}
+
+.card-block.tomato-red-background {
+    background-color: var(--color-tomato-red);
+    color: var(--color-rich-black);
+}
+
+.card-block.wenge-gray-background {
+    background-color: var(--color-wenge-gray);
+}
+
 /* .card-block-content .card-block-description {
     @apply 
 } */

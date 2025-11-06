@@ -8,7 +8,7 @@ import { hasText } from '@payloadcms/richtext-lexical/shared'
 import './styles.css'
 
 export const SkillsCardBlock: React.FC<SkillsCardBlockProps> = (props) => {
-    const { title, description, 'skill-lists': skillListsData } = props
+    const { title, description, 'skill-lists': skillListsData, background } = props
     const [svgContents, setSvgContents] = useState<Record<string, string>>({})
 
     const skillLists = skillListsData as SkillList[]
@@ -47,7 +47,7 @@ export const SkillsCardBlock: React.FC<SkillsCardBlockProps> = (props) => {
     }, [skillLists])
 
     return (
-        <div className="skills-card-block">
+        <div className={`skills-card-block ${background ? background : 'dark'}-background`}>
             <div className="skills-card-block-content flex flex-col gap-2 h-full justify-start items-center text-center">
                 {title && <h2 className="skills-card-block-title text-white text-2xl lg:text-5xl uppercase">{title}</h2>}
                 {hasText(description) && <RichText data={description!} className='skills-card-block-description text-base xl:text-xl' />}

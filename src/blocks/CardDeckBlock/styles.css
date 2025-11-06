@@ -11,10 +11,6 @@ section.borders .card-deck-block.projects .card-deck-grid {
     background-color: unset;
 }
 
-section.borders .card-deck-grid .skills-card-block {
-    background-color: var(--background-color);
-}
-
 .card-deck-info {
     padding: 0 1rem;
     background-color: var(--background-color);

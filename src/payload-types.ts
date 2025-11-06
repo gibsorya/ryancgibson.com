@@ -391,7 +391,7 @@ export interface CardBlock {
     };
     [k: string]: unknown;
   } | null;
-  background?: ('light' | 'dark' | 'light-blue' | 'gradient' | 'none') | null;
+  background?: ('light' | 'dark' | 'light-blue' | 'tomato-red' | 'wenge-gray' | 'gradient') | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'card';
@@ -428,6 +428,7 @@ export interface SkillsCardBlock {
         blockType: 'skill-list';
       }[]
     | null;
+  background?: ('light' | 'dark' | 'light-blue' | 'tomato-red' | 'wenge-gray' | 'gradient') | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'skills-card';
@@ -944,6 +945,7 @@ export interface SkillsCardBlockSelect<T extends boolean = true> {
               blockName?: T;
             };
       };
+  background?: T;
   id?: T;
   blockName?: T;
 }
