@@ -2,13 +2,35 @@ import React from 'react'
 import './globals.css'
 import './styles.css'
 import './typography.css'
+import './article-styles.css'
 import { Header } from '@/globals/Header/Component'
 import { Footer } from '@/globals/Footer/Component'
+import { Metadata } from 'next/types'
+import { getServerSideURL } from '@/utilities/getURL'
+import { mergeOpenGraph } from '@/utilities/mergeOpenGraph'
 
-export const metadata = {
-  description: 'A blank template using Payload in a Next.js app.',
-  title: 'Payload Blank Template',
+import { Analytics } from "@vercel/analytics/next"
+import { SpeedInsights } from '@vercel/speed-insights/next';
+
+// Ensure we have a valid URL for metadataBase
+const getValidMetadataBase = () => {
+  try {
+    return new URL(getServerSideURL())
+  } catch (error) {
+    console.warn('Invalid metadata base URL, falling back to localhost:', error)
+    return new URL('http://localhost:3000')
+  }
 }
+
+export const metadata: Metadata = {
+  metadataBase: getValidMetadataBase(),
+  openGraph: mergeOpenGraph(),
+  twitter: {
+    card: 'summary_large_image',
+    creator: '@gibsorya',
+  },
+}
+
 
 export default async function RootLayout(props: { children: React.ReactNode }) {
   const { children } = props
@@ -18,10 +40,12 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
       <head>
         <link rel="stylesheet" href="https://use.typekit.net/tlz4jrd.css" />
       </head>
-      <body>
+      <body className="flex flex-col min-h-screen">
         <Header />
-        <main>{children}</main>
+        <main className='grow'>{children}</main>
         <Footer />
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   )

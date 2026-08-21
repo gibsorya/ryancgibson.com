@@ -1,0 +1,4 @@
+{
+  "buildCommand": "payload migrate && next build",
+  "installCommand": "npm install"
+} 

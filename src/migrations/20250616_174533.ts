@@ -1,6 +1,6 @@
 import { MigrateUpArgs, MigrateDownArgs, sql } from '@payloadcms/db-postgres'
 
-export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
+export async function up({ db }: MigrateUpArgs): Promise<void> {
   await db.execute(sql`
    CREATE TYPE "public"."enum_media_type" AS ENUM('image', 'video', 'svg');
   CREATE TYPE "public"."enum_pages_blocks_card_background" AS ENUM('light', 'dark', 'light-blue', 'gradient', 'none');
@@ -53,7 +53,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX IF NOT EXISTS "_pages_v_blocks_card_path_idx" ON "_pages_v_blocks_card" USING btree ("_path");`)
 }
 
-export async function down({ db, payload, req }: MigrateDownArgs): Promise<void> {
+export async function down({ db }: MigrateDownArgs): Promise<void> {
   await db.execute(sql`
    CREATE TABLE IF NOT EXISTS "pages_rels" (
   	"id" serial PRIMARY KEY NOT NULL,

@@ -9,7 +9,7 @@ import RichText from '@/components/RichText'
 import { hasText } from '@payloadcms/richtext-lexical/shared'
 
 export const ProjectBlock: React.FC<ProjectBlockProps> = (props) => {
-    const { project } = props
+    const { project, backgroundColor } = props
     const projectData = project as Project
     const tags = projectData.tags as Tag[]
     const links = projectData.links as Link[]
@@ -42,12 +42,14 @@ export const ProjectBlock: React.FC<ProjectBlockProps> = (props) => {
     }, [links])
 
     return (
-        <div className={`flex project-block card-wrapper aspect-square max-w-112 flex-col`}>
-            <div className={`project-content flex flex-col justify-center`}>
-                <div className="flex flex-col gap-2">
-                    <h3 className="text-xl font-bold uppercase">{projectData.title}</h3>
-                    {hasText(projectData.description) && <RichText data={projectData.description!} />}
-                    <div className="flex flex-row gap-2">
+        <div className={`flex project-block ${backgroundColor} card-wrapper aspect-square lg:aspect-auto xl:aspect-square max-w-112 flex-col`}>
+            <div className={`project-content flex flex-col justify-center md:justify-start xl:justify-center`}>
+                <div className="flex flex-col justify-center lg:justify-between xl:justify-center gap-2 h-full">
+                    <div className="flex flex-col gap-2">
+                        <h3 className="text-xl font-bold uppercase">{projectData.title}</h3>
+                        {hasText(projectData.description) && <RichText data={projectData.description!} />}
+                    </div>
+                    <div className="flex flex-row flex-wrap gap-2">
                         {tags && tags.map((tag) => (
                             <span className="text-sm flex tag" key={tag.id}>{tag.name}</span>
                         ))}

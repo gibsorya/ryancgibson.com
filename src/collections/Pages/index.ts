@@ -3,6 +3,7 @@ import { authenticatedOrPublished } from '@/access/authenticatedOrPublished'
 import { CardDeck } from '@/blocks/CardDeckBlock/config'
 import { Hero } from '@/blocks/HeroBlock/config'
 import { Contact } from '@/blocks/ContactBlock/config'
+import { ArticleList } from '@/blocks/ArticleListBlock/config'
 
 import { slugField } from '@/fields/slug'
 import type { CollectionConfig } from 'payload'
@@ -15,7 +16,6 @@ import {
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
 import { revalidatePage } from './hooks/revalidatePage'
-import { Collection } from '@/blocks/CollectionBlock/config'
 
 export const Pages: CollectionConfig = {
   slug: 'pages',
@@ -24,6 +24,7 @@ export const Pages: CollectionConfig = {
   },
   admin: {
     useAsTitle: 'title',
+    group: 'Pages',
     // livePreview: {
     //     url: ({ data, req }) => {
     //         const path = generatePreviewPath({
@@ -51,7 +52,7 @@ export const Pages: CollectionConfig = {
               name: 'layout',
               type: 'blocks',
               required: false,
-              blocks: [Hero, CardDeck, Collection, Contact]
+              blocks: [Hero, CardDeck, Contact, ArticleList]
             }
           ]
         },
@@ -91,7 +92,15 @@ export const Pages: CollectionConfig = {
         position: 'sidebar',
       },
     },
-    ...slugField()
+    ...slugField(),
+    {
+      name: 'enableBorders',
+      type: 'checkbox',
+      label: 'Enable borders between sections and cards',
+      admin: {
+        position: 'sidebar',
+      },
+    },
   ],
   hooks: {
     afterChange: [revalidatePage],

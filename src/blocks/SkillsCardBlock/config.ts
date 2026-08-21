@@ -52,6 +52,37 @@ export const SkillsCard: Block = {
                     ]
                 }
             ]
+        },
+         {
+            name: 'background',
+            type: 'select',
+            options: [
+                {
+                    label: 'Light',
+                    value: 'light',
+                },
+                {
+                    label: 'Dark',
+                    value: 'dark',
+                },
+                {
+                    label: 'Light Blue',
+                    value: 'light-blue',
+                },
+                {
+                    label: 'Tomato Red',
+                    value: 'tomato-red',
+                },
+                {
+                    label: 'Wenge Gray',
+                    value: 'wenge-gray',
+                },
+                {
+                    label: 'Gradient',
+                    value: 'gradient',
+                }
+            ],
+            defaultValue: 'dark'
         }
     ]
 }

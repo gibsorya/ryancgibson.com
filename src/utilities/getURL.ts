@@ -1,5 +1,12 @@
 import canUseDOM from './canUseDOM'
 
+const ensureProtocol = (url: string): string => {
+  if (!url.startsWith('http://') && !url.startsWith('https://')) {
+    return `https://${url}`
+  }
+  return url
+}
+
 export const getServerSideURL = () => {
   let url = process.env.NEXT_PUBLIC_SERVER_URL
 
@@ -11,7 +18,7 @@ export const getServerSideURL = () => {
     url = 'http://localhost:3000'
   }
 
-  return url
+  return ensureProtocol(url)
 }
 
 export const getClientSideURL = () => {
@@ -27,5 +34,6 @@ export const getClientSideURL = () => {
     return `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
   }
 
-  return process.env.NEXT_PUBLIC_SERVER_URL || ''
+  const url = process.env.NEXT_PUBLIC_SERVER_URL || ''
+  return url ? ensureProtocol(url) : ''
 }

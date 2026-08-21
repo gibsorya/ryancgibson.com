@@ -1,6 +1,30 @@
 .skills-card-block {
+    background-color: var(--color-rich-black);
     overflow: hidden;
     padding: 4rem;
+}
+
+.skills-card-block.light-blue-background {
+    background-color: var(--color-light-blue);
+    color: var(--color-rich-black);
+}
+
+.skills-card-block.dark-background {
+    background-color: var(--color-rich-black);
+}
+
+.skills-card-block.light-background {
+    background-color: var(--color-white);
+    color: var(--color-rich-black);
+}
+
+.skills-card-block.tomato-red-background {
+    background-color: var(--color-tomato-red);
+    color: var(--color-rich-black);
+}
+
+.skills-card-block.wenge-gray-background {
+    background-color: var(--color-wenge-gray);
 }
 
 @media (max-width: 768px) {

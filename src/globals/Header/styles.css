@@ -92,3 +92,49 @@
     fill: var(--color-tomato-red);
     transition: transform 0.3s ease-in-out;
 }
+
+nav .menu-icon:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
+}
+
+nav .nav-item:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
+}
+
+nav .modal-close-button span:hover {
+    color: var(--color-tomato-red);
+    transform: scale(1.2);
+    transition: transform 0.3s ease-in-out;
+}
+
+nav .modal .modal-content {
+    animation-name: animateleft;
+    animation-duration: 0.4s
+}
+
+nav .modal.active .modal-content {
+    animation-name: animateright;
+    animation-duration: 0.4s 
+}
+
+@keyframes animateleft {
+  from {left: -100%}
+  to {left: 0}
+}
+
+@-webkit-keyframes animateleft {
+  from {left: -100%}
+  to {left: 0}
+}
+
+@keyframes animateright {
+    from {left: 0}
+    to {left: -100%}
+}
+
+@-webkit-keyframes animateright {
+    from {left: 0}
+    to {left: -100%}
+}

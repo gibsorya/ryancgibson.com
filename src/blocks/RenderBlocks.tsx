@@ -3,38 +3,37 @@ import type { Page } from "@/payload-types";
 
 import { HeroBlock } from "./HeroBlock/Component";
 import { CardDeckBlock } from "./CardDeckBlock/Component"
-import { CollectionBlock } from "./CollectionBlock/Component";
 import { ContactBlock } from "./ContactBlock/Component";
+import { ArticleListBlock } from "./ArticleListBlock/Component";
 
 const blockComponents = {
   hero: HeroBlock,
   card_deck: CardDeckBlock,
-  collection: CollectionBlock,
   contact: ContactBlock,
+  article_list: ArticleListBlock,
 };
 
-export const RenderBlocks: React.FC<{ blocks: Page["layout"] }> = (props) => {
-  const { blocks } = props;
+export const RenderBlocks: React.FC<{ blocks: Page["layout"], enableBorders: Page["enableBorders"] }> = (props) => {
+  const { blocks, enableBorders } = props;
 
   const hasBlocks = blocks && Array.isArray(blocks) && blocks.length > 0;
 
   const getBlockPaddingClass = (block: NonNullable<Page["layout"]>[number]) => {
     if ('padding' in block && block.padding) {
-      console.log(block.padding)
       switch(block.padding) {
         case 'small':
-          return 'px-4'
+          return 'p-2 md:p-4'
         case 'medium':
-          return 'px-8'
+          return 'p-4 md:p-8'
         case 'large':
-          return 'px-16'
+          return 'p-8 md:p-16'
         case 'none':
-          return 'px-0'
+          return 'p-0'
         default:
-          return 'px-4'
+          return 'p-2 md:p-4'
       }
     }
-    return 'px-4' // Default padding if no padding is specified
+    return 'p-2 md:p-4' // Default padding if no padding is specified
   }
 
   if (hasBlocks) {
@@ -48,7 +47,7 @@ export const RenderBlocks: React.FC<{ blocks: Page["layout"] }> = (props) => {
 
             if (Block) {
               return (
-                <section className={`mb-4 ${getBlockPaddingClass(block)} section-${blockType}`} key={index}>
+                <section className={`${getBlockPaddingClass(block)} section-${blockType} ${enableBorders && "borders"}`} key={index}>
                   {/* @ts-expect-error there may be some mismatch between the expected types here */}
                   <Block {...block} disableInnerContainer />
                 </section>

@@ -56,6 +56,12 @@ export const Media: CollectionConfig = {
         width: 120,
         height: 120,
         position: 'center',
+      },
+      {
+        name: 'og',
+        width: 1200,
+        height: 630,
+        position: 'center',
       }
     ],
     adminThumbnail: 'thumbnail'

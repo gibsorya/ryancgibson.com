@@ -1,11 +1,19 @@
 // storage-adapter-import-placeholder
-import { postgresAdapter } from '@payloadcms/db-postgres'
+import { vercelPostgresAdapter } from '@payloadcms/db-vercel-postgres'
+import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob'
 import { payloadCloudPlugin } from '@payloadcms/payload-cloud'
+import { seoPlugin } from '@payloadcms/plugin-seo'
+import { GenerateTitle, GenerateURL } from '@payloadcms/plugin-seo/types'
 import { lexicalEditor, BlocksFeature, FixedToolbarFeature } from '@payloadcms/richtext-lexical'
 import path from 'path'
 import { buildConfig } from 'payload'
 import { fileURLToPath } from 'url'
 import sharp from 'sharp'
+
+import { migrations } from './migrations'
+
+
+import { Page } from '@/payload-types'
 
 // Collections
 import { Users } from './collections/Users'
@@ -15,18 +23,36 @@ import { Pages } from './collections/Pages'
 import { Tags } from './collections/Tags'
 import { Skills } from './collections/Skills'
 import { CallToActions } from './collections/CallToActions'
+import { Articles } from './collections/Articles'
 
 // Blocks
 import { TypewriterBlock } from './blocks/TypewriterBlock/config'
 import { CallToActionBlock } from './blocks/CallToActionBlock/config'
+import { QuoteBlock } from './blocks/QuoteBlock/config'
+import { CodeBlock } from './blocks/CodeBlock/config'
 
 // Globals
 import { Header } from './globals/Header/config'
 import { Footer } from './globals/Footer/config'
 import { Socials } from './globals/Socials'
+import { getServerSideURL } from './utilities/getURL'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
+
+const generateTitle: GenerateTitle<Page> = ({ doc }) => {
+  return doc?.title ? `${doc.title} | Software Engineer` : 'Software Engineer'
+}
+
+const generateURL: GenerateURL<Page> = ({ doc }) => {
+  const url = getServerSideURL()
+
+  if (doc?.slug === 'home') {
+    return url
+  }
+
+  return `${url}/${doc.slug}`
+}
 
 export default buildConfig({
   admin: {
@@ -42,7 +68,8 @@ export default buildConfig({
     Pages,
     Tags,
     Skills,
-    CallToActions
+    CallToActions,
+    Articles
   ],
   globals: [
     Header,
@@ -55,7 +82,9 @@ export default buildConfig({
       BlocksFeature({
         blocks: [
           TypewriterBlock,
-          CallToActionBlock
+          CallToActionBlock,
+          QuoteBlock,
+          CodeBlock
         ]
       }),
       FixedToolbarFeature()
@@ -65,14 +94,31 @@ export default buildConfig({
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
   },
-  db: postgresAdapter({
-    pool: {
-      connectionString: process.env.DATABASE_URI || '',
-    },
-  }),
+  db: vercelPostgresAdapter({
+        prodMigrations: migrations
+    }),
   sharp,
   plugins: [
     payloadCloudPlugin(),
     // storage-adapter-placeholder
+    vercelBlobStorage({
+      collections: {
+        media: true
+      },
+      // Token provided by Vercel once Blob storage is added to your Vercel project
+      token: process.env.PRODUCTION_READ_WRITE_TOKEN || process.env.BLOB_READ_WRITE_TOKEN,
+    }),
+    seoPlugin({
+      collections: [Pages, Articles],
+      uploadsCollection: 'media',
+      generateTitle,
+      generateURL,
+      tabbedUI: true
+    })
   ],
+  upload: {
+    limits: {
+      fileSize: 5000000, // 5MB, adjust as needed
+    },
+  },
 })

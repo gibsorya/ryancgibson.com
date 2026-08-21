@@ -74,6 +74,8 @@ export interface Config {
     tags: Tag;
     skills: Skill;
     callToActions: CallToAction;
+    articles: Article;
+    'payload-kv': PayloadKv;
     'payload-jobs': PayloadJob;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -88,6 +90,8 @@ export interface Config {
     tags: TagsSelect<false> | TagsSelect<true>;
     skills: SkillsSelect<false> | SkillsSelect<true>;
     callToActions: CallToActionsSelect<false> | CallToActionsSelect<true>;
+    articles: ArticlesSelect<false> | ArticlesSelect<true>;
+    'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-jobs': PayloadJobsSelect<false> | PayloadJobsSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -154,6 +158,13 @@ export interface User {
   hash?: string | null;
   loginAttempts?: number | null;
   lockUntil?: string | null;
+  sessions?:
+    | {
+        id: string;
+        createdAt?: string | null;
+        expiresAt: string;
+      }[]
+    | null;
   password?: string | null;
 }
 /**
@@ -208,6 +219,14 @@ export interface Media {
       filesize?: number | null;
       filename?: string | null;
     };
+    og?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
   };
 }
 /**
@@ -221,7 +240,7 @@ export interface Project {
     root: {
       type: string;
       children: {
-        type: string;
+        type: any;
         version: number;
         [k: string]: unknown;
       }[];
@@ -264,7 +283,7 @@ export interface Tag {
 export interface Page {
   id: number;
   title?: string | null;
-  layout?: (HeroBlock | CardDeckBlock | CollectionBlock | ContactBlock)[] | null;
+  layout?: (HeroBlock | CardDeckBlock | ContactBlock | ArticleListBlock)[] | null;
   meta?: {
     title?: string | null;
     /**
@@ -276,6 +295,7 @@ export interface Page {
   publishedAt?: string | null;
   slug?: string | null;
   slugLock?: boolean | null;
+  enableBorders?: boolean | null;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
@@ -290,7 +310,7 @@ export interface HeroBlock {
     root: {
       type: string;
       children: {
-        type: string;
+        type: any;
         version: number;
         [k: string]: unknown;
       }[];
@@ -317,7 +337,7 @@ export interface CardDeckBlock {
     root: {
       type: string;
       children: {
-        type: string;
+        type: any;
         version: number;
         [k: string]: unknown;
       }[];
@@ -345,6 +365,7 @@ export interface CardDeckBlock {
 export interface ProjectBlock {
   project: number | Project;
   fullWidth?: boolean | null;
+  backgroundColor?: ('white' | 'tomato-red' | 'light_blue' | 'rich_black' | 'wenge-gray') | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'project';
@@ -359,7 +380,7 @@ export interface CardBlock {
     root: {
       type: string;
       children: {
-        type: string;
+        type: any;
         version: number;
         [k: string]: unknown;
       }[];
@@ -370,7 +391,7 @@ export interface CardBlock {
     };
     [k: string]: unknown;
   } | null;
-  background?: ('light' | 'dark' | 'light-blue' | 'gradient' | 'none') | null;
+  background?: ('light' | 'dark' | 'light-blue' | 'tomato-red' | 'wenge-gray' | 'gradient') | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'card';
@@ -385,7 +406,7 @@ export interface SkillsCardBlock {
     root: {
       type: string;
       children: {
-        type: string;
+        type: any;
         version: number;
         [k: string]: unknown;
       }[];
@@ -407,6 +428,7 @@ export interface SkillsCardBlock {
         blockType: 'skill-list';
       }[]
     | null;
+  background?: ('light' | 'dark' | 'light-blue' | 'tomato-red' | 'wenge-gray' | 'gradient') | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'skills-card';
@@ -425,33 +447,6 @@ export interface Skill {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "CollectionBlock".
- */
-export interface CollectionBlock {
-  title?: string | null;
-  description?: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
-  collection: 'projects';
-  collectionInfoPosition: 'top' | 'left' | 'right';
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'collection';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "ContactBlock".
  */
 export interface ContactBlock {
@@ -460,7 +455,7 @@ export interface ContactBlock {
     root: {
       type: string;
       children: {
-        type: string;
+        type: any;
         version: number;
         [k: string]: unknown;
       }[];
@@ -487,6 +482,73 @@ export interface CallToAction {
   type?: ('primary' | 'secondary' | 'tertiary') | null;
   updatedAt: string;
   createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ArticleListBlock".
+ */
+export interface ArticleListBlock {
+  featuredArticle?: (number | null) | Article;
+  showImages?: boolean | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'article_list';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "articles".
+ */
+export interface Article {
+  id: number;
+  title?: string | null;
+  author?: string | null;
+  slug?: string | null;
+  slugLock?: boolean | null;
+  heroImage?: (number | null) | Media;
+  content?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
+    description?: string | null;
+  };
+  publishedAt?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "payload-kv".
+ */
+export interface PayloadKv {
+  id: number;
+  key: string;
+  data:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -616,8 +678,8 @@ export interface PayloadLockedDocument {
         value: number | CallToAction;
       } | null)
     | ({
-        relationTo: 'payload-jobs';
-        value: number | PayloadJob;
+        relationTo: 'articles';
+        value: number | Article;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -675,6 +737,13 @@ export interface UsersSelect<T extends boolean = true> {
   hash?: T;
   loginAttempts?: T;
   lockUntil?: T;
+  sessions?:
+    | T
+    | {
+        id?: T;
+        createdAt?: T;
+        expiresAt?: T;
+      };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -737,6 +806,16 @@ export interface MediaSelect<T extends boolean = true> {
               filesize?: T;
               filename?: T;
             };
+        og?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
       };
 }
 /**
@@ -771,8 +850,8 @@ export interface PagesSelect<T extends boolean = true> {
     | {
         hero?: T | HeroBlockSelect<T>;
         card_deck?: T | CardDeckBlockSelect<T>;
-        collection?: T | CollectionBlockSelect<T>;
         contact?: T | ContactBlockSelect<T>;
+        article_list?: T | ArticleListBlockSelect<T>;
       };
   meta?:
     | T
@@ -784,6 +863,7 @@ export interface PagesSelect<T extends boolean = true> {
   publishedAt?: T;
   slug?: T;
   slugLock?: T;
+  enableBorders?: T;
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
@@ -829,6 +909,7 @@ export interface CardDeckBlockSelect<T extends boolean = true> {
 export interface ProjectBlockSelect<T extends boolean = true> {
   project?: T;
   fullWidth?: T;
+  backgroundColor?: T;
   id?: T;
   blockName?: T;
 }
@@ -864,18 +945,7 @@ export interface SkillsCardBlockSelect<T extends boolean = true> {
               blockName?: T;
             };
       };
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "CollectionBlock_select".
- */
-export interface CollectionBlockSelect<T extends boolean = true> {
-  title?: T;
-  description?: T;
-  collection?: T;
-  collectionInfoPosition?: T;
+  background?: T;
   id?: T;
   blockName?: T;
 }
@@ -887,6 +957,16 @@ export interface ContactBlockSelect<T extends boolean = true> {
   title?: T;
   description?: T;
   cta?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ArticleListBlock_select".
+ */
+export interface ArticleListBlockSelect<T extends boolean = true> {
+  featuredArticle?: T;
+  showImages?: T;
   id?: T;
   blockName?: T;
 }
@@ -921,6 +1001,37 @@ export interface CallToActionsSelect<T extends boolean = true> {
   type?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "articles_select".
+ */
+export interface ArticlesSelect<T extends boolean = true> {
+  title?: T;
+  author?: T;
+  slug?: T;
+  slugLock?: T;
+  heroImage?: T;
+  content?: T;
+  meta?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+        description?: T;
+      };
+  publishedAt?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "payload-kv_select".
+ */
+export interface PayloadKvSelect<T extends boolean = true> {
+  key?: T;
+  data?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1093,10 +1204,15 @@ export interface TaskSchedulePublish {
   input: {
     type?: ('publish' | 'unpublish') | null;
     locale?: string | null;
-    doc?: {
-      relationTo: 'pages';
-      value: number | Page;
-    } | null;
+    doc?:
+      | ({
+          relationTo: 'pages';
+          value: number | Page;
+        } | null)
+      | ({
+          relationTo: 'articles';
+          value: number | Article;
+        } | null);
     global?: string | null;
     user?: (number | null) | User;
   };
@@ -1132,6 +1248,28 @@ export interface CallToActionBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'callToAction';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "QuoteBlock".
+ */
+export interface QuoteBlock {
+  quote?: string | null;
+  reference?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'quote';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CodeBlock".
+ */
+export interface CodeBlock {
+  language?: ('typescript' | 'javascript' | 'css' | 'cpp' | 'rust' | 'json' | 'ruby') | null;
+  code: string;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'code';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

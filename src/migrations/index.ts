@@ -6,6 +6,16 @@ import * as migration_20250617_205211_add_skills_url from './20250617_205211_add
 import * as migration_20250619_173353_add_types_to_hero from './20250619_173353_add_types_to_hero';
 import * as migration_20250620_174321 from './20250620_174321';
 import * as migration_20250620_211908 from './20250620_211908';
+import * as migration_20250620_232325 from './20250620_232325';
+import * as migration_20250621_003024 from './20250621_003024';
+import * as migration_20250621_022746 from './20250621_022746';
+import * as migration_20250912_161639_add_row_level_security from './20250912_161639_add_row_level_security';
+import * as migration_20250914_210906_add_articles from './20250914_210906_add_articles';
+import * as migration_20250915_211718_add_published_field_to_articles from './20250915_211718_add_published_field_to_articles';
+import * as migration_20250917_210054_add_authors_to_articles from './20250917_210054_add_authors_to_articles';
+import * as migration_20251105_202720 from './20251105_202720';
+import * as migration_20251105_205402 from './20251105_205402';
+import * as migration_20251106_214327_add_background_colors_for_skills from './20251106_214327_add_background_colors_for_skills';
 
 export const migrations = [
   {
@@ -46,6 +56,56 @@ export const migrations = [
   {
     up: migration_20250620_211908.up,
     down: migration_20250620_211908.down,
-    name: '20250620_211908'
+    name: '20250620_211908',
+  },
+  {
+    up: migration_20250620_232325.up,
+    down: migration_20250620_232325.down,
+    name: '20250620_232325',
+  },
+  {
+    up: migration_20250621_003024.up,
+    down: migration_20250621_003024.down,
+    name: '20250621_003024',
+  },
+  {
+    up: migration_20250621_022746.up,
+    down: migration_20250621_022746.down,
+    name: '20250621_022746',
+  },
+  {
+    up: migration_20250912_161639_add_row_level_security.up,
+    down: migration_20250912_161639_add_row_level_security.down,
+    name: '20250912_161639_add_row_level_security',
+  },
+  {
+    up: migration_20250914_210906_add_articles.up,
+    down: migration_20250914_210906_add_articles.down,
+    name: '20250914_210906_add_articles',
+  },
+  {
+    up: migration_20250915_211718_add_published_field_to_articles.up,
+    down: migration_20250915_211718_add_published_field_to_articles.down,
+    name: '20250915_211718_add_published_field_to_articles',
+  },
+  {
+    up: migration_20250917_210054_add_authors_to_articles.up,
+    down: migration_20250917_210054_add_authors_to_articles.down,
+    name: '20250917_210054_add_authors_to_articles',
+  },
+  {
+    up: migration_20251105_202720.up,
+    down: migration_20251105_202720.down,
+    name: '20251105_202720',
+  },
+  {
+    up: migration_20251105_205402.up,
+    down: migration_20251105_205402.down,
+    name: '20251105_205402',
+  },
+  {
+    up: migration_20251106_214327_add_background_colors_for_skills.up,
+    down: migration_20251106_214327_add_background_colors_for_skills.down,
+    name: '20251106_214327_add_background_colors_for_skills'
   },
 ];

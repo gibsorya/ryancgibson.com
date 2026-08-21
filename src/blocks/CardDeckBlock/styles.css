@@ -2,18 +2,18 @@
     width: 100%;
 }
 
+section.borders .card-deck-block:not(.projects) .card-deck-grid {
+    background-color: var(--color-white);
+    gap: 5px;
+}
+
+section.borders .card-deck-block.projects .card-deck-grid {
+    background-color: unset;
+}
+
 .card-deck-info {
     padding: 0 1rem;
-}
-
-.card-deck-info h2 {
-    font-size: 4rem;
-}
-
-@media (min-width: 768px) {
-    .card-deck-info h2 {
-        /* font-size: 4.5rem; */
-    }
+    background-color: var(--background-color);
 }
 
 .card-wrapper {
@@ -29,9 +29,5 @@
     
     .card-deck-info {
         margin-bottom: 0.5rem;
-    }
-
-    .card-deck-info h2 {
-        /* font-size: 4rem; */
     }
 } 

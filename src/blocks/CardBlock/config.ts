@@ -33,14 +33,19 @@ export const Card: Block = {
                     value: 'light-blue',
                 },
                 {
-                    label: 'Gradient',
-                    value: 'gradient',
+                    label: 'Tomato Red',
+                    value: 'tomato-red',
                 },
                 {
-                    label: 'None',
-                    value: 'none',
+                    label: 'Wenge Gray',
+                    value: 'wenge-gray',
+                },
+                {
+                    label: 'Gradient',
+                    value: 'gradient',
                 }
             ],
+            defaultValue: 'dark'
         }
     ]
 }

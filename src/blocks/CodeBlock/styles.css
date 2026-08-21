@@ -1,0 +1,15 @@
+.code-block {
+    background-color: rgb(from var(--color-light-blue) r g b / 0.1);
+    position: relative;
+}
+
+.code-block .copy-button {
+    cursor: pointer;
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+}
+
+.copy-button p {
+    margin: 0;
+}

@@ -61,7 +61,7 @@ export const CardDeckBlock: React.FC<CardDeckBlockProps> = (props) => {
             case "projects":
                 return "grid gap-4 grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 md:max-w-10/12 mx-auto";
             case "full-width-cards":
-                return "grid grid-cols-1 gap-4 md:gap-0 md:grid-cols-2";
+                return `grid grid-cols-1 gap-4 md:grid-cols-${maxColumns}`;
             default:
                 return "grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3";
         }
@@ -71,11 +71,9 @@ export const CardDeckBlock: React.FC<CardDeckBlockProps> = (props) => {
         "--max-columns": maxColumns,
     } as React.CSSProperties;
 
-    // const descriptionIsEmpty = !description || description.root.children.at(0)?. === 'paragraph' && description.root.children.at(0)?.children.at(0)?.text === ''
-
     return (
         <div
-            className={`card-deck-block flex ${getInfoPositionClass()} ${getGapClass()}`}
+            className={`card-deck-block ${type} flex ${getInfoPositionClass()} ${getGapClass()}`}
             style={gridStyle}
         >
             {(title || hasText(description)) && <div
@@ -86,7 +84,7 @@ export const CardDeckBlock: React.FC<CardDeckBlockProps> = (props) => {
             </div>}
 
             <div
-                className={`${getCardsGridLayoutClass()} max-w-full`}
+                className={`card-deck-grid ${getCardsGridLayoutClass()} max-w-full`}
             >
                 {cards?.map((card, i) => {
                     switch (card.blockType) {
