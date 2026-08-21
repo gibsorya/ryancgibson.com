@@ -17,7 +17,7 @@ export const revalidateArticle: CollectionAfterChangeHook<Article> = ({
             payload.logger.info(`Revalidating article at path: ${path}`);
 
             revalidatePath(path);
-            revalidateTag("articles-sitemap");
+            revalidateTag("articles-sitemap", { expire: 0 });
         }
     }
 
@@ -28,6 +28,6 @@ export const revalidateArticle: CollectionAfterChangeHook<Article> = ({
         payload.logger.info(`Revalidating old article at path: ${oldPath}`)
 
         revalidatePath(oldPath)
-        revalidateTag("articles-sitemap")
+        revalidateTag("articles-sitemap", { expire: 0 })
     }
 };
