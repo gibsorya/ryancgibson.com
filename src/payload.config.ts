@@ -24,6 +24,7 @@ import { Tags } from './collections/Tags'
 import { Skills } from './collections/Skills'
 import { CallToActions } from './collections/CallToActions'
 import { Articles } from './collections/Articles'
+import { Newsletters } from './collections/Newsletters'
 
 // Blocks
 import { TypewriterBlock } from './blocks/TypewriterBlock/config'
@@ -69,7 +70,8 @@ export default buildConfig({
     Tags,
     Skills,
     CallToActions,
-    Articles
+    Articles,
+    Newsletters
   ],
   globals: [
     Header,

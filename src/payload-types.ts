@@ -75,6 +75,7 @@ export interface Config {
     skills: Skill;
     callToActions: CallToAction;
     articles: Article;
+    newsletters: Newsletter;
     'payload-kv': PayloadKv;
     'payload-jobs': PayloadJob;
     'payload-locked-documents': PayloadLockedDocument;
@@ -91,6 +92,7 @@ export interface Config {
     skills: SkillsSelect<false> | SkillsSelect<true>;
     callToActions: CallToActionsSelect<false> | CallToActionsSelect<true>;
     articles: ArticlesSelect<false> | ArticlesSelect<true>;
+    newsletters: NewslettersSelect<false> | NewslettersSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-jobs': PayloadJobsSelect<false> | PayloadJobsSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
@@ -538,6 +540,20 @@ export interface Article {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "newsletters".
+ */
+export interface Newsletter {
+  id: number;
+  title: string;
+  /**
+   * The Group ID from MailerLite
+   */
+  groupId: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -683,6 +699,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'articles';
         value: number | Article;
+      } | null)
+    | ({
+        relationTo: 'newsletters';
+        value: number | Newsletter;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -1027,6 +1047,16 @@ export interface ArticlesSelect<T extends boolean = true> {
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "newsletters_select".
+ */
+export interface NewslettersSelect<T extends boolean = true> {
+  title?: T;
+  groupId?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

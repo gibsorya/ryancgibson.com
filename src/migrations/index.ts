@@ -16,6 +16,7 @@ import * as migration_20250917_210054_add_authors_to_articles from './20250917_2
 import * as migration_20251105_202720 from './20251105_202720';
 import * as migration_20251105_205402 from './20251105_205402';
 import * as migration_20251106_214327_add_background_colors_for_skills from './20251106_214327_add_background_colors_for_skills';
+import * as migration_20260823_200856_add_newsletters from './20260823_200856_add_newsletters';
 
 export const migrations = [
   {
@@ -106,6 +107,11 @@ export const migrations = [
   {
     up: migration_20251106_214327_add_background_colors_for_skills.up,
     down: migration_20251106_214327_add_background_colors_for_skills.down,
-    name: '20251106_214327_add_background_colors_for_skills'
+    name: '20251106_214327_add_background_colors_for_skills',
+  },
+  {
+    up: migration_20260823_200856_add_newsletters.up,
+    down: migration_20260823_200856_add_newsletters.down,
+    name: '20260823_200856_add_newsletters'
   },
 ];
