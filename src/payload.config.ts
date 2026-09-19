@@ -31,6 +31,7 @@ import { TypewriterBlock } from './blocks/TypewriterBlock/config'
 import { CallToActionBlock } from './blocks/CallToActionBlock/config'
 import { QuoteBlock } from './blocks/QuoteBlock/config'
 import { CodeBlock } from './blocks/CodeBlock/config'
+import { NewsletterBlock } from './blocks/NewsletterBlock/config'
 
 // Globals
 import { Header } from './globals/Header/config'
@@ -86,7 +87,8 @@ export default buildConfig({
           TypewriterBlock,
           CallToActionBlock,
           QuoteBlock,
-          CodeBlock
+          CodeBlock,
+          NewsletterBlock
         ]
       }),
       FixedToolbarFeature()

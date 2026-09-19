@@ -16,16 +16,18 @@ import { CodeBlock, CodeBlockProps } from "@/blocks/CodeBlock/Component";
 import type {
   TypewriterBlock as TypewriterBlockProps,
   QuoteBlock as QuoteBlockProps,
+  NewsletterBlock as NewsletterBlockProps
 } from "@/payload-types";
 import { TypewriterBlock } from "@/blocks/TypewriterBlock/Component";
 import { QuoteBlock } from "@/blocks/QuoteBlock/Component";
+import { NewsletterBlock } from "@/blocks/NewsletterBlock/Component";
 import { cn } from "@/utilities/ui";
 
 
 type NodeTypes =
   | DefaultNodeTypes
   | SerializedBlockNode<
-      TypewriterBlockProps | QuoteBlockProps | CodeBlockProps
+      TypewriterBlockProps | QuoteBlockProps | CodeBlockProps | NewsletterBlockProps
     >;
 
 const internalDocToHref = ({ linkNode }: { linkNode: SerializedLinkNode }) => {
@@ -45,7 +47,8 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({
   blocks: {
     typewriter: ({ node }) => <TypewriterBlock {...node.fields} />,
     quote: ({ node }) => <QuoteBlock {...node.fields} />,
-    code: ({ node }) => <CodeBlock {...node.fields} /> }
+    code: ({ node }) => <CodeBlock {...node.fields} />,
+    newsletter: ({ node }) => <NewsletterBlock {...node.fields} /> }
 });
 
 type Props = {

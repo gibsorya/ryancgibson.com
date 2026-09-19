@@ -1,7 +1,7 @@
 import type { CollectionConfig } from "payload";
 
 import {
-    // BlocksFeature,
+    BlocksFeature,
     FixedToolbarFeature,
     HeadingFeature,
     HorizontalRuleFeature,
@@ -20,6 +20,7 @@ import {
 import { authenticatedOrPublished } from "@/access/authenticatedOrPublished";
 import { slugField } from "@/fields/slug";
 import { revalidateArticle } from "./hooks/revalidateArticle";
+import { NewsletterBlock } from "@/blocks/NewsletterBlock/config";
 
 export const Articles: CollectionConfig = {
     slug: "articles",
@@ -63,7 +64,9 @@ export const Articles: CollectionConfig = {
                                         HeadingFeature({
                                             enabledHeadingSizes: ["h1", "h2", "h3", "h4"],
                                         }),
-                                        // BlocksFeature
+                                        BlocksFeature({
+                                            blocks: [NewsletterBlock]
+                                        }),
                                         FixedToolbarFeature(),
                                         InlineToolbarFeature(),
                                         HorizontalRuleFeature(),
