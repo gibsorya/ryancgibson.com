@@ -9,6 +9,10 @@
     padding: 2rem;
 }
 
+.newsletter-block p {
+    margin: 0;
+}
+
 .newsletter-heading {
     margin: 0rem;
     text-align: left;
