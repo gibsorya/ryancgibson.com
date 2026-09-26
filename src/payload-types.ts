@@ -545,6 +545,21 @@ export interface Article {
 export interface Newsletter {
   id: number;
   title: string;
+  description?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
   /**
    * The Group ID from MailerLite
    */
@@ -1054,6 +1069,7 @@ export interface ArticlesSelect<T extends boolean = true> {
  */
 export interface NewslettersSelect<T extends boolean = true> {
   title?: T;
+  description?: T;
   groupId?: T;
   updatedAt?: T;
   createdAt?: T;

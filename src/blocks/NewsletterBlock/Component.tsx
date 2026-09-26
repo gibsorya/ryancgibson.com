@@ -2,9 +2,7 @@
 
 import React, { useState } from 'react'
 
-import MailerLite, { CreateOrUpdateSubscriberParams } from '@mailerlite/mailerlite-nodejs';
-
-import type { CallToAction, Newsletter, NewsletterBlock as NewsletterBlockProps } from '@/payload-types'
+import type { Newsletter, NewsletterBlock as NewsletterBlockProps } from '@/payload-types'
 
 import './styles.css'
 import { hasText } from '@payloadcms/richtext-lexical/shared'
@@ -18,6 +16,7 @@ export const NewsletterBlock: React.FC<NewsletterBlockProps> = (props) => {
     const [pending, setPending] = useState(false)
 
     const newsletterData = newsletter as Newsletter
+    const desc = hasText(description) ? description : newsletterData?.description
 
     const handleSubscribe = async () => {
         setPending(true)
@@ -29,8 +28,8 @@ export const NewsletterBlock: React.FC<NewsletterBlockProps> = (props) => {
     return (
         <div className='newsletter-block'>
             <h3 className='newsletter-heading'>{heading}</h3>
-            {hasText(description) && (
-                <RichText className='newsletter-description' data={description} />
+            {hasText(desc) && (
+                <RichText className='newsletter-description' data={desc} />
             )}
             <form className='newsletter-form'>
                 {/* <input onChange={(event) => setName(event.currentTarget.value)} placeholder='Name' type='text' id="newsletter-name-input" name='newsletter-name' /> */}
