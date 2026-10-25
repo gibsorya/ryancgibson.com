@@ -1,7 +1,6 @@
 'use server'
 
 import MailerLite, { CreateOrUpdateSubscriberParams } from '@mailerlite/mailerlite-nodejs'
-import { error } from 'node:console'
 
 export async function unsubscribeToNewsletter(email: string, groupId: string) {
   const apiKey = process.env.MAILER_LITE_API_TOKEN
@@ -16,8 +15,6 @@ export async function unsubscribeToNewsletter(email: string, groupId: string) {
     groups: [groupId],
     status: 'unsubscribed'
   }
-
-  let response
 
   await mailerLite.subscribers.createOrUpdate(params).then(response => {
     return response.data
