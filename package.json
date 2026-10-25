@@ -60,7 +60,7 @@
     "eslint-plugin-storybook": "^10.5.10",
     "playwright": "^1.62.1",
     "postcss": "^8.5.5",
-    "storybook": "^10.5.10",
+    "storybook": "^10.6.2",
     "tailwindcss": "^4",
     "typescript": "^5",
     "vitest": "^4.1.11"
