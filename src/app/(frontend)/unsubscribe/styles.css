@@ -1,0 +1,27 @@
+.grow {
+    align-items: center;
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    width: 100%;
+}
+
+.unsubscribe-page {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+
+.unsubscribe-message-body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    height: 100%;
+    text-align: center;
+}
+
+.unsubscribe-message {
+    font-size: 1.1rem;
+}
